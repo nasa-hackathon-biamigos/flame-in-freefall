@@ -8,7 +8,8 @@
   "nav": {
     "label": "Principal",
     "explore": "Explorar",
-    "about": "Sobre e dados"
+    "about": "Sobre e dados",
+    "ask": "Pergunte ao PSI"
   },
   "home": {
     "title": "O fogo se comporta diferente no espaço. A NASA tem os dados. Nós os tornamos úteis.",
@@ -121,7 +122,9 @@
       "tables": "Tabelas experimentais",
       "rowsShown": "Mostrando {shown} de {total} linhas.",
       "missing": "O texto bruto do PSI desta investigação ainda não foi baixado."
-    }
+    },
+    "askAbout": "Perguntar sobre esta",
+    "askAboutQuestion": "O que o {name} nos diz sobre segurança contra incêndio em habitats tripulados?"
   },
   "about": {
     "title": "Sobre e dados",
@@ -153,5 +156,50 @@
   "notFound": {
     "title": "Investigação não encontrada",
     "back": "Voltar ao Explorar"
+  },
+  "ask": {
+    "title": "Pergunte ao PSI",
+    "lead": "Pergunte sobre segurança contra incêndio em microgravidade. As respostas vêm só dos registros do NASA PSI deste catálogo, e cada afirmação leva à sua fonte.",
+    "placeholder": "Faça uma pergunta sobre segurança contra incêndio no espaço…",
+    "send": "Perguntar",
+    "newConversation": "Nova conversa",
+    "turns": "{used}/{max} perguntas",
+    "suggested": "Experimente uma destas",
+    "thinking": "Consultando os registros do PSI…",
+    "cached": "Resposta do cache",
+    "sources": "Fontes",
+    "openRecord": "Abrir registro",
+    "openPsi": "NASA PSI",
+    "disclaimer": "As respostas são geradas a partir de registros curados do NASA PSI e podem estar incompletas. Confira sempre as fontes citadas.",
+    "curation": {
+      "uncurated": "Texto original do PSI",
+      "partial": "Curadoria parcial",
+      "complete": "Curado"
+    },
+    "limitReached": "Esta conversa chegou a {max} perguntas. Comece uma nova para continuar.",
+    "sections": {
+      "summary": "Resumo",
+      "crew_safety": "Por que importa para a tripulação",
+      "earth_impact": "Impacto na Terra",
+      "key_results": "Principais resultados",
+      "limitations": "Limitações",
+      "conditions": "Condições",
+      "psi_objectives": "Objetivos (PSI)",
+      "psi_hypothesis": "Hipótese (PSI)",
+      "psi_approach": "Abordagem (PSI)",
+      "psi_research_impacts": "Impactos da pesquisa (PSI)",
+      "comparison": "Comparação curada",
+      "spinoff": "Spinoff na Terra"
+    },
+    "errors": {
+      "bad_request": "Escreva uma pergunta entre 3 e 1000 caracteres.",
+      "forbidden": "Esta requisição foi bloqueada.",
+      "rate_limited": "Você fez muitas perguntas na última hora. Tente de novo mais tarde — as perguntas sugeridas continuam funcionando.",
+      "daily_cap": "O assistente atingiu o limite diário. Volte amanhã — as perguntas sugeridas continuam funcionando.",
+      "conversation_limit": "Esta conversa atingiu o limite de perguntas. Comece uma nova conversa.",
+      "conversation_expired": "Esta conversa expirou. Comece uma nova conversa.",
+      "refusal": "O assistente preferiu não responder a esta pergunta. Tente perguntar sobre segurança contra incêndio em habitats tripulados.",
+      "unavailable": "O assistente está indisponível no momento. Tente de novo em instantes."
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, MessageCircleQuestion } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -74,6 +74,14 @@ export default async function InvestigationPage({ params }: Props) {
             >
               {t("openPsi")} <ExternalLink aria-hidden className="size-3.5" />
             </a>
+          )}
+          {inv.psi_id && !inv.example && (
+            <Link
+              href={`/ask?q=${encodeURIComponent(t("askAboutQuestion", { name: `${inv.acronym ?? inv.experiment_name} (${inv.psi_id})` }))}`}
+              className="inline-flex items-center gap-1 text-plasma hover:underline"
+            >
+              <MessageCircleQuestion aria-hidden className="size-3.5" /> {t("askAbout")}
+            </Link>
           )}
           <span className="flex flex-wrap gap-1.5">
             {inv.fire_safety_pillar.map((p) => (

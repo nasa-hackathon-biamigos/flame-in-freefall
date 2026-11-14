@@ -433,7 +433,7 @@ Passa para P0 se: `MODELO-PREVISAO.md` existe, pesos não provisórios, ≥ 12 f
 ## 8. IA — Ask PSI (RAG com citações)
 
 ### 8.1 Ingestão (`npm run rag:ingest`)
-- Fonte: `catalog.json` + `data/raw/psi/*.json`.
+- Fonte: `catalog.json` + `data/raw/psi/*.json`. **Decidido no M3:** o texto original do PSI de **todas** as investigações baixadas entra no índice desde já (marcado "original PSI text" no título da fonte), para o chat funcionar antes da curadoria; seções curadas entram quando a ficha vira `partial`/`complete`. Cada trecho vai como `search_result` com `source = sf:<chunk id>`: a citação é resolvida pelo `source`, porque `search_result_index` conta resultados da conversa inteira.
 - **1 chunk = 1 seção semântica**, com prefixo de contexto no texto (ex.: `"SAME (PSI-XXX) — Why it matters for crew safety:\n..."`):
   - `summary`, `crew_safety`, `earth_impact`, `key_results`, `limitations` (seções da ficha)
   - `conditions` — texto **gerado deterministicamente** dos campos estruturados ("O₂ 21–21%, pressure 14.7 psia, hardware MSG...")
@@ -503,7 +503,7 @@ Route Handlers do Next.js. Respostas JSON tipadas (tipos em `src/lib/**/types.ts
 | GET | `/api/investigations?pillar=&env=&gravity=&material=&hardware=&earth=1&status=&q=` | Lista resumida (filtros iguais aos do Explore) | P0 |
 | GET | `/api/investigations/[slug]` | Ficha completa (inclui texto PSI bruto) | P0 |
 | GET | `/api/export?format=json\|csv` | Dataset curado (redireciona para `/downloads/...`) | P0 |
-| POST | `/api/ask` | `{ conversation_id?, question, locale }` → **SSE**: eventos `meta` (conversation_id, cached), `text_delta`, `citation` (n, slug, psi_id, section, cited_text, url), `done` (usage), `error` | P0 |
+| POST | `/api/ask` | `{ conversation_id?, question, locale }` → **SSE** (tipos em `src/lib/rag/events.ts`): `meta` (conversation_id, turn, cached), `text`, `source` (cartão n: experimento, PSI-ID, seção, curadoria, cited_text, url), `cite` (marcadores [n] ao fim de cada bloco citado), `done` (turns_left), `error` (code). Uso de tokens vai só para o log | P0 |
 | POST | `/api/scenario` | Seção 7; 404 se `FEATURE_SCENARIO=false` | Portão |
 
 API pública somente leitura (`/api/investigations*`, `/api/export`) com CORS aberto e cache HTTP (`s-maxage`). `/api/ask` só aceita origem do próprio site.

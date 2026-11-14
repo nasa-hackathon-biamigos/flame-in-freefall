@@ -93,6 +93,17 @@ PSI's site is an Angular SPA, but it is backed by an open JSON API (no auth; no 
 
 The scraper makes at most 1 request/second. If PSI ever becomes unreachable, a raw file can be written by hand in the same shape (see `PsiRawSchema` in `src/lib/catalog/psi.ts`).
 
+## Ask PSI (RAG chat)
+
+Answers come only from passages of the catalog: the original PSI text of every downloaded investigation, plus curated ficha sections once published. Claude (`ANTHROPIC_MODEL`, default `claude-opus-5-5`) cites each passage natively; embeddings use OpenAI `text-embedding-3-small`.
+
+| Command | What it does |
+|---|---|
+| `pnpm rag:ingest` | Rebuilds the vector index in Supabase from `data/`. Only new or changed passages are embedded (a few cents at most); `--dry-run` shows what would change. Run it after merging curated fichas. |
+| `pnpm rag:warm` | Pre-warms cached answers for `data/demo_questions.yaml` against a running server (`--base <url>`, `--locale en,pt-BR`). **Each uncached question is a paid Claude call.** |
+
+Needs `ANTHROPIC_API_KEY` (an Anthropic key, `sk-ant-...`), `OPENAI_API_KEY`, and the Supabase keys. Limits: `RATE_LIMIT_PER_HOUR`, `DAILY_MESSAGE_CAP`, `RAG_MIN_SIMILARITY` (see `.env.example`).
+
 ## Data and attribution
 
 Experiment data comes from NASA's [Physical Sciences Informatics](https://psi.nasa.gov/) repository. This is not an official NASA product.

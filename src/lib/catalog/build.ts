@@ -81,7 +81,8 @@ async function listFiles(dir: string, ext: string): Promise<string[]> {
 }
 
 async function readTracked(ctx: Ctx, file: string): Promise<string> {
-  const text = await readFile(file, "utf8");
+  const raw = await readFile(file, "utf8");
+  const text = raw.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   ctx.hash.update(rel(ctx, file)).update("\0").update(text).update("\0");
   return text;
 }

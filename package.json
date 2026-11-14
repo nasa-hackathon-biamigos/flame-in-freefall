@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm data:build && next dev",
-    "build": "pnpm data:build && next build",
+    "dev": "next dev",
+    "predev": "tsx scripts/data-build.ts",
+    "build": "next build",
+    "prebuild": "tsx scripts/data-build.ts",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests",
     "format": "prettier --write .",
+    "setup": "npm run data:build",
     "data:build": "tsx scripts/data-build.ts",
     "data:scrape": "tsx scripts/scrape-psi.ts",
     "data:scaffold": "tsx scripts/scaffold-ficha.ts"

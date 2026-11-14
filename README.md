@@ -15,15 +15,38 @@ Next.js (App Router) + TypeScript · Tailwind + shadcn/ui · next-intl (EN / PT-
 
 ## Run locally
 
-Requirements: Node 24, pnpm 12.
+Requirements: **Node 20+** (recomendado: 24). Gerenciador de pacotes: **pnpm** ou **npm** (o repo tem os dois lockfiles).
+
+### Primeira vez (clone)
 
 ```bash
+# pnpm
 pnpm install
-cp .env.example .env.local   # fill in the keys
-pnpm dev                     # http://localhost:3000
+
+# ou npm
+npm install
+
+cp .env.example .env.local   # preencha as chaves (o app sobe sem elas para navegar o catálogo)
+npm run data:build           # gera src/generated/catalog.json (obrigatório antes do typecheck)
 ```
 
-Checks: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`. Health: `GET /api/health`.
+### Subir em desenvolvimento
+
+```bash
+pnpm dev    # ou: npm run dev
+```
+
+Abre em **http://localhost:3000**. Os scripts `dev` e `build` rodam `data:build` automaticamente (`predev` / `prebuild`).
+
+### Produção local (opcional)
+
+```bash
+npm run build && npm run start
+```
+
+Se `EADDRINUSE` na porta 3000, pare o outro processo ou use `PORT=3001 npm run start` (PowerShell: `$env:PORT=3001; npm run start`).
+
+Checks: `lint`, `typecheck`, `test`, `build` (com `pnpm` ou `npm run`). Health: `GET /api/health`.
 
 ## Database
 
@@ -49,6 +72,16 @@ The curated catalog lives in `data/` and is the source of truth (Supabase only h
 Run `pnpm data:build` once after cloning: `typecheck` needs the generated files.
 
 Curation workflow (Portuguese, for the research team): [docs/CURADORIA.md](docs/CURADORIA.md).
+
+### Problemas comuns
+
+| Sintoma | O que fazer |
+|---|---|
+| `Unknown command: "data:build'` | Atualize o `package.json` do repo (`git pull`) — scripts antigos usavam `npm data:build` em vez de `npm run data:build`. |
+| `ENOENT` em `data/vocab.yaml` | A pasta `data/` não está no disco. Rode `git restore data/` (ou `git checkout -- data/`). |
+| `data:build` reclama de `true\r` | Checkout no Windows com CRLF — já normalizado no build; puxe a última versão de `src/lib/catalog/build.ts`. |
+| `EADDRINUSE` na porta 3000 | Feche outro `next dev` / `next start` ou use outra porta (ver acima). |
+| `production build` ao rodar `start` | Rode `npm run build` antes de `npm run start`; para o dia a dia use `npm run dev`. |
 
 ### How PSI is scraped
 

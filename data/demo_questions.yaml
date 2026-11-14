@@ -53,6 +53,13 @@
     pt-BR: Que pesquisa do PSI ligada ao FLEX ou à supressão se relaciona a extintores de névoa fina de água?
   expected_slugs: []
 
+- id: fire-myths
+  kind: normal
+  question:
+    en: Which fire-safety myths did NASA reduced-gravity research overturn, and which PSI investigations support that?
+    pt-BR: Quais mitos de segurança contra incêndio a pesquisa em gravidade reduzida da NASA derrubou, e quais investigações do PSI sustentam isso?
+  expected_slugs: []
+
 - id: firefighter-spinoffs
   kind: normal
   question:

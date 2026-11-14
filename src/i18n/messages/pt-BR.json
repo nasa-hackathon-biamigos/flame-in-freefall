@@ -13,7 +13,8 @@
   },
   "home": {
     "title": "O fogo se comporta diferente no espaço. A NASA tem os dados. Nós os tornamos úteis.",
-    "lead": "Um catálogo curado e comparável dos experimentos de combustão do NASA PSI, lido pela lente da segurança contra incêndio — prevenção, detecção e supressão para habitats tripulados, com uma ponte de volta à Terra.",
+    "lead": "Um painel de controle e um catálogo curado dos experimentos de combustão do NASA PSI, lidos pela lente da segurança contra incêndio — prevenção, detecção e supressão para habitats tripulados, com uma ponte de volta à Terra.",
+    "ctaPanel": "Ver o painel",
     "ctaExplore": "Explorar experimentos",
     "ctaAbout": "Sobre os dados",
     "pillarsTitle": "Os três pilares da segurança contra incêndio",
@@ -149,7 +150,9 @@
     "citeTitle": "Como citar",
     "citeText": "Cite a investigação original do PSI (o PSI-ID e o DOI estão em cada registro) e, se for útil, este catálogo:",
     "licenseTitle": "Fontes e licença",
-    "licenseText": "Os registros de investigações do PSI são publicados pela NASA sob CC0-1.0. Os campos curados citam suas próprias fontes em cada registro."
+    "licenseText": "Os registros de investigações do PSI são publicados pela NASA sob CC0-1.0. Os campos curados citam suas próprias fontes em cada registro.",
+    "guideTitle": "Guia NASA de combustão na ISS (2015)",
+    "guideText": "O painel usa o mini-livro da NASA GRC NP-2015-10-034-JSC (domínio público dos EUA) para a estrutura prevenção / detecção / supressão, os achados da página 35 e a faixa de ventilação do mapa de inflamabilidade. É um retrato de 2015: ACME, SoFIE e parte das cool flames aparecem como planejados — o PSI diz o que de fato voou. O assistente cita trechos parafraseados com o número da página, não o PDF inteiro."
   },
   "locale": {
     "label": "Idioma"
@@ -190,7 +193,8 @@
       "psi_approach": "Abordagem (PSI)",
       "psi_research_impacts": "Impactos da pesquisa (PSI)",
       "comparison": "Comparação curada",
-      "spinoff": "Spinoff na Terra"
+      "spinoff": "Spinoff na Terra",
+      "guide": "Guia NASA GRC (2015)"
     },
     "errors": {
       "bad_request": "Escreva uma pergunta entre 3 e 1000 caracteres.",
@@ -204,7 +208,21 @@
     }
   },
   "dash": {
-    "kicker": "Cockpit de fire safety · PSI",
+    "kicker": "Painel de controle · fire safety PSI",
+    "panelTitle": "Prevenção, detecção e supressão",
+    "panelLead": "Três categorias que o guia da NASA diz serem fundamentalmente diferentes no espaço. Cada uma muda o gráfico; o Explorar usa o mesmo filtro.",
+    "menuLabel": "Pilar de segurança contra incêndio",
+    "menu": {
+      "all": "Tudo",
+      "prevention": "Prevenção",
+      "detection": "Detecção",
+      "suppression": "Supressão"
+    },
+    "openExplore": "Filtrar no Explorar",
+    "findingsTitle": "O que a pesquisa derrubou",
+    "findingsHint": "Mito → evidência → dado. Cada card aponta para as investigações que sustentam o achado.",
+    "myth": "Mito",
+    "finding": "Achado",
     "title": "O pico da fumaça é parecido. O risco está na cauda.",
     "lead": "A SAME (PSI-115) mostra um modo ~7 μm em 1g e em 0g. O que muda para os detectores é a cauda de partículas grandes (d ≥ 20 μm): cerca de 10× mais pesada em 0g a 8 cm/s.",
     "cite": "NASA PSI-115 · DOI 10.60555/q0v5-1v28 · arquivos PSD a 8 cm/s",
@@ -312,6 +330,16 @@
         }
       ]
     },
+    "map": {
+      "title": "Mapa de inflamabilidade (esquema)",
+      "hint": "O₂ × velocidade do fluxo, como a Figura 8 do guia. Só marcamos pontos com fonte; a curva ignição/extinção não está nos arquivos tabulares.",
+      "x": "Velocidade do fluxo (cm/s)",
+      "y": "Fração de O₂ (% vol)",
+      "vent": "Ventilação de nave 0–30 cm/s",
+      "typical": "~10 cm/s típico",
+      "caption": "Pontos SAME a 8 e 10 cm/s em ar de cabine ~21% O₂ (PSI-115 + p. 19). Faixa 0–30 cm/s: p. 21. O mínimo perigoso perto de 10 cm/s: p. 31."
+    },
+    "suppressNote": "O guia aponta N₂ em jato (BASS), diluentes inertes CO₂ / He / Xe (FLEX) e névoa d’água (Mist → ISS em 2015). Ainda não há, nos arquivos tabulares, tempo até extinção por agente.",
     "fuels": {
       "title": "Combustíveis SPICE (nº de corridas)",
       "hint": "PSI-107: combustível, diâmetro do bico e ar de coflow são os controles."
@@ -391,7 +419,7 @@
     },
     "gap": {
       "title": "Lacuna honesta",
-      "body": "Não há dados PSI atuais de gravidade parcial (Lua / Marte) — só os limites 0g e 1g. O₂ lunar ≥ 30% a ≤ 10,2 psi é alvo de projeto, não uma matriz de testes completa. As fichas neste repositório ainda estão em rascunho, então o Explore ainda não as lista; este cockpit lê os arquivos tabulares diretamente."
+      "body": "Não há dados PSI atuais de gravidade parcial (Lua / Marte) — só os limites 0g e 1g. O₂ lunar ≥ 30% a ≤ 10,2 psi é alvo de projeto, não uma matriz de testes completa. O guia de 2015 descreve ACME, SoFIE e parte das cool flames como planejados; o PSI diz o que voou. As fichas ainda estão em rascunho, então o Explorar pode estar vazio; este painel lê os arquivos tabulares e os achados do guia."
     }
   }
 }

@@ -13,7 +13,8 @@
   },
   "home": {
     "title": "Fire behaves differently in space. NASA has the data. We make it usable.",
-    "lead": "A curated, comparable catalog of NASA PSI combustion experiments, read through a fire-safety lens — prevention, detection and suppression for crewed habitats, with a bridge back to Earth.",
+    "lead": "A control panel and a curated catalog of NASA PSI combustion experiments, read through a fire-safety lens — prevention, detection and suppression for crewed habitats, with a bridge back to Earth.",
+    "ctaPanel": "Open the panel",
     "ctaExplore": "Explore experiments",
     "ctaAbout": "About the data",
     "pillarsTitle": "Three pillars of fire safety",
@@ -149,7 +150,9 @@
     "citeTitle": "How to cite",
     "citeText": "Cite the original PSI investigation (its PSI-ID and DOI are on each record) and, if useful, this catalog:",
     "licenseTitle": "Sources and license",
-    "licenseText": "PSI investigation records are published by NASA under CC0-1.0. Curated fields cite their own sources on each record."
+    "licenseText": "PSI investigation records are published by NASA under CC0-1.0. Curated fields cite their own sources on each record.",
+    "guideTitle": "NASA ISS combustion guide (2015)",
+    "guideText": "The panel uses NASA GRC mini-book NP-2015-10-034-JSC (U.S. government public domain) for the prevention / detection / suppression structure, the page-35 findings, and the ventilation band on the flammability map. It is a 2015 snapshot: ACME, SoFIE and some cool-flame work appear as planned — PSI records say what actually flew. The assistant cites paraphrased passages with page numbers, not the full PDF."
   },
   "locale": {
     "label": "Language"
@@ -190,7 +193,8 @@
       "psi_approach": "PSI approach",
       "psi_research_impacts": "PSI research impacts",
       "comparison": "Curated comparison",
-      "spinoff": "Earth spinoff"
+      "spinoff": "Earth spinoff",
+      "guide": "NASA GRC guide (2015)"
     },
     "errors": {
       "bad_request": "Please write a question between 3 and 1000 characters.",
@@ -204,7 +208,21 @@
     }
   },
   "dash": {
-    "kicker": "PSI fire-safety cockpit",
+    "kicker": "Fire-safety control panel · PSI",
+    "panelTitle": "Prevention, detection and suppression",
+    "panelLead": "Three categories NASA says are fundamentally different in space. Each one changes the chart; Explore uses the same filter.",
+    "menuLabel": "Fire-safety pillar",
+    "menu": {
+      "all": "All",
+      "prevention": "Prevention",
+      "detection": "Detection",
+      "suppression": "Suppression"
+    },
+    "openExplore": "Filter in Explore",
+    "findingsTitle": "What the research overturned",
+    "findingsHint": "Myth → evidence → data. Each card points to the investigations that carry the finding.",
+    "myth": "Myth",
+    "finding": "Finding",
     "title": "The smoke peak looks the same. The risk lives in the tail.",
     "lead": "SAME (PSI-115) shows a ~7 μm mode in both 1g and 0g. What changes for detectors is the large-particle tail (d ≥ 20 μm): about 10× heavier in 0g at 8 cm/s.",
     "cite": "NASA PSI-115 · DOI 10.60555/q0v5-1v28 · 8 cm/s PSD files",
@@ -312,6 +330,16 @@
         }
       ]
     },
+    "map": {
+      "title": "Flammability map (schematic)",
+      "hint": "O₂ × flow speed, as in the guide’s Figure 8. We only plot sourced points; the ignite/extinguish curve is not in the tabular files.",
+      "x": "Flow speed (cm/s)",
+      "y": "O₂ mole fraction (% vol)",
+      "vent": "Spacecraft ventilation 0–30 cm/s",
+      "typical": "~10 cm/s typical",
+      "caption": "SAME points at 8 and 10 cm/s in cabin air ~21% O₂ (PSI-115 + p. 19). Band 0–30 cm/s: p. 21. Dangerous minimum near 10 cm/s: p. 31."
+    },
+    "suppressNote": "The guide points to N₂ jets (BASS), inert diluents CO₂ / He / Xe (FLEX) and water mist (Mist → ISS in 2015). Tabular files here still lack time-to-extinction by agent.",
     "fuels": {
       "title": "SPICE fuels (run counts)",
       "hint": "PSI-107: fuel, nozzle diameter and coflow air are the knobs."
@@ -391,7 +419,7 @@
     },
     "gap": {
       "title": "Honest gap",
-      "body": "There is no current PSI data for partial gravity (Moon / Mars) — only 0g and 1g bounds. Lunar habitat O₂ ≥ 30% at ≤ 10.2 psi is a design target, not a completed test matrix. Fichas in this repo are still draft, so Explore cannot list them yet; this cockpit reads the tabular files directly."
+      "body": "There is no current PSI data for partial gravity (Moon / Mars) — only 0g and 1g bounds. Lunar habitat O₂ ≥ 30% at ≤ 10.2 psi is a design target, not a completed test matrix. The 2015 guide describes ACME, SoFIE and some cool-flame work as planned; PSI records say what flew. Fichas are still draft, so Explore may be empty; this panel reads the tabular files and the guide findings."
     }
   }
 }

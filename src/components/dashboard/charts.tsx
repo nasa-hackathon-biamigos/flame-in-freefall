@@ -227,3 +227,72 @@ export function AtmosphereBars({
     </div>
   );
 }
+
+/** Schematic O₂ × flow map (NASA mini-book Fig. 8). Points are only plotted when we have a source. */
+export function FlammabilityMap({
+  points,
+  labels,
+}: {
+  points: { id: string; flow: number; o2: number; color: string; label: string }[];
+  labels: { x: string; y: string; vent: string; typical: string };
+}) {
+  const pad = { l: 44, r: 16, t: 16, b: 40 };
+  const W = 560;
+  const H = 280;
+  const xmin = 0;
+  const xmax = 40;
+  const ymin = 10;
+  const ymax = 45;
+  const sx = (x: number) => pad.l + ((x - xmin) / (xmax - xmin)) * (W - pad.l - pad.r);
+  const sy = (y: number) => pad.t + (1 - (y - ymin) / (ymax - ymin)) * (H - pad.t - pad.b);
+  const ticksX = [0, 10, 20, 30, 40];
+  const ticksY = [10, 21, 30, 40];
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-auto w-full" role="img" aria-label={labels.y}>
+      <rect
+        x={sx(0)}
+        y={sy(40)}
+        width={sx(30) - sx(0)}
+        height={sy(10) - sy(40)}
+        fill="#4da3ff"
+        opacity="0.08"
+      />
+      <text x={sx(15)} y={sy(42)} textAnchor="middle" className="fill-plasma" fontSize="10">
+        {labels.vent}
+      </text>
+      <line x1={sx(10)} x2={sx(10)} y1={pad.t} y2={H - pad.b} stroke="#ff7a1a" strokeDasharray="4 3" opacity="0.7" />
+      <text x={sx(10) + 4} y={pad.t + 12} className="fill-flame" fontSize="10">
+        {labels.typical}
+      </text>
+      <line x1={pad.l} x2={W - pad.r} y1={sy(21)} y2={sy(21)} stroke="#2bb3a3" strokeDasharray="3 3" opacity="0.5" />
+      {ticksX.map((x) => (
+        <g key={x}>
+          <line x1={sx(x)} x2={sx(x)} y1={pad.t} y2={H - pad.b} stroke="currentColor" opacity="0.06" />
+          <text x={sx(x)} y={H - 16} textAnchor="middle" className="fill-muted-foreground" fontSize="10">
+            {x}
+          </text>
+        </g>
+      ))}
+      {ticksY.map((y) => (
+        <g key={y}>
+          <line x1={pad.l} x2={W - pad.r} y1={sy(y)} y2={sy(y)} stroke="currentColor" opacity="0.06" />
+          <text x={pad.l - 8} y={sy(y) + 3} textAnchor="end" className="fill-muted-foreground" fontSize="10">
+            {y}%
+          </text>
+        </g>
+      ))}
+      {points.map((p) => (
+        <g key={p.id}>
+          <circle cx={sx(p.flow)} cy={sy(p.o2)} r="6" fill={p.color} opacity="0.9" />
+          <text x={sx(p.flow) + 8} y={sy(p.o2) + 4} className="fill-foreground" fontSize="10">
+            {p.label}
+          </text>
+        </g>
+      ))}
+      <text x={W / 2} y={H - 2} textAnchor="middle" className="fill-muted-foreground" fontSize="10">
+        {labels.x}
+      </text>
+    </svg>
+  );
+}

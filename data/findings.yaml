@@ -1,0 +1,102 @@
+# NASA GRC ISS combustion mini-book NP-2015-10-034-JSC (2015).
+# UI findings for the fire-safety cockpit. Do not treat 2015 "planned" hardware as flown
+# until a PSI record confirms it. Page numbers refer to the printed mini-book.
+
+document:
+  id: nasa-mini-book-2015
+  label: NASA NP-2015-10-034-JSC (2015)
+  caveat:
+    en: "2015 snapshot. ACME, SoFIE and some Cool Flame work are described as planned; PSI records say what actually flew."
+    pt-BR: "Retrato de 2015. ACME, SoFIE e parte das cool flames aparecem como planejados; o PSI diz o que de fato voou."
+
+findings:
+  - id: myth-steady-fire
+    kind: myth
+    pillars: [prevention]
+    page: 35
+    psi: []
+    explore: "/explore?pillar=prevention"
+    myth:
+      en: "A steady fire cannot exist in quiescent microgravity."
+      pt-BR: "Fogo estável não existe em microgravidade quiescente."
+    truth:
+      en: "False. NASA lists this as a misconception overturned by reduced-gravity research (Mir candles, SOFBALL). We do not yet have a SOFBALL ficha in this catalog."
+      pt-BR: "Falso. A NASA lista isso como equívoco derrubado pela pesquisa em gravidade reduzida (velas no Mir, SOFBALL). Ainda não há ficha SOFBALL neste catálogo."
+
+  - id: myth-shut-vent
+    kind: myth
+    pillars: [suppression, prevention]
+    page: 31
+    psi: ["PSI-26"]
+    explore: "/explore?pillar=suppression"
+    myth:
+      en: "Shutting off ventilation will put the fire out."
+      pt-BR: "Desligar a ventilação apaga o fogo."
+    truth:
+      en: "False. BASS (PSI-26) found that a local suppressant jet can entrain air and keep the flame going even when ambient airflow is off."
+      pt-BR: "Falso. O BASS (PSI-26) mostrou que o jato de supressor pode arrastar ar e manter a chama mesmo com o fluxo ambiente desligado."
+
+  - id: myth-earth-conservative
+    kind: myth
+    pillars: [prevention]
+    page: 31
+    psi: ["PSI-26"]
+    explore: "/explore?pillar=prevention"
+    myth:
+      en: "Ground tests are conservative for spacecraft."
+      pt-BR: "Os testes terrestres são conservadores para naves."
+    truth:
+      en: "False. BASS reports NASA-STD-6001 Test 1 is not conservative: some materials burn at lower oxygen in microgravity than on Earth."
+      pt-BR: "Falso. O BASS relata que o NASA-STD-6001 Test 1 não é conservador: alguns materiais queimam com menos O₂ em microgravidade do que na Terra."
+
+  - id: finding-upstream-spread
+    kind: finding
+    pillars: [prevention]
+    page: 31
+    psi: ["PSI-26"]
+    explore: "/explore?pillar=prevention"
+    myth:
+      en: "Flame spread follows the air, like on Earth."
+      pt-BR: "A chama se espalha a favor do ar, como na Terra."
+    truth:
+      en: "In microgravity at low forced flow, a thin fuel ignited in the middle can spread upstream, into the oncoming air — the opposite of 1g."
+      pt-BR: "Em microgravidade com fluxo forçado baixo, um combustível fino inflamado no meio pode se espalhar contra o fluxo — o oposto de 1g."
+
+  - id: finding-n2-strengthen
+    kind: finding
+    pillars: [suppression]
+    page: 22
+    psi: ["PSI-26"]
+    explore: "/explore?pillar=suppression"
+    myth:
+      en: "A nitrogen jet always weakens the flame."
+      pt-BR: "Um jato de N₂ sempre enfraquece a chama."
+    truth:
+      en: "Early BASS results: nitrogen applied to the flame can strengthen it by entraining oxygen, depending on geometry and jet."
+      pt-BR: "Resultados iniciais do BASS: o N₂ aplicado na chama pode fortalecê-la ao arrastar oxigênio, conforme a geometria e o jato."
+
+  - id: finding-wrong-particles
+    kind: finding
+    pillars: [detection]
+    page: 35
+    psi: ["PSI-102", "PSI-115", "PSI-101"]
+    explore: "/explore?pillar=detection"
+    myth:
+      en: "An Earth smoke detector is looking for the right particles in space."
+      pt-BR: "Um detector terrestre procura as partículas certas no espaço."
+    truth:
+      en: "Microgravity smoke has a different particle-size signature. SAME (PSI-102 / PSI-115) is the measurement; terrestrial detectors would be looking for the wrong thing."
+      pt-BR: "A fumaça em microgravidade tem outra assinatura de tamanho. O SAME (PSI-102 / PSI-115) é a medição; detectores terrestres procurariam a coisa errada."
+
+  - id: finding-flex-loi
+    kind: finding
+    pillars: [suppression, prevention]
+    page: 36
+    psi: ["PSI-69"]
+    explore: "/explore?pillar=suppression"
+    myth:
+      en: "Droplet LOI in space matches 1g."
+      pt-BR: "O LOI das gotículas no espaço é o mesmo que em 1g."
+    truth:
+      en: "FLEX (PSI-69) identified an LOI significantly lower than in normal gravity, plus radiative and diffusive extinction — and cool flames after the visible flame went out."
+      pt-BR: "O FLEX (PSI-69) identificou um LOI bem menor que em 1g, extinção radiativa e difusiva — e cool flames depois que a chama visível se apagou."

@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
 import type { Catalog, Investigation } from "../catalog/build";
 import { termLabel } from "../catalog/labels";
 import type { PsiRaw } from "../catalog/psi";
@@ -40,6 +42,7 @@ export const SECTION_LABELS = {
   psi_research_impacts: "PSI research impacts / Earth benefits",
   comparison: "Curated comparison",
   spinoff: "Earth spinoff",
+  guide: "NASA GRC ISS combustion guide",
 } as const;
 
 export type ChunkSection = keyof typeof SECTION_LABELS;
@@ -232,7 +235,31 @@ export function chunkTitle(m: Pick<ChunkMetadata, "experiment" | "psi_id" | "sec
   return [m.experiment, m.psi_id, SECTION_LABELS[m.section]].filter(Boolean).join(" · ") + tag;
 }
 
-export function buildChunks(catalog: Catalog, raws: PsiRaw[], index: RagIndexEntry[]): Chunk[] {
+/** Splits the paraphrased NASA mini-book into one chunk per `##` page heading. */
+export function parseGuideMarkdown(md: string): { heading: string; body: string }[] {
+  return md
+    .split(/^## /m)
+    .slice(1)
+    .map((part) => {
+      const nl = part.indexOf("\n");
+      const heading = (nl === -1 ? part : part.slice(0, nl)).trim();
+      const rest = (nl === -1 ? "" : part.slice(nl)).trim();
+      return { heading, body: rest ? `## ${heading}\n\n${rest}` : `## ${heading}` };
+    })
+    .filter((p) => p.heading.length > 0);
+}
+
+export function loadGuideMarkdown(cwd = process.cwd()): string {
+  const file = path.join(cwd, "data", "content", "nasa-combustion-mini-book.md");
+  return existsSync(file) ? readFileSync(file, "utf8") : "";
+}
+
+export function buildChunks(
+  catalog: Catalog,
+  raws: PsiRaw[],
+  index: RagIndexEntry[],
+  extras?: { guideMarkdown?: string },
+): Chunk[] {
   const chunks: Chunk[] = [];
   const byPsi = new Map(index.map((e) => [e.psi_id, e]));
   const fichaBySlug = new Map(catalog.investigations.filter((i) => !i.example).map((i) => [i.slug, i]));
@@ -321,6 +348,17 @@ export function buildChunks(catalog: Catalog, raws: PsiRaw[], index: RagIndexEnt
         url: s.spinoff_url ?? "/",
         app_slug: `spinoff-${s.slug}`,
       });
+  }
+
+  const guideMd = extras?.guideMarkdown ?? loadGuideMarkdown();
+  for (const part of parseGuideMarkdown(guideMd)) {
+    add(null, "guide", part.body, {
+      experiment: "NASA GRC mini-book 2015",
+      title: part.heading,
+      url: "/about#mini-book",
+      app_slug: "nasa-mini-book-2015",
+      curation: "complete",
+    });
   }
   return chunks;
 }

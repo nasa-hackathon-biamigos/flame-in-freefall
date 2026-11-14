@@ -78,6 +78,9 @@ export default async function AboutPage() {
         <Block title={t("licenseTitle")}>
           <p>{t("licenseText")}</p>
         </Block>
+        <Block title={t("guideTitle")}>
+          <p id="mini-book">{t("guideText")}</p>
+        </Block>
       </div>
     </div>
   );

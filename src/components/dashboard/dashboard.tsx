@@ -1,37 +1,27 @@
-import {
-  AlertTriangle,
-  Cpu,
-  Droplets,
-  Flame,
-  Home,
-  LayoutDashboard,
-  Moon,
-  Radar,
-  Shield,
-  Table2,
-} from "lucide-react";
+import { Droplets, Flame, Moon, Radar, Shield } from "lucide-react";
+import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { AtmosphereBars, GroupedBarChart, PsdChart, Sparkline } from "@/components/dashboard/charts";
+import {
+  AtmosphereBars,
+  FlammabilityMap,
+  GroupedBarChart,
+  PsdChart,
+  Sparkline,
+} from "@/components/dashboard/charts";
+import { findingsFor, loadFindings, type PillarId } from "@/lib/findings";
 import { formatNm, formatPct, formatRatio, loadInsights } from "@/lib/insights/load";
 
 const FLAME = "#ff7a1a";
 const PLASMA = "#4da3ff";
 const EARTH = "#2bb3a3";
 const PREVENTION = "#ff9f43";
-const HW_COLOR: Record<string, string> = {
-  same: PLASMA,
-  msg: PREVENTION,
-  "cir-mdca": EARTH,
-  "cir-acme": FLAME,
-};
 
-type Pair = { id: string; title: string; items: string; note: string };
-type Dual = { kicker: string; body: string };
-type Row = { psi: string; name: string; pillar: string; hw: string; material: string; changed: string };
+export type DashPillar = PillarId | "all";
+
+const PILLARS: DashPillar[] = ["all", "prevention", "detection", "suppression"];
 
 function sparkValues(id: string) {
-  const insights = loadInsights();
-  const s = insights.smoke.series.find((x) => x.id === id);
+  const s = loadInsights().smoke.series.find((x) => x.id === id);
   return (s?.points ?? [])
     .filter((p) => p.d_nm >= 80 && p.d_nm <= 80_000)
     .map((p) => p.log10);
@@ -41,25 +31,25 @@ function share(id: string) {
   return loadInsights().smoke.series.find((s) => s.id === id)?.large_share ?? 0;
 }
 
-export async function Dashboard() {
+function loc(locale: string): "en" | "pt-BR" {
+  return locale.startsWith("pt") ? "pt-BR" : "en";
+}
+
+export async function Dashboard({ pillar }: { pillar: DashPillar }) {
   const t = await getTranslations("dash");
   const locale = await getLocale();
+  const lang = loc(locale);
   const insights = loadInsights();
   const h = insights.smoke.headline;
   const s8g = insights.smoke.series.find((s) => s.id === "8cm-1g");
   const s8z = insights.smoke.series.find((s) => s.id === "8cm-0g");
   const materials = [...new Set(insights.same_materials.map((m) => m.material))];
-  const hardware = t.raw("hardware.items") as Pair[];
-  const dual = t.raw("dual.items") as Dual[];
-  const rows = t.raw("table.rows") as Row[];
-  const cols = t.raw("table.cols") as string[];
+  const findingsDoc = findingsFor(pillar);
+  const { document } = loadFindings();
 
-  const kpis = [
-    { value: String(insights.kpis.curated_psi), label: t("kpi.curated"), hint: t("kpi.curatedHint") },
-    { value: String(insights.kpis.combustion_in_index), label: t("kpi.index"), hint: t("kpi.indexHint") },
-    { value: String(materials.length), label: t("kpi.materials"), hint: t("kpi.materialsHint") },
-    { value: String(insights.kpis.spice_runs), label: t("kpi.spice"), hint: t("kpi.spiceHint") },
-  ];
+  const showDetection = pillar === "all" || pillar === "detection";
+  const showPrevention = pillar === "all" || pillar === "prevention";
+  const showSuppression = pillar === "all" || pillar === "suppression";
 
   const metricCards = [
     {
@@ -115,200 +105,192 @@ export async function Dashboard() {
     { id: "suit", label: t("atmo.suit"), o2: 100, psi: 4.3, color: FLAME },
   ];
 
-  const nav = [
-    { href: "#top", icon: Home, label: t("side.home") },
-    { href: "#insights", icon: LayoutDashboard, label: t("side.insights") },
-    { href: "#hardware", icon: Cpu, label: t("side.hardware") },
-    { href: "#table", icon: Table2, label: t("side.table") },
-    { href: "#gap", icon: AlertTriangle, label: t("side.gap") },
-  ];
+  const shownMetrics = pillar === "detection" ? metricCards.slice(0, 4) : metricCards;
+  const exploreHref = pillar === "all" ? "/explore" : `/explore?pillar=${pillar}`;
 
   return (
-    <div className="px-3 py-4 sm:px-6 sm:py-6">
-      <div
-        id="top"
-        className="relative mx-auto max-w-[1180px] rounded-[28px] border border-white/8 bg-[#0b1118] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:p-7 lg:pl-16"
-      >
-        <nav
-          aria-label={t("side.label")}
-          className="absolute top-1/2 left-0 z-10 hidden -translate-x-1/2 -translate-y-1/2 flex-col gap-1 rounded-full bg-earth p-2 text-[#06221e] shadow-lg lg:flex"
-        >
-          {nav.map((item, i) => (
-            <a
-              key={item.href}
-              href={item.href}
-              title={item.label}
-              className={`flex size-10 items-center justify-center rounded-full transition-colors hover:bg-white/25 ${i === 0 ? "bg-white/90" : ""}`}
+    <div id="painel" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-8 sm:px-6">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="font-mono text-[11px] tracking-[0.22em] text-plasma uppercase">{t("kicker")}</p>
+          <h2 className="mt-1 text-2xl font-semibold tracking-tight">{t("panelTitle")}</h2>
+          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{t("panelLead")}</p>
+        </div>
+        <Link href={exploreHref} className="font-mono text-xs text-plasma hover:underline">
+          {t("openExplore")} →
+        </Link>
+      </div>
+
+      <nav aria-label={t("menuLabel")} className="mt-5 flex flex-wrap gap-2">
+        {PILLARS.map((id) => {
+          const href = id === "all" ? "/#painel" : `/?pillar=${id}#painel`;
+          const active = pillar === id;
+          return (
+            <Link
+              key={id}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              className={`rounded-full border px-3 py-1.5 text-sm ${
+                active ? "border-plasma bg-plasma/15 text-foreground" : "border-border text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <item.icon className="size-4" aria-hidden />
-              <span className="sr-only">{item.label}</span>
-            </a>
-          ))}
-        </nav>
+              {t(`menu.${id}`)}
+            </Link>
+          );
+        })}
+      </nav>
 
-        <header className="space-y-4">
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.22em] text-plasma uppercase">{t("kicker")}</p>
-            <h1 className="mt-1 max-w-3xl text-2xl font-semibold tracking-tight sm:text-3xl">{t("title")}</h1>
-            <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">{t("lead")}</p>
-          </div>
+      <p className="mt-3 text-xs text-muted-foreground">{document.caveat[lang]}</p>
 
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-4">
-            <div>
-              <dt className="text-muted-foreground">{t("facts.source")}</dt>
-              <dd className="font-medium">NASA PSI</dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">{t("facts.gravity")}</dt>
-              <dd className="font-medium">1g / 0g</dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">{t("facts.flow")}</dt>
-              <dd className="font-medium">{h.flow_cm_s} cm/s</dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">{t("facts.doi")}</dt>
-              <dd className="font-mono text-xs sm:text-sm">10.60555/q0v5-1v28</dd>
-            </div>
-          </dl>
-        </header>
-
-        <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {kpis.map((k) => (
-            <li key={k.label} className="rounded-2xl border bg-card p-4">
-              <p className="font-mono text-2xl text-flame">{k.value}</p>
-              <p className="mt-1 text-sm">{k.label}</p>
-              <p className="text-xs text-muted-foreground">{k.hint}</p>
+      <section className="mt-6">
+        <h3 className="text-lg font-medium">{t("findingsTitle")}</h3>
+        <p className="mb-3 text-sm text-muted-foreground">{t("findingsHint")}</p>
+        <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {findingsDoc.map((f) => (
+            <li key={f.id} className="rounded-2xl border bg-card p-4">
+              <p className="font-mono text-[10px] uppercase text-muted-foreground">
+                {f.kind === "myth" ? t("myth") : t("finding")} · {document.label} p. {f.page}
+              </p>
+              <p className="mt-2 text-sm font-medium line-through decoration-bad/80">{f.myth[lang]}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{f.truth[lang]}</p>
+              <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px]">
+                {f.psi.map((id) => (
+                  <span key={id} className="rounded-full bg-secondary px-2 py-0.5 text-plasma">
+                    {id}
+                  </span>
+                ))}
+                <Link href={f.explore} className="text-earth hover:underline">
+                  {t("openExplore")}
+                </Link>
+              </div>
             </li>
           ))}
         </ul>
+      </section>
 
-        <section id="insights" className="mt-4 scroll-mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {metricCards.map((m) => (
-            <article key={m.title} className="rounded-2xl border bg-card p-4">
-              <div className="flex items-start justify-between gap-2">
-                <span
-                  className="flex size-9 items-center justify-center rounded-lg"
-                  style={{ background: `${m.color}22`, color: m.color }}
-                >
-                  <m.icon className="size-4" aria-hidden />
-                </span>
-                <span
-                  className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase"
-                  style={{ color: m.color, background: `${m.color}18` }}
-                >
-                  {m.status}
-                </span>
-              </div>
-              <p className="mt-3 text-xs text-muted-foreground">{m.title}</p>
-              <p className="font-mono text-2xl tracking-tight">{m.value}</p>
-              <Sparkline values={m.spark} color={m.color} className="mt-2 h-9 w-full" />
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">{m.hint}</p>
-            </article>
-          ))}
-        </section>
-
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
-          <section className="rounded-2xl border bg-card p-5">
-            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-              <div>
-                <h2 className="text-lg font-medium">{t("psd.title")}</h2>
-                <p className="text-sm text-muted-foreground">{t("psd.hint")}</p>
-              </div>
-              <p className="font-mono text-xs text-muted-foreground">
-                <span className="mr-2" style={{ color: FLAME }}>
-                  ● {t("psd.legend1g")}
-                </span>
-                <span style={{ color: PLASMA }}>● {t("psd.legend0g")}</span>
-              </p>
-            </div>
-            {s8g && s8z ? (
-              <PsdChart
-                series={[
-                  { id: "1g", color: FLAME, points: s8g.points },
-                  { id: "0g", color: PLASMA, points: s8z.points },
-                ]}
-                labels={{ x: t("psd.x"), y: t("psd.y") }}
-              />
-            ) : null}
-            <p className="mt-2 text-xs text-muted-foreground">{t("cite")}</p>
-          </section>
-
-          <section className="rounded-2xl border bg-card p-5">
-            <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-              <div>
-                <h2 className="text-lg font-medium">{t("tail.title")}</h2>
-                <p className="text-sm text-muted-foreground">{t("tail.hint")}</p>
-              </div>
-              <p className="font-mono text-xs text-muted-foreground">
-                <span className="mr-2" style={{ color: FLAME }}>
-                  ● {t("psd.legend1g")}
-                </span>
-                <span style={{ color: PLASMA }}>● {t("psd.legend0g")}</span>
-              </p>
-            </div>
-            <GroupedBarChart
-              categories={["8 cm/s", "10 cm/s"]}
-              series={[
-                {
-                  id: "1g",
-                  label: t("psd.legend1g"),
-                  color: FLAME,
-                  values: [share("8cm-1g") * 100, share("10cm-1g") * 100],
-                },
-                {
-                  id: "0g",
-                  label: t("psd.legend0g"),
-                  color: PLASMA,
-                  values: [share("8cm-0g") * 100, share("10cm-0g") * 100],
-                },
-              ]}
-              yLabel={t("tail.y")}
-            />
-            <p className="mt-2 font-mono text-xs text-muted-foreground">
-              0g / 1g @ 8 cm/s = {formatRatio(h.large_share_ratio)}
-            </p>
-          </section>
-        </div>
-
-        <section className="mt-4 rounded-2xl border bg-card p-5">
-          <h2 className="text-lg font-medium">{t("atmo.title")}</h2>
-          <p className="mb-4 text-sm text-muted-foreground">{t("atmo.hint")}</p>
-          <AtmosphereBars zones={atmo} />
-        </section>
-
-        <section id="hardware" className="mt-6 scroll-mt-8">
-          <h2 className="mb-1 text-lg font-medium">{t("hardware.title")}</h2>
-          <p className="mb-3 text-sm text-muted-foreground">{t("hardware.hint")}</p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {hardware.map((block) => (
-              <article key={block.id} className="rounded-2xl border bg-card p-4">
-                <p className="font-mono text-xs" style={{ color: HW_COLOR[block.id] ?? PLASMA }}>
-                  {block.title}
-                </p>
-                <p className="mt-1 text-sm font-medium">{block.items}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{block.note}</p>
+      {showDetection ? (
+        <>
+          <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {shownMetrics.map((m) => (
+              <article key={m.title} className="rounded-2xl border bg-card p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <span
+                    className="flex size-9 items-center justify-center rounded-lg"
+                    style={{ background: `${m.color}22`, color: m.color }}
+                  >
+                    <m.icon className="size-4" aria-hidden />
+                  </span>
+                  <span
+                    className="rounded-full px-2 py-0.5 font-mono text-[10px] uppercase"
+                    style={{ color: m.color, background: `${m.color}18` }}
+                  >
+                    {m.status}
+                  </span>
+                </div>
+                <p className="mt-3 text-xs text-muted-foreground">{m.title}</p>
+                <p className="font-mono text-2xl tracking-tight">{m.value}</p>
+                <Sparkline values={m.spark} color={m.color} className="mt-2 h-9 w-full" />
+                <p className="mt-1 font-mono text-[10px] text-muted-foreground">{m.hint}</p>
               </article>
             ))}
+          </section>
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            <section className="rounded-2xl border bg-card p-5">
+              <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-medium">{t("psd.title")}</h3>
+                  <p className="text-sm text-muted-foreground">{t("psd.hint")}</p>
+                </div>
+                <p className="font-mono text-xs text-muted-foreground">
+                  <span className="mr-2" style={{ color: FLAME }}>
+                    ● {t("psd.legend1g")}
+                  </span>
+                  <span style={{ color: PLASMA }}>● {t("psd.legend0g")}</span>
+                </p>
+              </div>
+              {s8g && s8z ? (
+                <PsdChart
+                  series={[
+                    { id: "1g", color: FLAME, points: s8g.points },
+                    { id: "0g", color: PLASMA, points: s8z.points },
+                  ]}
+                  labels={{ x: t("psd.x"), y: t("psd.y") }}
+                />
+              ) : null}
+              <p className="mt-2 text-xs text-muted-foreground">{t("cite")}</p>
+            </section>
+            <section className="rounded-2xl border bg-card p-5">
+              <h3 className="text-lg font-medium">{t("tail.title")}</h3>
+              <p className="mb-3 text-sm text-muted-foreground">{t("tail.hint")}</p>
+              <GroupedBarChart
+                categories={["8 cm/s", "10 cm/s"]}
+                series={[
+                  {
+                    id: "1g",
+                    label: t("psd.legend1g"),
+                    color: FLAME,
+                    values: [share("8cm-1g") * 100, share("10cm-1g") * 100],
+                  },
+                  {
+                    id: "0g",
+                    label: t("psd.legend0g"),
+                    color: PLASMA,
+                    values: [share("8cm-0g") * 100, share("10cm-0g") * 100],
+                  },
+                ]}
+                yLabel={t("tail.y")}
+              />
+              <p className="mt-2 text-xs text-muted-foreground">
+                {t("materials.label")}: {materials.join(" · ")}
+              </p>
+            </section>
           </div>
-        </section>
+        </>
+      ) : null}
 
-        <section className="mt-4 rounded-2xl border bg-card p-5">
-          <h2 className="text-lg font-medium">{t("dual.title")}</h2>
-          <ul className="mt-3 grid gap-3 sm:grid-cols-3">
-            {dual.map((item, i) => (
-              <li key={item.kicker} className="rounded-xl bg-secondary/60 p-3 text-sm">
-                <span className="font-mono text-xs" style={{ color: [PLASMA, FLAME, EARTH][i] }}>
-                  {item.kicker}
-                </span>
-                <p className="mt-1 text-muted-foreground">{item.body}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {showPrevention ? (
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <section className="rounded-2xl border bg-card p-5">
+            <h3 className="text-lg font-medium">{t("map.title")}</h3>
+            <p className="mb-3 text-sm text-muted-foreground">{t("map.hint")}</p>
+            <FlammabilityMap
+              points={[
+                {
+                  id: "same-8",
+                  flow: 8,
+                  o2: 21,
+                  color: FLAME,
+                  label: "SAME 8 cm/s",
+                },
+                {
+                  id: "same-10",
+                  flow: 10,
+                  o2: 21,
+                  color: PLASMA,
+                  label: "SAME 10 cm/s",
+                },
+              ]}
+              labels={{
+                x: t("map.x"),
+                y: t("map.y"),
+                vent: t("map.vent"),
+                typical: t("map.typical"),
+              }}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">{t("map.caption")}</p>
+          </section>
+          <section className="rounded-2xl border bg-card p-5">
+            <h3 className="text-lg font-medium">{t("atmo.title")}</h3>
+            <p className="mb-4 text-sm text-muted-foreground">{t("atmo.hint")}</p>
+            <AtmosphereBars zones={atmo} />
+          </section>
+        </div>
+      ) : null}
 
+      {showSuppression ? (
         <section className="mt-4 rounded-2xl border bg-card p-5">
-          <h2 className="text-lg font-medium">{t("fuels.title")}</h2>
+          <h3 className="text-lg font-medium">{t("fuels.title")}</h3>
           <p className="mb-3 text-sm text-muted-foreground">{t("fuels.hint")}</p>
           <ul className="flex flex-wrap gap-2">
             {insights.spice_fuels
@@ -320,49 +302,14 @@ export async function Dashboard() {
                 </li>
               ))}
           </ul>
-          <p className="mt-3 text-xs text-muted-foreground">
-            {t("materials.label")}: {materials.join(" · ")}
-          </p>
+          <p className="mt-3 text-sm text-muted-foreground">{t("suppressNote")}</p>
         </section>
+      ) : null}
 
-        <section id="table" className="mt-6 scroll-mt-8">
-          <h2 className="text-lg font-medium">{t("table.title")}</h2>
-          <p className="mb-3 text-sm text-muted-foreground">{t("table.hint")}</p>
-          <div className="overflow-x-auto rounded-2xl border">
-            <table className="w-full min-w-[720px] text-left text-sm">
-              <thead className="bg-secondary/80 font-mono text-xs text-muted-foreground">
-                <tr>
-                  {cols.map((c) => (
-                    <th key={c} className="px-3 py-2 font-medium">
-                      {c}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row) => (
-                  <tr key={row.psi} className="border-t">
-                    <td className="px-3 py-2 font-mono text-plasma">{row.psi}</td>
-                    <td className="px-3 py-2">{row.name}</td>
-                    <td className="px-3 py-2">{row.pillar}</td>
-                    <td className="px-3 py-2 text-muted-foreground">{row.hw}</td>
-                    <td className="px-3 py-2 text-muted-foreground">{row.material}</td>
-                    <td className="px-3 py-2 text-muted-foreground">{row.changed}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <aside id="gap" className="mt-6 scroll-mt-8 rounded-2xl border border-dashed p-5">
-          <h2 className="text-lg font-medium">{t("gap.title")}</h2>
-          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{t("gap.body")}</p>
-          <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-            {locale} · {insights.generated_at.slice(0, 10)}
-          </p>
-        </aside>
-      </div>
+      <aside className="mt-6 rounded-2xl border border-dashed p-5">
+        <h3 className="text-lg font-medium">{t("gap.title")}</h3>
+        <p className="mt-2 max-w-3xl text-sm text-muted-foreground">{t("gap.body")}</p>
+      </aside>
     </div>
   );
 }

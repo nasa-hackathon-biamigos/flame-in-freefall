@@ -5,7 +5,15 @@ import { bestLine, CitationTracker, insertMarkers, sourceKey } from "../src/lib/
 import { toSearchResult, userTurn } from "../src/lib/rag/claude";
 import { encodeEvent, readEvents, type AskEvent } from "../src/lib/rag/events";
 import type { RetrievedChunk } from "../src/lib/rag/retrieve";
-import { acronymVariants, buildChunks, buildRagIndex, matchAliases, splitText } from "../src/lib/rag/sources";
+import {
+  acronymVariants,
+  buildChunks,
+  buildRagIndex,
+  loadGuideMarkdown,
+  matchAliases,
+  parseGuideMarkdown,
+  splitText,
+} from "../src/lib/rag/sources";
 import { cacheKey, historyFrom, normalizeQuestion, type StoredTurn } from "../src/lib/rag/store";
 
 const REPO_DATA = path.join(__dirname, "..", "data");
@@ -48,7 +56,7 @@ describe("chunks", () => {
     const { catalog, psi } = await repo();
     const chunks = buildChunks(catalog, psi, buildRagIndex(catalog, psi));
     expect(new Set(chunks.map((c) => c.id)).size).toBe(chunks.length);
-    expect(new Set(chunks.map((c) => c.psi_id)).size).toBe(psi.length);
+    expect(new Set(chunks.filter((c) => c.psi_id).map((c) => c.psi_id)).size).toBe(psi.length);
     const same = chunks.find((c) => c.psi_id === "PSI-102" && c.section === "psi_objectives")!;
     expect(same.metadata.curation).toBe("uncurated");
     expect(same.metadata.url).toBe(same.metadata.psi_url); // no published ficha yet → PSI page
@@ -107,6 +115,23 @@ describe("chunks", () => {
     );
     expect(chunks.find((c) => c.section === "conditions")!.content).toContain("Oxygen: not reported.");
     expect(chunks.every((c) => c.metadata.curation === "partial")).toBe(true);
+  });
+
+  it("indexes paraphrased mini-book pages as guide chunks with page headings", () => {
+    const md = loadGuideMarkdown(path.join(__dirname, ".."));
+    const parts = parseGuideMarkdown(md);
+    expect(parts.map((p) => p.heading).join(" ")).toContain("Page 35");
+    expect(parts.some((p) => p.body.includes("NASA-STD-6001"))).toBe(true);
+    const chunks = buildChunks(
+      { investigations: [], comparisons: [], spinoffs: [] } as unknown as Catalog,
+      [],
+      [],
+      { guideMarkdown: md },
+    );
+    const guides = chunks.filter((c) => c.section === "guide");
+    expect(guides.length).toBe(parts.length);
+    expect(guides[0]!.metadata.url).toBe("/about#mini-book");
+    expect(guides.some((c) => c.content.includes("0 to 30 cm/s"))).toBe(true);
   });
 });
 

@@ -7,11 +7,17 @@ import { buttonVariants } from "@/components/ui/button";
 import { VocabIcon } from "@/components/vocab-icon";
 import { asUiLocale, termIcon, termLabel } from "@/lib/catalog/labels";
 import { catalog } from "@/lib/catalog/load";
+import { parseDashPillar } from "@/lib/findings";
 import { cn } from "@/lib/utils";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const t = await getTranslations("home");
   const locale = asUiLocale(await getLocale());
+  const pillar = parseDashPillar((await searchParams).pillar);
   const { investigations: all, vocab } = catalog;
   const published = all.filter((i) => !i.example);
 
@@ -35,23 +41,20 @@ export default async function Home() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{t("lead")}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/explore" className={buttonVariants({ size: "lg" })}>
-              {t("ctaExplore")} <ArrowRight aria-hidden />
+            <Link href="/#painel" className={buttonVariants({ size: "lg" })}>
+              {t("ctaPanel")} <ArrowRight aria-hidden />
             </Link>
-            <Link href="/ask" className={buttonVariants({ size: "lg", variant: "secondary" })}>
+            <Link href="/explore" className={buttonVariants({ size: "lg", variant: "secondary" })}>
+              {t("ctaExplore")}
+            </Link>
+            <Link href="/ask" className={buttonVariants({ size: "lg", variant: "outline", className: "border-border" })}>
               {t("ctaAsk")}
-            </Link>
-            <Link
-              href="/about"
-              className={buttonVariants({ size: "lg", variant: "outline", className: "border-border" })}
-            >
-              {t("ctaAbout")}
             </Link>
           </div>
         </section>
       </div>
 
-      <Dashboard />
+      <Dashboard pillar={pillar} />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <section aria-labelledby="pillars" className="pb-16">

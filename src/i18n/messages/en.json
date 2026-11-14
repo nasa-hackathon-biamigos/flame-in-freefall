@@ -2,13 +2,156 @@
   "app": {
     "name": "Space Firefighters",
     "tagline": "What microgravity fire taught us — for the Moon and for Earth.",
-    "disclaimer": "Data: NASA Physical Sciences Informatics · Not an official NASA product"
+    "disclaimer": "Data: NASA Physical Sciences Informatics · Not an official NASA product",
+    "skip": "Skip to content"
+  },
+  "nav": {
+    "label": "Main",
+    "explore": "Explore",
+    "about": "About & data"
   },
   "home": {
     "title": "Fire behaves differently in space. NASA has the data. We make it usable.",
-    "status": "Scaffold is live. Catalog coming next."
+    "lead": "A curated, comparable catalog of NASA PSI combustion experiments, read through a fire-safety lens — prevention, detection and suppression for crewed habitats, with a bridge back to Earth.",
+    "ctaExplore": "Explore experiments",
+    "ctaAbout": "About the data",
+    "pillarsTitle": "Three pillars of fire safety",
+    "pillarCount": "{count, plural, =0 {No investigations yet} one {# investigation} other {# investigations}}",
+    "pillarText": {
+      "prevention": "Ignition, flammability limits and how materials burn when there is no buoyancy.",
+      "detection": "Smoke and aerosols in microgravity, and what detectors need to see them.",
+      "suppression": "Putting flames out when the atmosphere itself is part of the problem."
+    },
+    "kpiTitle": "The catalog in numbers",
+    "kpi": {
+      "investigations": "investigations",
+      "complete": "fully curated",
+      "earth": "with Earth applications",
+      "lunar": "relevant to lunar habitats"
+    },
+    "curationInProgress": "Curation is in progress: investigations appear here as the research team reviews them.",
+    "dualTitle": "One body of research, two places to use it",
+    "lunarTitle": "Artemis and the Moon",
+    "lunarText": "Lunar habitats are planned with an atmosphere different from Earth's, where materials can burn more readily. The catalog shows which PSI experiments speak to that — and where the data runs out.",
+    "earthTitle": "Back on Earth",
+    "earthText": "Microgravity combustion research also informs smoke detection, suppression and protective equipment used on Earth.",
+    "earthCta": "Experiments with Earth applications"
+  },
+  "explore": {
+    "title": "Explore",
+    "lead": "Every curated PSI combustion investigation. Filter by fire-safety pillar, environment and conditions.",
+    "search": "Search by name, acronym or PSI-ID",
+    "filters": "Filters",
+    "showFilters": "Show filters",
+    "hideFilters": "Hide filters",
+    "clear": "Clear filters",
+    "earthOnly": "Only with Earth applications",
+    "facet": {
+      "pillar": "Fire-safety pillar",
+      "env": "Environment",
+      "gravity": "Gravity",
+      "material": "Material",
+      "hardware": "Hardware",
+      "status": "Curation"
+    },
+    "status": {
+      "complete": "Complete",
+      "partial": "Partial"
+    },
+    "results": "{count, plural, =0 {No investigations} one {# investigation} other {# investigations}}",
+    "empty": "No investigation matches these filters.",
+    "emptyCatalog": "No investigation has been published yet — the research team is curating the first ones."
+  },
+  "investigation": {
+    "openPsi": "Open in NASA PSI",
+    "notReported": "not reported",
+    "partialBadge": "Partial curation",
+    "partialNote": "This record is only partly curated: some fields are not reported yet.",
+    "exampleBadge": "Example",
+    "exampleNote": "Fictional example used to build the interface. Not real data.",
+    "earthBadge": "Earth",
+    "contentInEnglish": "Curated content is in English.",
+    "o2": "O₂",
+    "pressure": "Pressure",
+    "lastReviewed": "Last reviewed {date}",
+    "curatedBy": "Curated by {names}",
+    "sections": {
+      "summary": "Summary",
+      "conditions": "Conditions",
+      "crew_safety": "Why it matters for crew safety",
+      "earth_impact": "Earth impact",
+      "changed_fixed": "What changed and what stayed fixed",
+      "key_results": "Key results",
+      "limitations": "Limitations",
+      "related": "Related investigations",
+      "sources": "Sources",
+      "psi": "Original NASA PSI record"
+    },
+    "conditions": {
+      "o2": "Oxygen (% vol)",
+      "pressure": "Pressure",
+      "diluents": "Diluents",
+      "flow": "Flow velocity (cm/s)",
+      "flowNotes": "Flow notes",
+      "gravity": "Gravity",
+      "platform": "Platform",
+      "hardware": "Hardware",
+      "material": "Material",
+      "solidForm": "Solid form",
+      "fuels": "Fuels / materials",
+      "geometry": "Sample geometry",
+      "sensors": "Sensors",
+      "measured": "Measured variables",
+      "evidence": "Where the numbers come from"
+    },
+    "changed": "Changed",
+    "fixed": "Held fixed",
+    "earthSectors": "Sectors",
+    "transferType": "Transfer",
+    "noEarth": "No Earth application documented yet.",
+    "spinoffLink": "NASA Spinoff",
+    "psi": {
+      "intro": "Text as published by NASA PSI ({license}, version {version}, retrieved {date}).",
+      "objectives": "Objectives",
+      "hypothesis": "Hypothesis",
+      "approach": "Approach",
+      "research_impacts": "Research impacts / Earth benefits",
+      "hardware": "Experiment hardware",
+      "publications": "Publications",
+      "tables": "Experimental tables",
+      "rowsShown": "Showing {shown} of {total} rows.",
+      "missing": "The raw PSI text for this investigation has not been downloaded yet."
+    }
+  },
+  "about": {
+    "title": "About & data",
+    "lead": "Space Firefighters was built for the NASA Space Apps Challenge 2026 (Flame in Freefall). It is not an official NASA product.",
+    "whatTitle": "What this is",
+    "whatText": "A catalog of NASA Physical Sciences Informatics (PSI) combustion investigations, each reviewed by our research team for what it means for fire safety in crewed habitats: prevention, detection and suppression. Every number in a record comes with its source; when a value is unknown it is shown as \"not reported\" rather than estimated.",
+    "statusTitle": "Curation status",
+    "statusText": "Complete records have every vital field reviewed by a second curator. Partial records are identified and classified, but some fields are still missing — they carry a \"partial\" badge.",
+    "limitsTitle": "Limitations",
+    "limits": {
+      "partialGravity": "There is no PSI data for partial gravity (Moon, Mars) yet; results bracket it between 0g and 1g.",
+      "notModel": "This is a guide to the evidence, not a flammability model. It does not replace testing or simulation.",
+      "scope": "Rocket propellant combustion is out of scope."
+    },
+    "downloadTitle": "Download the dataset",
+    "downloadText": "The curated catalog, one row per investigation. Lists are joined with \";\".",
+    "downloadJson": "JSON",
+    "downloadCsv": "CSV",
+    "apiTitle": "Read-only API",
+    "apiText": "Open (CORS) JSON endpoints with the same filters as Explore:",
+    "citeTitle": "How to cite",
+    "citeText": "Cite the original PSI investigation (its PSI-ID and DOI are on each record) and, if useful, this catalog:",
+    "licenseTitle": "Sources and license",
+    "licenseText": "PSI investigation records are published by NASA under CC0-1.0. Curated fields cite their own sources on each record."
   },
   "locale": {
     "label": "Language"
+  },
+  "notFound": {
+    "title": "Investigation not found",
+    "back": "Back to Explore"
   }
 }

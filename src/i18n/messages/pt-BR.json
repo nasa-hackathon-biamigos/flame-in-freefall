@@ -2,13 +2,156 @@
   "app": {
     "name": "Space Firefighters",
     "tagline": "O que o fogo em microgravidade nos ensinou — para a Lua e para a Terra.",
-    "disclaimer": "Dados: NASA Physical Sciences Informatics · Não é um produto oficial da NASA"
+    "disclaimer": "Dados: NASA Physical Sciences Informatics · Não é um produto oficial da NASA",
+    "skip": "Pular para o conteúdo"
+  },
+  "nav": {
+    "label": "Principal",
+    "explore": "Explorar",
+    "about": "Sobre e dados"
   },
   "home": {
     "title": "O fogo se comporta diferente no espaço. A NASA tem os dados. Nós os tornamos úteis.",
-    "status": "Estrutura no ar. O catálogo vem a seguir."
+    "lead": "Um catálogo curado e comparável dos experimentos de combustão do NASA PSI, lido pela lente da segurança contra incêndio — prevenção, detecção e supressão para habitats tripulados, com uma ponte de volta à Terra.",
+    "ctaExplore": "Explorar experimentos",
+    "ctaAbout": "Sobre os dados",
+    "pillarsTitle": "Os três pilares da segurança contra incêndio",
+    "pillarCount": "{count, plural, =0 {Nenhuma investigação ainda} one {# investigação} other {# investigações}}",
+    "pillarText": {
+      "prevention": "Ignição, limites de inflamabilidade e como os materiais queimam sem empuxo.",
+      "detection": "Fumaça e aerossóis em microgravidade, e o que os detectores precisam para enxergá-los.",
+      "suppression": "Apagar chamas quando a própria atmosfera faz parte do problema."
+    },
+    "kpiTitle": "O catálogo em números",
+    "kpi": {
+      "investigations": "investigações",
+      "complete": "com curadoria completa",
+      "earth": "com aplicação na Terra",
+      "lunar": "relevantes para habitats lunares"
+    },
+    "curationInProgress": "A curadoria está em andamento: as investigações aparecem aqui conforme a equipe de pesquisa as revisa.",
+    "dualTitle": "Uma pesquisa, dois lugares para usá-la",
+    "lunarTitle": "Artemis e a Lua",
+    "lunarText": "Os habitats lunares são planejados com uma atmosfera diferente da terrestre, em que os materiais podem queimar com mais facilidade. O catálogo mostra quais experimentos do PSI falam disso — e onde os dados acabam.",
+    "earthTitle": "De volta à Terra",
+    "earthText": "A pesquisa de combustão em microgravidade também informa a detecção de fumaça, a supressão e os equipamentos de proteção usados na Terra.",
+    "earthCta": "Experimentos com aplicação na Terra"
+  },
+  "explore": {
+    "title": "Explorar",
+    "lead": "Todas as investigações de combustão do PSI já curadas. Filtre por pilar, ambiente e condições.",
+    "search": "Buscar por nome, sigla ou PSI-ID",
+    "filters": "Filtros",
+    "showFilters": "Mostrar filtros",
+    "hideFilters": "Esconder filtros",
+    "clear": "Limpar filtros",
+    "earthOnly": "Só com aplicação na Terra",
+    "facet": {
+      "pillar": "Pilar",
+      "env": "Ambiente",
+      "gravity": "Gravidade",
+      "material": "Material",
+      "hardware": "Hardware",
+      "status": "Curadoria"
+    },
+    "status": {
+      "complete": "Completa",
+      "partial": "Parcial"
+    },
+    "results": "{count, plural, =0 {Nenhuma investigação} one {# investigação} other {# investigações}}",
+    "empty": "Nenhuma investigação corresponde a esses filtros.",
+    "emptyCatalog": "Nenhuma investigação foi publicada ainda — a equipe de pesquisa está curando as primeiras."
+  },
+  "investigation": {
+    "openPsi": "Abrir no NASA PSI",
+    "notReported": "não informado",
+    "partialBadge": "Curadoria parcial",
+    "partialNote": "Este registro está parcialmente curado: alguns campos ainda não foram informados.",
+    "exampleBadge": "Exemplo",
+    "exampleNote": "Exemplo fictício usado para construir a interface. Não são dados reais.",
+    "earthBadge": "Terra",
+    "contentInEnglish": "O conteúdo curado está em inglês.",
+    "o2": "O₂",
+    "pressure": "Pressão",
+    "lastReviewed": "Revisado em {date}",
+    "curatedBy": "Curadoria: {names}",
+    "sections": {
+      "summary": "Resumo",
+      "conditions": "Condições",
+      "crew_safety": "Por que importa para a tripulação",
+      "earth_impact": "Impacto na Terra",
+      "changed_fixed": "O que mudou e o que ficou fixo",
+      "key_results": "Principais resultados",
+      "limitations": "Limitações",
+      "related": "Investigações relacionadas",
+      "sources": "Fontes",
+      "psi": "Registro original do NASA PSI"
+    },
+    "conditions": {
+      "o2": "Oxigênio (% vol)",
+      "pressure": "Pressão",
+      "diluents": "Diluentes",
+      "flow": "Velocidade do fluxo (cm/s)",
+      "flowNotes": "Notas sobre o fluxo",
+      "gravity": "Gravidade",
+      "platform": "Plataforma",
+      "hardware": "Hardware",
+      "material": "Material",
+      "solidForm": "Forma do sólido",
+      "fuels": "Combustíveis / materiais",
+      "geometry": "Geometria da amostra",
+      "sensors": "Sensores",
+      "measured": "Variáveis medidas",
+      "evidence": "De onde vêm os números"
+    },
+    "changed": "Mudou",
+    "fixed": "Ficou fixo",
+    "earthSectors": "Setores",
+    "transferType": "Transferência",
+    "noEarth": "Nenhuma aplicação na Terra documentada ainda.",
+    "spinoffLink": "NASA Spinoff",
+    "psi": {
+      "intro": "Texto como publicado pelo NASA PSI ({license}, versão {version}, obtido em {date}).",
+      "objectives": "Objetivos",
+      "hypothesis": "Hipótese",
+      "approach": "Abordagem",
+      "research_impacts": "Impactos da pesquisa / benefícios na Terra",
+      "hardware": "Hardware do experimento",
+      "publications": "Publicações",
+      "tables": "Tabelas experimentais",
+      "rowsShown": "Mostrando {shown} de {total} linhas.",
+      "missing": "O texto bruto do PSI desta investigação ainda não foi baixado."
+    }
+  },
+  "about": {
+    "title": "Sobre e dados",
+    "lead": "O Space Firefighters foi criado para o NASA Space Apps Challenge 2026 (Flame in Freefall). Não é um produto oficial da NASA.",
+    "whatTitle": "O que é",
+    "whatText": "Um catálogo das investigações de combustão do NASA Physical Sciences Informatics (PSI), cada uma revisada pela nossa equipe de pesquisa quanto ao que significa para a segurança contra incêndio em habitats tripulados: prevenção, detecção e supressão. Todo número de um registro vem com a fonte; quando um valor é desconhecido, aparece como \"não informado\" em vez de estimado.",
+    "statusTitle": "Status da curadoria",
+    "statusText": "Registros completos têm todos os campos vitais revisados por uma segunda curadora. Registros parciais estão identificados e classificados, mas ainda faltam campos — eles levam o selo \"parcial\".",
+    "limitsTitle": "Limitações",
+    "limits": {
+      "partialGravity": "Ainda não há dados do PSI para gravidade parcial (Lua, Marte); os resultados a delimitam entre 0g e 1g.",
+      "notModel": "Isto é um guia para as evidências, não um modelo de inflamabilidade. Não substitui testes nem simulação.",
+      "scope": "Combustão de propelentes de foguete está fora do escopo."
+    },
+    "downloadTitle": "Baixar o dataset",
+    "downloadText": "O catálogo curado, uma linha por investigação. Listas são unidas por \";\".",
+    "downloadJson": "JSON",
+    "downloadCsv": "CSV",
+    "apiTitle": "API somente leitura",
+    "apiText": "Endpoints JSON abertos (CORS) com os mesmos filtros do Explorar:",
+    "citeTitle": "Como citar",
+    "citeText": "Cite a investigação original do PSI (o PSI-ID e o DOI estão em cada registro) e, se for útil, este catálogo:",
+    "licenseTitle": "Fontes e licença",
+    "licenseText": "Os registros de investigações do PSI são publicados pela NASA sob CC0-1.0. Os campos curados citam suas próprias fontes em cada registro."
   },
   "locale": {
     "label": "Idioma"
+  },
+  "notFound": {
+    "title": "Investigação não encontrada",
+    "back": "Voltar ao Explorar"
   }
 }

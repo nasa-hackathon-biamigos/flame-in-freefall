@@ -615,7 +615,7 @@ Conteúdo de `data/content/mission-context.md` (Juliana) + **linha do tempo** (`
 - **Responsivo básico:** funciona no celular sem quebrar (filtros em sheet, tabela do comparador com scroll horizontal, mapa com zoom simples); otimizado para desktop 1440 px (vídeo).
 - **Acessibilidade:** navegação por teclado, foco visível, `aria-*` nos componentes Radix, alt nos ícones.
 - **Estados:** skeletons, erros amigáveis, vazio explicado.
-- **Desempenho:** páginas do catálogo estáticas (SSG a partir de `catalog.json`); primeira carga < 2,5 s em 4G.
+- **Desempenho:** primeira carga < 2,5 s em 4G. As páginas leem `catalog.json` (sem banco). **Decidido no M2:** elas são renderizadas no servidor a cada requisição, e não SSG, porque o idioma vem de um cookie (next-intl sem prefixo de rota). O custo é baixo: não há I/O, só leitura de JSON em memória.
 - **Demo mode (P1):** `?demo=1` mostra um stepper discreto com o roteiro do vídeo (Home → filtro lunar → mapa → BASS×SAFFIRE → Earth → SAME → Ask com pergunta pré-aquecida).
 
 ---

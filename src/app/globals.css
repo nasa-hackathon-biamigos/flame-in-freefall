@@ -97,3 +97,13 @@
     }
   }
 }
+
+/* Section anchors: chat citations link to /investigations/<slug>#<section> (SPEC §10.5). */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+section[id]:target {
+  border-radius: var(--radius);
+  outline: 2px solid var(--plasma);
+  outline-offset: 0.75rem;
+}

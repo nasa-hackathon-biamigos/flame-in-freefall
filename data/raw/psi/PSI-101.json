@@ -1,0 +1,89 @@
+{
+  "psi_id": "PSI-101",
+  "title": "Smoke Aerosol Measurement Experiment-Reflight",
+  "acronym": "SAME-R",
+  "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+  "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-101",
+  "doi": "10.60555/2np7-jv14",
+  "license": {
+    "id": "CC0-1.0",
+    "name": "Creative Commons Zero v1.0 Universal",
+    "url": "https://spdx.org/licenses/CC0-1.0.html"
+  },
+  "psi_version": 4,
+  "fetched_at": "2026-11-14T16:35:11.027Z",
+  "metadata": {
+    "research_area": "Combustion Science",
+    "subresearch_area": "Spacecraft Fire Safety",
+    "project_type": "Microgravity Investigation",
+    "flight_platform": "International Space Station (ISS)",
+    "managing_center": "Glenn Research Center (GRC)",
+    "start_date": "07-01-2010",
+    "end_date": "09-30-2010",
+    "related_psi_ids": [
+      "PSI-102"
+    ],
+    "keywords": [
+      "Soot",
+      "Flames",
+      "Pyrell",
+      "SAME",
+      "Transmission Electron Microscopy",
+      "Silicon Rubber",
+      "Spacecraft Fire Safety",
+      "Teflon",
+      "Cotton",
+      "Smoke",
+      "Kapton",
+      "SAME-2"
+    ],
+    "hardware": {
+      "name": "Comparitive Soot Diagnostic Hardware; Refer to final report",
+      "link": "https://ntrs.nasa.gov/api/citations/19960008413/downloads/19960008413.pdf"
+    }
+  },
+  "sections": {
+    "objectives": "Similar to the original SAME investigation, the primary objective of the SAME-R investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment. One of the problems encountered during the SAME investigation was that after the thermal precipitators were returned to the ground, it was found that all the TEM grids were severely contaminated with some unidentified foreign particles, making these grids unusable although some of them showed shapes of certain types of smoke particles. Based on that experience the SAME-R investigation employed several modification covering new materials, extended operating conditions, and diagnostic equipments.",
+    "hypothesis": "The three hypotheses that motivated the original SAME investigation is also applicable for the reflight SAME-R investigation:\nIn a μg environment, with the absence of the strong buoyancy-induced flows, smoke particle growth from a pyrolyzing/smoldering source, as a result of nucleation, condensation, and coagulation, will lead to larger particles compared to those produced in 1g. The formation of the larger particles is favored by the expected higher vapor concentration and smoke residence times near the source due to the reduced velocities and mixing at μg conditions. In particular, it is hypothesized that liquid aerosol smokes produced in microgravity will exhibit substantially larger droplet sizes than under the same conditions in normal gravity (with a corresponding decrease in the particle number density for the same mass of smoke). The change in the size distribution and number density will, in turn, affect the response of the smoke detectors and possibly result in some detectors not producing an alarm when exposed to this smoke.",
+    "approach": "SAME-R utilized the SAME hardware used on-orbit. Based on the experience gained from SAME, SAME-R included the following modifications: 1) a new test material,\nPyrell®, an intumescent fire-retardant foam by Foamex, was introduced to replace DBP samples, 2) test conditions were broadened including higher heating temperatures and no-flow during sample heating time, and 3) a new instrument, M-pass, developed in-house GRC, was used to replace one of the two Commercial Diagnostic Enclosures that includes a DustTrak and an ionization detector used in SAME. SAME-R flight tests were conducted from July 16, to September 9, 2010, successfully completing 66 test points. After SAME-R flight tests, three major post–flight ground tests were performed to improve data reduction process and to validate the lognormal distribution assumption, the key to the moment method employed by SAME and SAME-R.",
+    "research_impacts": "Along with the results from the original SAME investigation, the results from SAME-R can lead to technology for an advanced fire detector for future spacecraft that will be used for long duration missions. SAME will provide quantitative data on the sensitivity of these detectors to reduced gravity smokes that will allow evaluation of the adequacy of these existing technologies using relevant data. The current Fire Prevention, Detection, and Suppression (FPDS) program plan allows for the re-evaluation of future sensor technology, to allow new technology and capability to be utilized. The results from SAME are needed to provide the reduced gravity baseline data against which future detection technology developments can be evaluated. The smoke detectors developed from the results of SAME can also be useful in other extreme environments on Earth, such as submarines or underwater laboratories. Accurate detection of smoke in these environments can save lives."
+  },
+  "publications": [
+    {
+      "title": "Smoke Aerosol Measurement Experiment-2: Comparison of Flight Experiment Results with Ground Test Results",
+      "authors": "Meyer Marit E., Urban David L., Ruff Gary A., Mulholland George, Yuan Zeng-guang, Bryg Victoria, Cleary Thomas, Yang Jiann",
+      "doi": "10.2514/6.2013-3433"
+    },
+    {
+      "title": "Evaluation of Low-Gravity Smoke Particulate for Spacecraft Fire Detection",
+      "authors": "D Urban, G Ruff, G Mulholland, M Meyer, ZG Yuan, T Cleary, J Yang, P Greenberg, V Bryg",
+      "doi": null
+    },
+    {
+      "title": "Particle Morphology and Size Results from the Smoke Aerosol Measurement Experiment-2",
+      "authors": "Urban David, Ruff Gary, Greenberg Paul, Fischer David, Meyer Marit, Mulholland George, Yuan Zeng-guang, Bryg Victoria, Cleary Thomas, Yang Jiann",
+      "doi": "10.2514/6.2012-3536"
+    },
+    {
+      "title": "Preliminary Results from the Smoke Aerosol Measurement Experiment - Reflight",
+      "authors": "D Urban, G Ruff, M Meyer, T Cleary, J Yang, G Mulholland, ZG Yuan, V Bryg",
+      "doi": null
+    },
+    {
+      "title": "Detection of Smoke from Microgravity Fires",
+      "authors": "DL Urban, D Griffin, G Ruff, T Cleary, J Yang, G Mulholland, ZG Yuan",
+      "doi": null
+    },
+    {
+      "title": "Evaluation of spacecraft smoke detector performance in the low-gravity environment",
+      "authors": "Meyer Marit E., Urban David L., Mulholland George W., Bryg Victoria, Yuan Zeng-Guang, Ruff Gary A., Cleary Thomas, Yang Jiann",
+      "doi": "10.1016/j.firesaf.2018.04.004"
+    }
+  ],
+  "experimental_tables": [
+    {
+      "file_name": "PSI-101_Experimental table_SAME-R.csv",
+      "csv": "Sample Type,SAME Test #,Description,Date,Inlet velocity (cm/s),Rt/R0,Duration (sec),Primary aging time (sec),Primary mixing time (sec),Net aging time (sec)\nKapton,51,B.L. new formula,21-Jul,8.1,1.38,60,11,8,38\nKapton,51a,B.L. new formula,22-Jul,8.1,1.38,60,,,261\nKapton,61,Baseline Aging,2-Aug,8.1,1.38,60,11,8,38\nKapton,61a,aged,2-Aug,8.1,1.38,,,,807\nKapton,62,High Temp aging,2-Aug,8.1,1.48,60,11,8,39\nKapton,62a,aged,2-Aug,8.1,1.48,,,,808\nKapton,70,High temp aged STS det,24-Aug,8.1,1.48,60,720,8,747\nKapton,73,Baseline Aging,26-Aug,8.1,1.38,60,11,8,33\nKapton,73a,aged,26-Aug,8.1,1.38,,,,560\nKapton,75,Mid Temp aging (no Ptrak),26-Aug,8.1,1.43,60,11,8,32\nKapton,75a,aged,26-Aug,8.1,1.43,,,,563\nKapton,77,High Temp aging,26-Aug,8.1,1.48,60,11,8,31\nKapton,77a,aged,26-Aug,8.1,1.48,,,,559\nKapton,85,Mid Temp aging run. Repeat 75,30-Aug,8.1,1.43,60,11,8,33\nKapton,85a,aged,30-Aug,8.1,1.43,,,,563\nKapton,90,Mid Temp aging reburn 85,30-Aug,8.1,1.43,60,11,8,38\nKapton,90a,aged,30-Aug,8.1,1.43,,,,569\nKapton,92,Baseline STS det,7-Sep,8.1,1.38,60,11,8,35\nKapton,93,Mid Temp aging run 75 repeat,7-Sep,8.1,1.43,60,11,8,36\nKapton,93a,aged,7-Sep,8.1,1.43,,,,568\nKapton,94,Mid Temp aging run mid high,7-Sep,8.1,1.45,60,11,8,42\nKapton,94a,aged,7-Sep,8.1,1.45,,,,567\nKapton,101,No flow run w/ aging,8-Sep,0,1.48,60,11,8,29\nKapton,101a,aged,8-Sep,0,1.48,,,,561\nKapton,102,No flow run w/ aging,8-Sep,0,1.48,120,11,8,28\nKapton,102a,aged,8-Sep,0,1.48,,,,563\nKapton,108,Low flow run w/aging,9-Sep,1,1.48,60,11,8,30\nKapton,108a,aged,9-Sep,1,1.48,,,,560\nKapton,114,low flow run w STS no Ptrak,9-Sep,2,1.43,60,11,8,28\nSilicone,48,Low Temp,16-Jul,8,1.304,60,11,8,62\nSilicone,53,HighTemp,22-Jul,8.1,1.35,60,1,8,52\nSilicone,59,baseline aged,30-Jul,8.1,1.327,60,11,8,24\nSilicone,59a,aged,30-Jul,8.1,1.327,,,,856\nSilicone,60,Htemp ageing,30-Jul,8.1,1.35,60,11,8,49\nSilicone,60a,aged,30-Jul,8.1,1.35,,,,856\nSilicone,65,Baseline long aging,23-Aug,8.1,1.327,60,11,8,50\nSilicone,65a,aged,23-Aug,8.1,1.327,,,,1923\nSilicone,66,High T aging,23-Aug,8.1,1.36,60,11,8,42\nSilicone,66a,aged,23-Aug,8.1,1.36,,,,837\nSilicone,67,High temp aged,24-Aug,8.1,1.35,60,720,8,751\nSilicone,72,Baseline STS det,25-Aug,8.1,1.327,60,11,8,42\nSilicone,86,Mid temp aging,30-Aug,8.1,1.345,60,11,8,50\nSilicone,86a,aged,30-Aug,8.1,1.345,,,,628\nSilicone,91,Baseline STS det,7-Sep,8.1,1.327,60,11,8,46\nSilicone,99,No flow run w/aging,8-Sep,0,1.35,60,11,8,48\nSilicone,99a,aged,8-Sep,0,1.35,,,,627\nSilicone,103,low flow run w/ aging,9-Sep,1,1.35,60,11,8,48\nSilicone,103a,aged,9-Sep,1,1.35,,,,619\nSilicone,104,No flow run w/ aging,9-Sep,0,1.35,60,11,8,51\nSilicone,104a,aged,9-Sep,0,1.35,,,,636\nSilicone,109,low flow run w STS,9-Sep,2,1.35,60,11,8,28\nLampwick,49,B.L. High RT/R0,19-Jul,8,1.251,60,11,8,51\nLampwick,54,Baseline,29-Jul,8.1,1.245,60,11,8,57\nLampwick,55,High RT/R0 test aging,29-Jul,8.1,1.245,60,11,8,47\nLampwick,55a,aged,29-Jul,8.1,1.245,,,,218\nLampwick,57,High RT/R0 reburn sample,29-Jul,8.1,1.253,60,11,8,n/a\nLampwick,68,High temp aged STS det,24-Aug,8.1,1.28,60,720,8,747\nLampwick,78,Baseline aging,26-Aug,8.1,1.245,60,11,8,37\nLampwick,78a,aged,26-Aug,8.1,1.245,,,,581\nLampwick,80,High temp aging,26-Aug,8.1,1.28,60,11,8,40\nLampwick,80a,aged,26-Aug,8.1,1.28,,,,580\nLampwick,82,Mid temp aging,26-Aug,8.1,1.265,60,11,8,39\nLampwick,82a,aged,27-Aug,8.1,1.265,,,,579\nLampwick,88,Baseline STS det,30-Aug,8.1,1.245,60,11,8,n/a\nLampwick,96,No flow run w/aging,7-Sep,0,1.245,60,11,8,34\nLampwick,96a,aged,7-Sep,0,1.245,,,,582\nLampwick,98,No flow run w/aging,8-Sep,0,1.28,60,11,8,37\nLampwick,98a,aged,8-Sep,0,1.28,,,,585\nLampwick,106,No flow run w/aging,9-Sep,0,1.28,60,11,8,30\nLampwick,106a,aged,9-Sep,0,1.28,,,,558\nLampwick,110,low flow run w/STS,9-Sep,2,1.28,60,11,8,21\nTeflon,50,B.L. High RT/R0,20-Jul,8.1,1.452,60,11,8,33\nTeflon,56,Baseline,29-Jul,8.1,1.445,60,11,8,41\nTeflon,57,High RT/R0 reburn sample,29-Jul,8.1,1.253,60,11,8,n/a\nTeflon,58,Baseline aging,30-Jul,8.1,1.445,60,11,8,34\nTeflon,58a,aged,30-Jul,8.1,1.445,,,,805\nTeflon,69,High temp aged STS det,24-Aug,8.1,1.45,60,720,8,745\nTeflon,79,Baseline aging,26-Aug,8.1,1.445,60,11,8,33\nTeflon,79a,aged,26-Aug,8.1,1.445,,,,560\nTeflon,81,High temp aging,26-Aug,8.1,1.45,60,11,8,30\nTeflon,81a,aged,27-Aug,8.1,1.45,,,,559\nTeflon,83,Mid temp aging,26-Aug,8.1,1.448,60,11,8,30\nTeflon,83a,aged,27-Aug,8.1,1.448,,,,557\nTeflon,89,Baseline STS det,30-Aug,8.1,1.445,60,11,8,31\nTeflon,100,No flow run w/ aging,8-Sep,0,1.45,60,11,8,29\nTeflon,100a,aged,8-Sep,0,1.45,,,,560\nTeflon,105,No flow run w/ aging,9-Sep,0,1.45,60,11,8,24\nTeflon,105a,aged,9-Sep,0,1.45,,,,559\nTeflon,111,low flow run w/ STS,9-Sep,2,1.45,60,11,8,43\nPyrell,52,Baseline,22-Jul,8.1,1.22,60,11,8,n/a\nPyrell,63,Baseline Aging,23-Aug,8.1,1.22,60,11,8,56\nPyrell,63a,aged,23-Aug,8.1,1.22,,,,840\nPyrell,64,High Temp aging,23-Aug,8.1,1.23,60,11,8,47\nPyrell,64a,aged,23-Aug,8.1,1.23,,,,842\nPyrell,71,High temp aged STS det,24-Aug,8.1,1.23,60,720,8,750\nPyrell,74,Baseline Aging,26-Aug,8.1,1.22,60,11,8,48\nPyrell,74a,aged,26-Aug,8.1,1.22,,,,623\nPyrell,76,High Temp aging,26-Aug,8.1,1.23,60,11,8,51\nPyrell,76a,aged,26-Aug,8.1,1.23,,,,625\nPyrell,84,Mid Temp aging retry,30-Aug,8.1,1.225,60,11,8,53\nPyrell,84a,aged,30-Aug,8.1,1.225,,,,632\nPyrell,87,Baseline STS det,30-Aug,8.1,1.22,60,11,8,45\nPyrell,95,No flow run w/ aging,7-Sep,0,1.22,60,11,8,38\nPyrell,95a,aged,7-Sep,0,1.22,,,,n/a\nPyrell,97,No flow run w/aging,8-Sep,0,1.23,60,11,8,48\nPyrell,97a,aged,8-Sep,0,1.23,,,,624\nPyrell,107,Low flow run w/aging,9-Sep,1,1.23,60,11,8,32\nPyrell,107a,aged,9-Sep,1,1.23,,,,559\nPyrell,113,low flow run w STS,9-Sep,2,1.23,60,11,8,31"
+    }
+  ]
+}

@@ -1,0 +1,589 @@
+{
+  "source": "NASA Physical Sciences Informatics (https://psi.nasa.gov/) — repository search API",
+  "query": "Research Area = Combustion Science, plus full-text term 'combustion'",
+  "generated_at": "2026-11-14T16:31:57.321Z",
+  "count": 26,
+  "investigations": [
+    {
+      "psi_id": "PSI-10",
+      "acronym": "ACME/Flame Design",
+      "title": "Advanced Combustion via Microgravity Experiments / Flame Design",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Flames of Gaseous Fuels",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "chemical kinetics",
+        "ethylene",
+        "radiative extinction",
+        "thin filament pyrometry",
+        "dilution",
+        "flame growth",
+        "stoichiometric mixture fraction"
+      ]
+    },
+    {
+      "psi_id": "PSI-20",
+      "acronym": "ACME BRE",
+      "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Flames of Gaseous Fuels",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "Buoyancy",
+        "Diffusion Flames",
+        "Fire Safety",
+        "Heat Flux",
+        "Radiative Extinction",
+        "Polymer",
+        "ACME",
+        "Extinction Limit",
+        "Flammability",
+        "Modeling",
+        "Triple Flame"
+      ]
+    },
+    {
+      "psi_id": "PSI-21",
+      "acronym": "ACME CLD Flame",
+      "title": "Advanced Combustion via Microgravity Experiments / Coflow Laminar Diffusion Flame",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Flames of gaseous fuel",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "microgravity",
+        "ACME CLD Flame",
+        "Fuels",
+        "laminar diffusion flames",
+        "Combustion Integrated Rack",
+        "Flames"
+      ]
+    },
+    {
+      "psi_id": "PSI-22",
+      "acronym": "ACME E-FIELD Flames",
+      "title": "Advanced Combustion via Microgravity Experiments Electric-Field Effects on Laminar Diffusion Flames",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Laminar Flames",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-23"
+      ],
+      "keywords": [
+        "Methane flames",
+        "Coflow burner",
+        "OH PLIF",
+        "Carbon monoxide",
+        "Ion-driven Convection",
+        "Diffusion Flames",
+        "Electric field flames",
+        "CO PLIF",
+        "Impinging flame",
+        "Chemi-ionization"
+      ]
+    },
+    {
+      "psi_id": "PSI-23",
+      "acronym": "ACME s-Flame",
+      "title": "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Flames of gaseous fuels",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "Activation-energy asymptotics",
+        "Excess enthalpy",
+        "Flame structure",
+        "Soret",
+        "Diffusion Flames",
+        "Fickian diffusion",
+        "Hydrogen–air flames",
+        "ACME"
+      ]
+    },
+    {
+      "psi_id": "PSI-25",
+      "acronym": "BASS-II",
+      "title": "Burning and Suppression of Solids - II",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-26"
+      ],
+      "keywords": [
+        "Flame Spread",
+        "extinction limits",
+        "MSG",
+        "Fire Suppression",
+        "Solid Fuels",
+        "Forced Flow Velocity",
+        "BASS",
+        "Fire Safety"
+      ]
+    },
+    {
+      "psi_id": "PSI-26",
+      "acronym": "BASS",
+      "title": "Burning and Suppression of Solids",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-107",
+        "PSI-25"
+      ],
+      "keywords": [
+        "Flame Spread",
+        "Fire suppression system",
+        "Damkohler number",
+        "Boundary layer",
+        "Fire safety",
+        "Forced Flow Flame",
+        "Kinetic regime"
+      ]
+    },
+    {
+      "psi_id": "PSI-39",
+      "acronym": "CFI",
+      "title": "Cool Flames Investigation",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Droplets",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-69"
+      ],
+      "keywords": [
+        "Droplet combustion",
+        "Extinction",
+        "Helium dilution",
+        "n-dodecane cool flames",
+        "Flame dynamics",
+        "Alkane chemistry",
+        "Negative Temperature Coefficient (NTC)",
+        "Low-temperature chemistry",
+        "hydrocarbon fuel combustion",
+        "Renewable jet fuel"
+      ]
+    },
+    {
+      "psi_id": "PSI-47",
+      "acronym": "DAFT / DAFT-2",
+      "title": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-102"
+      ],
+      "keywords": [
+        "DAFT",
+        "Condensate Nuclei Counter",
+        "Laser scattering aerosol device",
+        "Fire safety",
+        "Space hardware testing",
+        "P-Trak particulate counter",
+        "Capillary Fluid Motion",
+        "Combustion",
+        "Smoke",
+        "Fire prevention"
+      ]
+    },
+    {
+      "psi_id": "PSI-60",
+      "acronym": "",
+      "title": "Computational and Experimental Analysis of SPICE Data Sets",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Gaseous",
+      "project_type": "Ground Investigation",
+      "flight_platform": "",
+      "related_psi_ids": [
+        "PSI-107"
+      ],
+      "keywords": [
+        "SPICE",
+        "Soot",
+        "Coflow",
+        "Flames",
+        "Laminar diffusion flames"
+      ]
+    },
+    {
+      "psi_id": "PSI-62",
+      "acronym": "",
+      "title": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Ground Investigation",
+      "flight_platform": "",
+      "related_psi_ids": [
+        "PSI-25",
+        "PSI-26"
+      ],
+      "keywords": [
+        "BASS",
+        "Flamelet Generated Manifolds",
+        "Flame Spread"
+      ]
+    },
+    {
+      "psi_id": "PSI-68",
+      "acronym": "FLEX-2",
+      "title": "Flame Extinguishment Experiment - 2",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "FLEX",
+        "Decane",
+        "Radiative Extinction",
+        "Flame Extinction",
+        "Microgravity Combustion",
+        "Diffusive Extinction",
+        "Multiple Droplet Combustion Apparatus",
+        "Droplet Combustion",
+        "Spacecraft Fire Safety",
+        "Ethanol",
+        "Soot Formation"
+      ]
+    },
+    {
+      "psi_id": "PSI-69",
+      "acronym": "FLEX",
+      "title": "Flame Extinguishment Experiment",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "FLEX",
+        "Droplet",
+        "Diffusion Flames",
+        "Fuel Sooting",
+        "Spacecraft Fire Safety",
+        "Flames"
+      ]
+    },
+    {
+      "psi_id": "PSI-98",
+      "acronym": "SAFFIRE-I",
+      "title": "Spacecraft Fire Safety Experiment-I",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire, Smoke Distribution",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-99",
+        "PSI-100",
+        "PSI-26"
+      ],
+      "keywords": [
+        "Cygnus",
+        "SAFFIRE",
+        "Flame Spread",
+        "Surface Combustion",
+        "Fire Safety",
+        "Fire",
+        "Oxidizer flux",
+        "Solid burning rate",
+        "Smoldering"
+      ]
+    },
+    {
+      "psi_id": "PSI-99",
+      "acronym": "SAFFIRE-II",
+      "title": "Spacecraft Fire Experiment-II",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Surface Combustion",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "Cygnus Spacecraft",
+      "related_psi_ids": [],
+      "keywords": [
+        "fire",
+        "Cygnus",
+        "SAFFIRE",
+        "Smoldering",
+        "fire safety",
+        "Nomex",
+        "SHS",
+        "Smoke Distribution"
+      ]
+    },
+    {
+      "psi_id": "PSI-100",
+      "acronym": "SAFFIRE-III",
+      "title": "Spacecraft Fire Experiment-III",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-99",
+        "PSI-98"
+      ],
+      "keywords": [
+        "SAFFIRE",
+        "Fire Safety",
+        "Surface Combustion",
+        "Smoldering",
+        "Flame Spread",
+        "low-gravity fire testing",
+        "flammability"
+      ]
+    },
+    {
+      "psi_id": "PSI-101",
+      "acronym": "SAME-R",
+      "title": "Smoke Aerosol Measurement Experiment-Reflight",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-102"
+      ],
+      "keywords": [
+        "Soot",
+        "Flames",
+        "Pyrell",
+        "SAME",
+        "Transmission Electron Microscopy",
+        "Silicon Rubber",
+        "Spacecraft Fire Safety",
+        "Teflon",
+        "Cotton",
+        "Smoke",
+        "Kapton",
+        "SAME-2"
+      ]
+    },
+    {
+      "psi_id": "PSI-102",
+      "acronym": "SAME",
+      "title": "Smoke and Aerosol Measurement Experiment",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-101"
+      ],
+      "keywords": [
+        "Smoke",
+        "Surface Combustion",
+        "Fire Safety",
+        "Bio-Astronautics",
+        "Smoldering"
+      ]
+    },
+    {
+      "psi_id": "PSI-106",
+      "acronym": "SLICE",
+      "title": "Structure and Liftoff In Combustion Experiment",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+      "research_area": "Combustion Science",
+      "subresearch_area": "",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-107"
+      ],
+      "keywords": [
+        "fuel dilution",
+        "Diffusion Flame",
+        "inlet velocity",
+        "Fuels"
+      ]
+    },
+    {
+      "psi_id": "PSI-107",
+      "acronym": "SPICE",
+      "title": "Smoke Point In Co-flow Experiment",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Fire Safety",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "Soot",
+        "Emisssions",
+        "Laminar diffusion flames",
+        "butane-lighter flame"
+      ]
+    },
+    {
+      "psi_id": "PSI-108",
+      "acronym": "STDCE-1",
+      "title": "Surface Tension Driven Convection Experiment-1",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-108",
+      "research_area": "Fluid Physics",
+      "subresearch_area": "",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "Space Shuttle",
+      "related_psi_ids": [],
+      "keywords": [
+        "USML-1",
+        "STDCE-1",
+        "thermocapillary flow",
+        "buoyancy",
+        "Columbia",
+        "Surface Tension",
+        "Constant Flux",
+        "Marangoni Number"
+      ]
+    },
+    {
+      "psi_id": "PSI-115",
+      "acronym": "",
+      "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Smoke Aerosol, Combustion Simulation",
+      "project_type": "Ground Investigation",
+      "flight_platform": "Not Applicable",
+      "related_psi_ids": [
+        "PSI-102"
+      ],
+      "keywords": [
+        "SAME Data",
+        "Nanoparticles",
+        "Ground-based research",
+        "Dibutyl pthalate",
+        "thermophoresis",
+        "Aerosol Smoke Generation",
+        "Navier-Stokes nodal approach",
+        "Numerical Simulation",
+        "Particle settling"
+      ]
+    },
+    {
+      "psi_id": "PSI-117",
+      "acronym": "",
+      "title": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Droplet",
+      "project_type": "Ground Investigation",
+      "flight_platform": "",
+      "related_psi_ids": [
+        "PSI-69",
+        "PSI-142"
+      ],
+      "keywords": [
+        "Cool Flames",
+        "thermo-convective perturbation",
+        "Droplet combustion",
+        "FLEX"
+      ]
+    },
+    {
+      "psi_id": "PSI-142",
+      "acronym": "",
+      "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Spacecraft Fire Safety",
+      "project_type": "Ground Investigation",
+      "flight_platform": "Not Applicable",
+      "related_psi_ids": [
+        "PSI-69"
+      ],
+      "keywords": [
+        "Cool Flame Transitions",
+        "Ground-based experiments",
+        "Flames",
+        "Radiation",
+        "Low temperature flames",
+        "Counterflow flames",
+        "Extinction Limit",
+        "n-alkane",
+        "FLEX",
+        "Dibutyl Ether",
+        "Modeling",
+        "Kinetic experiments",
+        "Emissions",
+        "Supercritical Reacting Fluids",
+        "Low temperature chemistry",
+        "PSI Grant"
+      ]
+    },
+    {
+      "psi_id": "PSI-159",
+      "acronym": "ACME CFI-G",
+      "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+      "research_area": "Combustion Science",
+      "subresearch_area": "Flames of Gaseous Fuels",
+      "project_type": "Microgravity Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [],
+      "keywords": [
+        "chemical kinetics",
+        "ethane",
+        "heat loss",
+        "low-temperature combustion",
+        "porous burner",
+        "dilution",
+        "formaldehyde",
+        "intensified video camera",
+        "n-butane",
+        "negative-temperature coefficient"
+      ]
+    },
+    {
+      "psi_id": "PSI-181",
+      "acronym": "",
+      "title": "Structure and Properties of Pb-Sn and Pb-free Sn-Ag-Cu Solders Produced in Terrestrial vs. Microgravity Environments under Extremes of Elevated and Cryo Temperatures",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-181",
+      "research_area": "Materials Science",
+      "subresearch_area": "Microstructural Characterization, Terrestrial vs Microgravity Effects, Solder Joints",
+      "project_type": "Ground Investigation",
+      "flight_platform": "International Space Station (ISS)",
+      "related_psi_ids": [
+        "PSI-77"
+      ],
+      "keywords": [
+        "solidification",
+        "Soldering",
+        "Micromechanical Testing",
+        "Extreme Temperatures",
+        "Marangoni Convection",
+        "Microstructure Characterization",
+        "Porosity"
+      ]
+    }
+  ]
+}

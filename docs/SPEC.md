@@ -200,6 +200,7 @@ Uma ficha tem duas metades:
 - **Campos curados** — frontmatter YAML (estruturados) + corpo Markdown com seções fixas (texto). Anna Luiza e Juliana editam pelo GitHub web.
 
 `curation_status`:
+- `draft` — esqueleto em preenchimento (gerado por `pnpm data:scaffold` ou copiado do template). O `data:build` valida só o formato e a ficha **fica fora** do catálogo. Decidido no M1 para os esqueletos poderem entrar no repo sem quebrar o CI.
 - `complete` — todos os campos vitais (6.4) preenchidos e revisados. Entra em tudo.
 - `partial` — tem pelo menos identificação + pilar + texto PSI bruto. Aparece no Explore/Detalhe com selo **"curadoria parcial"** e é citável no chat, mas **fica fora** do Scenario, do mapa O₂×P (se não tiver O₂/pressão) e do diff numérico do Comparador (campos vazios aparecem como "não informado").
 
@@ -213,7 +214,7 @@ experiment_name: Smoke Aerosol Measurement Experiment
 acronym: SAME
 aliases: [SAME]                             # usado pelo RAG para casar perguntas pelo nome
 psi_url: null                               # TODO(data) link direto PSI
-curation_status: partial                    # partial | complete
+curation_status: draft                      # draft | partial | complete
 curators: [juliana]
 last_reviewed: 2026-11-14
 
@@ -291,6 +292,8 @@ Regras de validação (Zod em `src/lib/catalog/schema.ts`):
 | `transfer_type` | `direct_spinoff`, `conceptual`, `dual_use_hardware` |
 | `prediction_tags` | definidos pelo Caio até H+8; seed: `high_oxygen`, `low_pressure`, `solid_flammability`, `flame_spread`, `smoke_aerosol`, `detector_calibration`, `droplet_combustion`, `diluent_suppression`, `large_scale_fire`, `extinction_limit` |
 
+Também em `vocab.yaml`: `spinoff_category` = `detection`, `suppression`, `ppe`, `materials` (as categorias da seção 6.5, com rótulos EN/PT).
+
 > Unificação decidida neste SPEC: a DIVISAO usava `solid_fabric | liquid | gas | aerosol` e o PLANO `solid | liquid_droplet | gas | smoke_aerosol`. Adotado `material_class` + `solid_form` (tecido = `solid` + `fabric`). **Caio confirma até H+8.**
 
 Cada valor tem rótulo EN/PT, ícone e (para pilares) cor — definidos em `vocab.yaml` e consumidos pela UI.
@@ -364,10 +367,12 @@ Para os **3 pares em destaque**: `same--same-r`, `bass--saffire-i` (ou SAFFIRE a
 4. Também gera `data/raw/psi/_index.json` (lista de todas as investigações do resultado `combustion` com título/URL) — a curadoria usa para escolher stretch e para descobrir PSI-IDs.
 5. **Fallback:** se o PSI não for raspável em 45 min, a curadoria cola o texto relevante em `data/raw/psi/<psi_id>.json` à mão (mesmo formato; o template fica no README).
 
+**Resultado da investigação (M1):** o PSI é uma SPA Angular sobre uma **API JSON aberta** (sem login, sem `robots.txt`). Busca em `/geode-py/ws/repo/search`, detalhe em `/geode-py/ws/repo/investigations/<PSI-ID>` e tabelas experimentais (CSV) via `/geode-py/ws/studies/<PSI-ID>/download`. Endpoints documentados no README. O PSI **não tem** "results highlights". O formato real do arquivo bruto é `PsiRawSchema` em `src/lib/catalog/psi.ts`: `sections: { objectives, hypothesis, approach, research_impacts }` + `metadata` (plataforma, hardware, relacionadas, palavras-chave) + `publications` (com DOI) + `experimental_tables` (CSV) + `doi` e `license` (CC0-1.0). Os chunks `psi_*` do RAG (seção 8.1) seguem essas seções. `pnpm data:scaffold` cria os esqueletos `draft` das fichas herói com a identificação PSI preenchida (nunca sobrescreve).
+
 ### 6.9 Build do catálogo (`npm run data:build`)
 
 Lê `data/**`, valida (6.2), resolve relações, junta texto bruto PSI, e escreve:
-- `src/generated/catalog.json` — `{ version: <hash do conteúdo>, generated_at, investigations[], spinoffs[], comparisons[], reference_atmospheres[], vocab }`.
+- `src/generated/catalog.json` — `{ version: <hash do conteúdo>, generated_at, investigations[], spinoffs[], comparisons[], reference_atmospheres[], vocab }`. Mais `src/generated/catalog-meta.json` (versão + contagens), para rotas leves como `/api/health` não carregarem o catálogo inteiro.
 - `public/downloads/space-firefighters-catalog.json` e `.csv` (uma linha por investigação; listas unidas por `;`; colunas numéricas separadas `o2_min`, `o2_max`, `pressure_psi_min`...). Inclui cabeçalho de atribuição NASA PSI e licença.
 - Em produção exclui `example: true`. Em dev inclui (com selo "EXAMPLE").
 - Imprime resumo: N fichas, N complete, N partial, N com Terra, avisos.
@@ -432,7 +437,7 @@ Passa para P0 se: `MODELO-PREVISAO.md` existe, pesos não provisórios, ≥ 12 f
 - **1 chunk = 1 seção semântica**, com prefixo de contexto no texto (ex.: `"SAME (PSI-XXX) — Why it matters for crew safety:\n..."`):
   - `summary`, `crew_safety`, `earth_impact`, `key_results`, `limitations` (seções da ficha)
   - `conditions` — texto **gerado deterministicamente** dos campos estruturados ("O₂ 21–21%, pressure 14.7 psia, hardware MSG...")
-  - `psi_objectives`, `psi_approach`, `psi_results` (texto bruto PSI; quebrar em ~400–600 tokens se maior)
+  - `psi_objectives`, `psi_hypothesis`, `psi_approach`, `psi_research_impacts` (texto bruto PSI; quebrar em ~400–600 tokens se maior)
   - `comparison` (de `data/comparisons`), `spinoff` (de `data/spinoffs`), `mission_context` (P1, por parágrafo)
 - Metadados: `slug`, `psi_id`, `experiment`, `section`, `pillar[]`, `environment[]`, `curation_status`, `has_earth_transfer`, `source_url`, `source_label`.
 - Idempotente: `id = sha256(slug + section + idx)`, `content_hash` — só reembeda o que mudou; remove chunks órfãos. Grava `catalog_version`.

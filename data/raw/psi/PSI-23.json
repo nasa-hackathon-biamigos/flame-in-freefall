@@ -1,0 +1,273 @@
+{
+  "psi_id": "PSI-23",
+  "title": "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames",
+  "acronym": "ACME s-Flame",
+  "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+  "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-23",
+  "doi": "10.60555/k57n-p030",
+  "license": {
+    "id": "CC0-1.0",
+    "name": "Creative Commons Zero v1.0 Universal",
+    "url": "https://spdx.org/licenses/CC0-1.0.html"
+  },
+  "psi_version": 4,
+  "fetched_at": "2026-11-14T16:33:30.085Z",
+  "metadata": {
+    "research_area": "Combustion Science",
+    "subresearch_area": "Flames of gaseous fuels",
+    "project_type": "Microgravity Investigation",
+    "flight_platform": "International Space Station (ISS)",
+    "managing_center": "Glenn Research Center (GRC)",
+    "start_date": "02-05-2015",
+    "end_date": "11-24-2019",
+    "related_psi_ids": [],
+    "keywords": [
+      "Activation-energy asymptotics",
+      "Excess enthalpy",
+      "Flame structure",
+      "Soret",
+      "Diffusion Flames",
+      "Fickian diffusion",
+      "Hydrogen–air flames",
+      "ACME"
+    ],
+    "hardware": {
+      "name": "Combustion Integrated Rack (CIR), ACME",
+      "link": "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/"
+    }
+  },
+  "sections": {
+    "objectives": "A series of experiments is proposed with the following specific objectives, in both soot-free and sooty flames, to compare with detailed computational simulation to assess transport properties and detailed chemical kinetics (including chemiluminescence):\nObjective A. Measure and characterize the transient structure (such as temperature and species distribution) of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates.\nObjective B. Determine the quasi-steady convective/chemical-kinetic extinction limits (low system Damköhler numbers) and radiative/chemical-kinetic extinction limits (high system Damköhler numbers) for mixtures of different H2/CH4/diluent ratios (soot-free) and different C2H4/diluent ratios (sooty).\nObjective C. Determine the existence (for different Zeldovich number, Ze), onset (as a function Da), and nature (i.e. mode, frequency, amplitude) of pulsating instabilities theoretically predicted to occur in transient spherical diffusion flames using fuel/diluent mixtures that are above a critical Lewis number.",
+    "hypothesis": "The transient numerical simulation of spherical flames developed as part of this program includes detailed chemistry and transport models, especially radiation mechanisms. Each description of the flames obtained from the experiment, including measurements of aspects of the flame structure, growth or flame front velocities, and the specific test conditions where steady state flames, flame extinctions, flame front instabilities, soot suppression limits, etc., comprise a rigorous test of the detailed model. Together they provide a measure of the comprehensiveness of the chemical kinetic and transport models.\nThe numerical simulation is also being used as a predictive tool to develop the science requirements for this experiment, especially the collection of test conditions and most aspects of the measurement systems. Due to time and g-jitter limitations, little of the planned test matrix can be adequately explored in the ground based test facilities, and the flight experiment definition will rely on the best effort in the modeling work.",
+    "approach": "A series of experiments is proposed in which mixtures of various gaseous fuels and diluents will be issued into an oxidizing environment through a spherical porous burner and ignited to obtain, nominally, a spherical, one-dimensional stabilized flame. Synchronized measurements are to be made including spectrally resolved images, flame and burner temperatures, radiative flux measurements, and system operating conditions (including reactant flow rates, ambient temperatures, pressures and acceleration levels, etc.). These data are to be used for comparisons of flame behavior and structure with detailed numerical simulations of the flames.\nConventional gaseous fuels including hydrogen, methane, and ethylene will be used. Hydrogen is the simplest fuel and its reaction mechanism is also reasonably established. Methane is the simplest hydrocarbon and extensive studies have been conducted on its combustion chemistry. Ethylene is a typical sooty fuel and is also an important intermediate for the oxidation of higher hydrocarbons. Diluents mixed with fuel are to include nitrogen and helium to adjust mixture diffusivities, and carbon dioxide to influence flame radiation characteristics.",
+    "research_impacts": "The impact of this work consists of both practical and fundamental aspects. Practically, with diffusion flame burning as the basis in many combustion engines and devices, understanding the underlying dynamics and chemistry of diffusion flames is important in improving performance in terms of power, efficiency, pollutant emissions, and reliability. Fundamentally, the unique buoyancy-free environment offered by microgravity affords simple aerodynamic flow fields to acquire diffusion flame data of high fidelity, with the prospect of understanding unit thermochemical processes as well as quantifying the associated physico-chemical parameters."
+  },
+  "publications": [
+    {
+      "title": "Opportunities and challenges of combustion in microgravity",
+      "authors": "Law C.K., Faeth G.M.",
+      "doi": "10.1016/0360-1285(94)90006-X"
+    },
+    {
+      "title": "On burner-stabilized cylindrical premixed flames in microgravity",
+      "authors": "Eng J.A., Law C.K., Zhu D.L.",
+      "doi": "10.1016/S0082-0784(06)80819-2"
+    },
+    {
+      "title": "On the structure, stabilization, and dual response of flat-burner flames",
+      "authors": "Eng J.A., Zhu D.L., Law C.K.",
+      "doi": "10.1016/0010-2180(94)00102-X"
+    },
+    {
+      "title": "Extinction mechanisms of near-limit premixed flames and extended limits of flammability",
+      "authors": "Sung C.J., Law C.K.",
+      "doi": "10.1016/S0082-0784(96)80296-7"
+    },
+    {
+      "title": "On the spreading of unsteady cylindrical diffusion flames",
+      "authors": "Qian J., Law C.K.",
+      "doi": "10.1016/S0010-2180(97)00069-2"
+    },
+    {
+      "title": "On the response of spherical premixed flames under rotation",
+      "authors": "Qian J., Bechtold J.K., Law C.K.",
+      "doi": "10.1016/S0010-2180(97)00051-5"
+    },
+    {
+      "title": "Role of flamefront motion and criterion for global quasi-steadiness in droplet burning",
+      "authors": "He Longtin, Tse Stephen D., Law Chung K.",
+      "doi": "10.1016/S0082-0784(98)80038-6"
+    },
+    {
+      "title": "On micro-buoyancy spherical diffusion flames and a double luminous zone structure of the hydrogen/methane flame",
+      "authors": "Sung C.J., Zhu D.L., Law C.K.",
+      "doi": "10.1016/S0082-0784(98)80108-2"
+    },
+    {
+      "title": "Structure, aerodynamics, and geometry of premixed flamelets",
+      "authors": "Law C.K, Sung C.J",
+      "doi": "10.1016/S0360-1285(00)00018-6"
+    },
+    {
+      "title": "Microgravity burner-generated spherical diffusion flames: experiment and computation‡‡Currently at Department of Mechanical and Aerospace Engineering, Case Western Reserve University, Cleveland, OH 44106.",
+      "authors": "Tse Stephen D, Zhu Delin, Sung Chih-Jen, Ju Yiguang, Law Chung K",
+      "doi": "10.1016/S0010-2180(01)00247-4"
+    },
+    {
+      "title": "Chemiluminescent OH* and CH* flame structure and aerodynamic scaling of weakly buoyant, nearly spherical diffusion flames",
+      "authors": "Yoo S.W., Law C.K., Tse S.D.",
+      "doi": "10.1016/S1540-7489(02)80204-8"
+    },
+    {
+      "title": "Oscillatory extinction of spherical diffusion flames: Micro-buoyancy experiment and computation",
+      "authors": "Yoo S.W., Christiansen E.W., Law C.K.",
+      "doi": "10.1016/S1540-7489(02)80008-6"
+    },
+    {
+      "title": "Development of Comprehensive Detailed and Reduced Reaction Mechanisms for Combustion Modeling",
+      "authors": "Law C. K., Sung C. J., Wang H., Lu T. F.",
+      "doi": "10.2514/2.7289"
+    },
+    {
+      "title": "Response of spherical diffusion flames under rotation with general Lewis numbers",
+      "authors": "Yoo S. W., Qian J., Bechtold J. K., Law C. K.",
+      "doi": "10.1080/13647830500098423"
+    },
+    {
+      "title": "Porous spherical burner for combustion experimentation",
+      "authors": "Yoo Sean W., Zhu Delin, Law Chung K.",
+      "doi": "10.1063/1.2212399"
+    },
+    {
+      "title": "On intrinsic oscillation in radiation-affected diffusion flames",
+      "authors": "Wang H.Y., Law C.K.",
+      "doi": "10.1016/j.proci.2006.07.183"
+    },
+    {
+      "title": "Effects of variable density on response of spherical diffusion flames under rotation",
+      "authors": "Yoo S.W., Law C.K.",
+      "doi": "10.1016/j.ijheatmasstransfer.2006.12.014"
+    },
+    {
+      "title": "A mechanistic study of Soret diffusion in hydrogen–air flames",
+      "authors": "Yang F., Law C.K., Sung C.J., Zhang H.Q.",
+      "doi": "10.1016/j.combustflame.2009.09.018"
+    },
+    {
+      "title": "Self-similar accelerative propagation of expanding wrinkled flames and explosion triggering",
+      "authors": "Akkerman V’yacheslav, Law Chung K., Bychkov Vitaly",
+      "doi": "10.1103/PhysRevE.83.026305"
+    },
+    {
+      "title": "Response of spherical diffusion flames subjected to rotation: Microgravity experimentation and computational simulation",
+      "authors": "Yoo Sean W., Chaudhuri Swetaprovo, Sacksteder Kurt R., Zhang Peng, Zhu Delin, Law Chung K.",
+      "doi": "10.1016/j.combustflame.2011.07.013"
+    },
+    {
+      "title": "Fuel Options for Next-Generation Chemical Propulsion",
+      "authors": "Law Chung K.",
+      "doi": "10.2514/1.J051328"
+    },
+    {
+      "title": "A mechanistic evaluation of Soret diffusion in heptane/air flames",
+      "authors": "Xin Yuxuan, Sung Chih-Jen, Law Chung K.",
+      "doi": "10.1016/j.combustflame.2012.03.005"
+    },
+    {
+      "title": "An experimental investigation on self-acceleration of cellular spherical flames",
+      "authors": "Wu Fujia, Jomaas Grunde, Law Chung K.",
+      "doi": "10.1016/j.proci.2012.05.068"
+    },
+    {
+      "title": "Initiation and propagation of laminar premixed cool flames",
+      "authors": "Zhao Peng, Liang Wenkai, Deng Sili, Law Chung K.",
+      "doi": "10.1016/j.fuel.2015.11.025"
+    },
+    {
+      "title": "On colliding spherical flames: Morphology, corner dynamics, and flame-generated vorticity",
+      "authors": "Yang Sheng, Zhu Delin, Law Chung K.",
+      "doi": "10.1016/j.combustflame.2015.10.029"
+    },
+    {
+      "title": "Extended flammability limits of n-heptane/air mixtures with cool flames",
+      "authors": "Liang Wenkai, Law Chung K.",
+      "doi": "10.1016/j.combustflame.2017.06.015"
+    },
+    {
+      "title": "Theory of first-stage ignition delay in hydrocarbon NTC chemistry",
+      "authors": "Liang Wenkai, Law Chung K.",
+      "doi": "10.1016/j.combustflame.2017.10.003"
+    },
+    {
+      "title": "Direct Numerical Simulation of turbulent nonpremixed “cool” flames: Applicability of flamelet models",
+      "authors": "Novoselov Alex G., Law Chung K., Mueller Michael E.",
+      "doi": "10.1016/j.proci.2018.06.191"
+    },
+    {
+      "title": "On Radical-Induced Ignition in Combustion Systems",
+      "authors": "Liang Wenkai, Law Chung K.",
+      "doi": "10.1146/annurev-chembioeng-060718-030141"
+    },
+    {
+      "title": "Binary collision of a burning droplet and a non-burning droplet of xylene: Outcome regimes and flame dynamics",
+      "authors": "Xiong Gang, Gandhi Rahul, Zhong Xiaosheng, Mädler Lutz, Tse Stephen D.",
+      "doi": "10.1016/j.proci.2018.06.198"
+    },
+    {
+      "title": "Stabilization mechanisms and burning rates of cylindrical burner flames",
+      "authors": "Eng J., Law C., Zhu D.",
+      "doi": "10.2514/6.1994-571"
+    },
+    {
+      "title": "On burner-supported, spherical diffusion flames under micro-buoyancy conditions",
+      "authors": "Sung C., Zhu D., Tse S., Law C.",
+      "doi": "10.2514/6.1998-563"
+    },
+    {
+      "title": "Microgravity burner-generated spherical diffusion flames - Experiment and computation",
+      "authors": "SD Tse, DL Zhu, CJ Sung, CK Law",
+      "doi": null
+    },
+    {
+      "title": "Thin-Flame Theory for Droplet Combustion at Low Grashof Numbers",
+      "authors": "Chen Shr-Jing, Tse Stephen",
+      "doi": "10.2514/6.2005-1140"
+    },
+    {
+      "title": "Nonlinear Analysis of Pulsating Instabilities in Diffusion Flames",
+      "authors": "Wang Heyang, Bechtold John, Law Chung",
+      "doi": "10.2514/6.2005-544"
+    },
+    {
+      "title": "An Experimental Study on the Response of Spherical Diffusion Flames Subjected to Rotation and Nonequidiffusion",
+      "authors": "Zhu Delin, Yoo Sean, Law C, Sacksteder Kurt",
+      "doi": "10.2514/6.2005-1141"
+    },
+    {
+      "title": "A Mechanistic Study of Soret Diffusion in Hydrogen-Air Flames",
+      "authors": "Yang Fan, Law C.K., Sung C.J., Zhang Huiqiang",
+      "doi": "10.2514/6.2009-988"
+    },
+    {
+      "title": "A comprehensive evaluation of soret diffusion in heptane-air flames",
+      "authors": "YX Xin, CJ Sung, CK Law",
+      "doi": null
+    },
+    {
+      "title": "Dynamics and morphology of spherical diffusion flames under rotation",
+      "authors": "S Yoo, S Chaudhuri, K Sacksteder, P Zhang, D Zhu, C Law",
+      "doi": "10.2514/6.2012-1251"
+    },
+    {
+      "title": "Dynamics and morphology of colliding spherical flames",
+      "authors": "S Yang, S Chaudhuri, D Zhu, CK Law",
+      "doi": null
+    },
+    {
+      "title": "On the structure and dynamics of stationary and rotating spherical diffusion flames",
+      "authors": "SW Yoo",
+      "doi": null
+    },
+    {
+      "title": "Weakly Buoyant Spherical Diffusion Flames: Properties of Hydrogen-CO Ethylene Flames",
+      "authors": "L Paxton",
+      "doi": null
+    },
+    {
+      "title": "Computational Simulation of Spherical Diffusion Flame Dynamics and Extinction in Microgravity",
+      "authors": "T Xia",
+      "doi": null
+    },
+    {
+      "title": "Combustion Science: A Researcher&#x27;s Guide to International Space Station",
+      "authors": "SA Gokoglu, DL Dietrich, DP Stocker, PV Ferkul, SL Olson",
+      "doi": null
+    }
+  ],
+  "experimental_tables": [
+    {
+      "file_name": "PSI-23_Experimental table_ACME s-Flame.csv",
+      "csv": "Test Type,Test Day*,Year,Month,Date,Atmosphere*,Fuel Bottle,Flames Ignited*,Notes\nFirst round of tests with nitrogen-diluted fuel and oxygen,19254,2019,Sept.,11,~21% O2 with N2,50% C2H4 with N2,13,*Test Day is formatted YYDDD where YY identfies year and DDD identifies day of year (GMT). \nFirst round of tests with nitrogen-diluted fuel and oxygen,19256,2019,Sept.,13,~21% O2 with N3,50% C2H4 with N3,16,*Atmosphere is ~1 atm but pressure increases and O2% drops with vitiation.\nFirst round of tests with nitrogen-diluted fuel and oxygen,19304,2019,Oct.,31,~21% O2 with N4,45% CH4 with N2,9,*Flames Ignited is the number ignited on that day (neglecting the day change on ISS).\nFirst round of tests with nitrogen-diluted fuel and oxygen,19308,2019,Nov.,4,~30% O2 with N2,45% CH4 with N3,21,\nFirst round of tests with nitrogen-diluted fuel and oxygen,19352,2019,Dec.,18,~21% O2 with N2,100% H2,10,\nFirst round of tests with nitrogen-diluted fuel and oxygen,20006,2020,Jan.,6,~21% O2 with N3,44.4% H2 with CH4,17,\nFirst round of tests with nitrogen-diluted fuel and oxygen,20013,2020,Jan.,13,~21% O2 with N4,66.7% H2 with CH4,22,\nFirst round of tests with nitrogen-diluted fuel and oxygen,20024,2020,Jan.,24,~21% O2 with N5,100% H2,16,\nFirst round of tests with nitrogen-diluted fuel and oxygen,20029,2020,Jan.,29,~21% O2 with N6,50% C2H4 with N2,21,\nFirst round of tests with nitrogen-diluted fuel and oxygen,20132,2020,May,11,~21% O2 with He,\"25% H2, 20% CH4, with He\",7,\nSecond round of tests with helium-diluted fuel and oxygen,20136,2020,May,15,~21% O2 with He,\"20% H2, 25% CH4, with He\",11,\nSecond round of tests with helium-diluted fuel and oxygen,20142,2020,May,21,~30% O2 with He,\"30% H2, 15% CH4, with He\",17,\nSecond round of tests with helium-diluted fuel and oxygen,20155,2020,June,3,~30% and ~21% O2 with He,45% H2 with He,9,\nSecond round of tests with helium-diluted fuel and oxygen,20160,2020,June,8,~30% and ~21% O2 with He,45% CH4 with He,12,\nSecond round of tests with helium-diluted fuel and oxygen,20164,2020,June,12,~30% O2 with He,20% C2H4 with He,11,\nSecond round of tests with helium-diluted fuel and oxygen,20170,2020,June,18,~30% and ~21% O2 with He,25% C2H4 with He,20,\nSecond round of tests with helium-diluted fuel and oxygen,20176,2020,June,24,~30% and ~21% O2 with He,30% C2H4 with He,23,\nSecond round of tests with helium-diluted fuel and oxygen,20190,2020,July,8,~30% and ~21% O2 with He,35% H2 with He,21,"
+    }
+  ]
+}

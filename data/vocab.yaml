@@ -1,0 +1,86 @@
+# Controlled vocabularies (docs/SPEC.md §6.3).
+# Fichas may only use the `id` values below. Changing an id breaks existing fichas:
+# talk to Pedro first. Labels are UI text (EN / PT-BR); icons are lucide-react names.
+# Caio confirms `material_class` and `prediction_tags` by H+8.
+
+pillar:
+  - { id: prevention, label: { en: Prevention, pt-BR: Prevenção }, icon: shield, color: "--prevention" }
+  - { id: detection, label: { en: Detection, pt-BR: Detecção }, icon: radar, color: "--detection" }
+  - { id: suppression, label: { en: Suppression, pt-BR: Supressão }, icon: fire-extinguisher, color: "--suppression" }
+
+environment:
+  - { id: iss, label: { en: ISS, pt-BR: ISS }, icon: satellite }
+  - { id: lunar_habitat, label: { en: Lunar habitat, pt-BR: Habitat lunar }, icon: moon }
+  - { id: pressurized_rover, label: { en: Pressurized rover, pt-BR: Rover pressurizado }, icon: truck }
+  - { id: spacecraft_cabin, label: { en: Spacecraft cabin, pt-BR: Cabine de nave }, icon: rocket }
+  - { id: spacesuit, label: { en: Spacesuit, pt-BR: Traje espacial }, icon: user-round }
+
+gravity:
+  - { id: 0g, label: { en: Microgravity (0g), pt-BR: Microgravidade (0g) }, icon: orbit }
+  - { id: 1g, label: { en: Normal gravity (1g), pt-BR: Gravidade normal (1g) }, icon: globe }
+  - { id: partial_future, label: { en: Partial gravity (no PSI data yet), pt-BR: Gravidade parcial (sem dados PSI) }, icon: moon-star }
+
+platform:
+  - { id: iss, label: { en: International Space Station, pt-BR: Estação Espacial Internacional }, icon: satellite }
+  - { id: cygnus, label: { en: Cygnus spacecraft, pt-BR: Nave Cygnus }, icon: rocket }
+  - { id: ground_lab, label: { en: Ground laboratory, pt-BR: Laboratório em solo }, icon: flask-conical }
+  - { id: drop_tower, label: { en: Drop tower, pt-BR: Torre de queda livre }, icon: arrow-down-to-line }
+  - { id: parabolic_flight, label: { en: Parabolic flight, pt-BR: Voo parabólico }, icon: plane }
+  - { id: other, label: { en: Other, pt-BR: Outra }, icon: circle-help }
+
+hardware:
+  - { id: cir, label: { en: Combustion Integrated Rack (CIR), pt-BR: Combustion Integrated Rack (CIR) }, icon: server }
+  - { id: mdca, label: { en: Multi-user Droplet Combustion Apparatus (MDCA), pt-BR: Multi-user Droplet Combustion Apparatus (MDCA) }, icon: droplet }
+  - { id: msg, label: { en: Microgravity Science Glovebox (MSG), pt-BR: Microgravity Science Glovebox (MSG) }, icon: box }
+  - { id: spice_duct, label: { en: SPICE flow duct, pt-BR: Duto de fluxo do SPICE }, icon: wind }
+  - { id: same_hardware, label: { en: SAME hardware, pt-BR: Hardware do SAME }, icon: scan-search }
+  - { id: cygnus_saffire, label: { en: Saffire flow unit (Cygnus), pt-BR: Unidade de fluxo Saffire (Cygnus) }, icon: rocket }
+  - { id: other, label: { en: Other, pt-BR: Outro }, icon: circle-help }
+
+material_class:
+  - { id: solid, label: { en: Solid, pt-BR: Sólido }, icon: square }
+  - { id: liquid_droplet, label: { en: Liquid droplet, pt-BR: Gotícula líquida }, icon: droplet }
+  - { id: gaseous, label: { en: Gaseous, pt-BR: Gasoso }, icon: cloud }
+  - { id: smoke_aerosol, label: { en: Smoke / aerosol, pt-BR: Fumaça / aerossol }, icon: cloud-fog }
+
+solid_form:
+  - { id: fabric, label: { en: Fabric, pt-BR: Tecido }, icon: shirt }
+  - { id: sheet, label: { en: Thin sheet, pt-BR: Folha fina }, icon: file }
+  - { id: rod_cylinder, label: { en: Rod / cylinder, pt-BR: Bastão / cilindro }, icon: cylinder }
+  - { id: foam, label: { en: Foam, pt-BR: Espuma }, icon: sponge }
+  - { id: wire_insulation, label: { en: Wire insulation, pt-BR: Isolamento de fio }, icon: cable }
+  - { id: other, label: { en: Other, pt-BR: Outro }, icon: circle-help }
+
+earth_sectors:
+  - { id: first_responders, label: { en: First responders, pt-BR: Bombeiros e socorristas }, icon: siren }
+  - { id: mining, label: { en: Mining, pt-BR: Mineração }, icon: pickaxe }
+  - { id: buildings, label: { en: Buildings, pt-BR: Edificações }, icon: building-2 }
+  - { id: aviation, label: { en: Aviation, pt-BR: Aviação }, icon: plane }
+  - { id: manufacturing, label: { en: Manufacturing, pt-BR: Indústria }, icon: factory }
+  - { id: healthcare, label: { en: Healthcare, pt-BR: Saúde }, icon: heart-pulse }
+  - { id: other, label: { en: Other, pt-BR: Outro }, icon: circle-help }
+
+transfer_type:
+  - { id: direct_spinoff, label: { en: Direct spinoff, pt-BR: Spinoff direto }, icon: badge-check }
+  - { id: conceptual, label: { en: Conceptual transfer, pt-BR: Transferência conceitual }, icon: lightbulb }
+  - { id: dual_use_hardware, label: { en: Dual-use hardware, pt-BR: Hardware de uso duplo }, icon: repeat }
+
+# Earth & Spinoffs card categories (SPEC §6.5).
+spinoff_category:
+  - { id: detection, label: { en: Detection, pt-BR: Detecção }, icon: radar }
+  - { id: suppression, label: { en: Suppression, pt-BR: Supressão }, icon: fire-extinguisher }
+  - { id: ppe, label: { en: Protective equipment, pt-BR: Equipamento de proteção }, icon: hard-hat }
+  - { id: materials, label: { en: Materials, pt-BR: Materiais }, icon: layers }
+
+# Seed list — Caio owns this vocabulary (SPEC §7).
+prediction_tags:
+  - { id: high_oxygen, label: { en: High oxygen, pt-BR: Oxigênio elevado } }
+  - { id: low_pressure, label: { en: Low pressure, pt-BR: Pressão reduzida } }
+  - { id: solid_flammability, label: { en: Solid flammability, pt-BR: Inflamabilidade de sólidos } }
+  - { id: flame_spread, label: { en: Flame spread, pt-BR: Propagação de chama } }
+  - { id: smoke_aerosol, label: { en: Smoke / aerosol, pt-BR: Fumaça / aerossol } }
+  - { id: detector_calibration, label: { en: Detector calibration, pt-BR: Calibração de detectores } }
+  - { id: droplet_combustion, label: { en: Droplet combustion, pt-BR: Combustão de gotículas } }
+  - { id: diluent_suppression, label: { en: Diluent suppression, pt-BR: Supressão por diluentes } }
+  - { id: large_scale_fire, label: { en: Large-scale fire, pt-BR: Incêndio em larga escala } }
+  - { id: extinction_limit, label: { en: Extinction limit, pt-BR: Limite de extinção } }

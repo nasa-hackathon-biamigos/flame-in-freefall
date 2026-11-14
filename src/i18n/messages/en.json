@@ -8,6 +8,7 @@
   "nav": {
     "label": "Main",
     "explore": "Explore",
+    "dados": "Data",
     "about": "About & data",
     "ask": "Ask PSI"
   },
@@ -153,6 +154,22 @@
     "licenseText": "PSI investigation records are published by NASA under CC0-1.0. Curated fields cite their own sources on each record.",
     "guideTitle": "NASA ISS combustion guide (2015)",
     "guideText": "The panel uses NASA GRC mini-book NP-2015-10-034-JSC (U.S. government public domain) for the prevention / detection / suppression structure, the page-35 findings, and the ventilation band on the flammability map. It is a 2015 snapshot: ACME, SoFIE and some cool-flame work appear as planned — PSI records say what actually flew. The assistant cites paraphrased passages with page numbers, not the full PDF."
+  },
+  "dados": {
+    "title": "SAME tabular data",
+    "lead": "{n, plural, one {# sample} other {# samples}} from detectors across {files, plural, one {# run} other {# runs}} in PSI-102. The full series lives in the local SQLite file.",
+    "empty": "No local warehouse yet. With spreadsheets in data/raw/psi-tabular/PSI-102, run:",
+    "materials": "Material",
+    "all": "All",
+    "points": "points",
+    "chartX": "Sample (downsampled)",
+    "chartY": "Normalized signal (0–1)",
+    "matrixTitle": "Experimental matrix (PSI-102)",
+    "col": {
+      "file": "File",
+      "material": "Material",
+      "n": "Rows"
+    }
   },
   "locale": {
     "label": "Language"

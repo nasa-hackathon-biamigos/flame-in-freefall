@@ -52,5 +52,6 @@ package-lock.json
 # bulk NASA PSI downloads (regenerate with npm run data:download-tabular)
 /data/raw/psi-tabular/**
 !/data/raw/psi-tabular/README.md
+/data/local/
 /data/raw/psi-cache/
 /data/context/*.pdf

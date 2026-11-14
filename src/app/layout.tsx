@@ -39,6 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               </Link>
               <nav aria-label={t("nav.label")} className="flex flex-1 gap-1 text-sm">
                 <NavLink href="/explore">{t("nav.explore")}</NavLink>
+                <NavLink href="/dados">{t("nav.dados")}</NavLink>
                 <NavLink href="/ask">{t("nav.ask")}</NavLink>
                 <NavLink href="/about">{t("nav.about")}</NavLink>
               </nav>

@@ -8,6 +8,7 @@
   "nav": {
     "label": "Principal",
     "explore": "Explorar",
+    "dados": "Dados",
     "about": "Sobre e dados",
     "ask": "Pergunte ao PSI"
   },
@@ -153,6 +154,22 @@
     "licenseText": "Os registros de investigações do PSI são publicados pela NASA sob CC0-1.0. Os campos curados citam suas próprias fontes em cada registro.",
     "guideTitle": "Guia NASA de combustão na ISS (2015)",
     "guideText": "O painel usa o mini-livro da NASA GRC NP-2015-10-034-JSC (domínio público dos EUA) para a estrutura prevenção / detecção / supressão, os achados da página 35 e a faixa de ventilação do mapa de inflamabilidade. É um retrato de 2015: ACME, SoFIE e parte das cool flames aparecem como planejados — o PSI diz o que de fato voou. O assistente cita trechos parafraseados com o número da página, não o PDF inteiro."
+  },
+  "dados": {
+    "title": "Dados tabulares SAME",
+    "lead": "{n, plural, one {# ponto} other {# pontos}} de detector em {files, plural, one {# corrida} other {# corridas}} do PSI-102. A série completa está no SQLite local.",
+    "empty": "Ainda não há warehouse local. Com as planilhas em data/raw/psi-tabular/PSI-102, rode:",
+    "materials": "Material",
+    "all": "Todos",
+    "points": "pontos",
+    "chartX": "Amostra (subamostrada)",
+    "chartY": "Sinal normalizado (0–1)",
+    "matrixTitle": "Matriz experimental (PSI-102)",
+    "col": {
+      "file": "Arquivo",
+      "material": "Material",
+      "n": "Linhas"
+    }
   },
   "locale": {
     "label": "Idioma"

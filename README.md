@@ -68,6 +68,7 @@ The curated catalog lives in `data/` and is the source of truth (Supabase only h
 | `pnpm data:scrape` | Downloads every PSI combustion investigation to `data/raw/psi/<PSI-ID>.json` + `_index.json`. Skips files that exist (`--force` to refresh, or pass IDs: `pnpm data:scrape PSI-25`). |
 | `pnpm data:scaffold` | Creates draft fichas for the 12 hero investigations from `data/_template.md`, with the PSI identification pre-filled. Pass IDs for others (`PSI-25`, `--slug` to name it). Never overwrites. |
 | `pnpm data:build` | Validates `data/**` and writes `src/generated/catalog.json` + `public/downloads/space-firefighters-catalog.{json,csv}`. Errors are in Portuguese for the curators. Runs before `dev`/`build` and in CI; `--production` (or `VERCEL_ENV=production`) drops example fichas. |
+| `pnpm data:ingest-tabular` | Lê as planilhas em `data/raw/psi-tabular/` (padrão: PSI-102) e grava `data/local/psi-tabular.sqlite`. `--supabase` envia as mesmas tabelas ao Postgres. |
 
 Run `pnpm data:build` once after cloning: `typecheck` needs the generated files.
 

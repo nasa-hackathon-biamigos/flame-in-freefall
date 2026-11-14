@@ -14,6 +14,7 @@ import { toExportCsv, toExportJson } from "../src/lib/catalog/export";
 import type { Problem } from "../src/lib/catalog/issues";
 import { loadDemoQuestions } from "../src/lib/rag/demo";
 import { buildRagIndex } from "../src/lib/rag/sources";
+import { buildInsights } from "./build-insights";
 
 const root = process.cwd();
 const production = process.argv.includes("--production") || process.env.VERCEL_ENV === "production";
@@ -79,6 +80,10 @@ async function main() {
     JSON.stringify(toExportJson(catalog), null, 2) + "\n",
   );
   await writeFile(path.join(downloads, "space-firefighters-catalog.csv"), toExportCsv(catalog));
+
+  const insights = await buildInsights();
+  if (!insights.ok) console.warn(`  aviso  ${insights.message}`);
+  else console.log(`  ${insights.message}`);
 
   console.log(
     [

@@ -36,7 +36,8 @@
     "lunarText": "Lunar habitats are planned with an atmosphere different from Earth's, where materials can burn more readily. The catalog shows which PSI experiments speak to that — and where the data runs out.",
     "earthTitle": "Back on Earth",
     "earthText": "Microgravity combustion research also informs smoke detection, suppression and protective equipment used on Earth.",
-    "earthCta": "Experiments with Earth applications"
+    "earthCta": "Experiments with Earth applications",
+    "ctaAsk": "Ask PSI"
   },
   "explore": {
     "title": "Explore",
@@ -200,6 +201,197 @@
       "conversation_expired": "This conversation expired. Start a new conversation.",
       "refusal": "The assistant declined to answer this question. Try asking about fire safety in crewed habitats.",
       "unavailable": "The assistant is unavailable right now. Please try again in a moment."
+    }
+  },
+  "dash": {
+    "kicker": "PSI fire-safety cockpit",
+    "title": "The smoke peak looks the same. The risk lives in the tail.",
+    "lead": "SAME (PSI-115) shows a ~7 μm mode in both 1g and 0g. What changes for detectors is the large-particle tail (d ≥ 20 μm): about 10× heavier in 0g at 8 cm/s.",
+    "cite": "NASA PSI-115 · DOI 10.60555/q0v5-1v28 · 8 cm/s PSD files",
+    "facts": {
+      "source": "Source",
+      "gravity": "Gravity",
+      "flow": "Duct flow",
+      "doi": "DOI"
+    },
+    "side": {
+      "label": "On this page",
+      "home": "Top",
+      "insights": "Smoke metrics",
+      "hardware": "Hardware families",
+      "table": "Investigations",
+      "gap": "What is missing"
+    },
+    "kpi": {
+      "curated": "Curated PSI sets",
+      "curatedHint": "Tabular samples, not video dumps",
+      "index": "Combustion in PSI",
+      "indexHint": "Indexed investigations",
+      "materials": "SAME materials",
+      "materialsHint": "PSI-102 unique names",
+      "spice": "SPICE runs",
+      "spiceHint": "PSI-107 fuel / nozzle / air"
+    },
+    "metric": {
+      "mode1g": "Peak diameter · 1g",
+      "mode0g": "Peak diameter · 0g",
+      "tail1g": "Large-particle share · 1g",
+      "tail0g": "Large-particle share · 0g",
+      "lunar": "Lunar O₂ vs Earth",
+      "similar": "Similar",
+      "earth": "Earth",
+      "artemis": "Artemis",
+      "flow8": "PSI-115 · 8 cm/s",
+      "cutoff": "d ≥ {d}",
+      "lunarHint": "21% → ≥30% · 14.7 → 10.2 psi"
+    },
+    "psd": {
+      "title": "Smoke size spectrum",
+      "hint": "Log diameter vs log PSD. The peak sits at the same size; 0g keeps a longer large-particle tail.",
+      "x": "Particle diameter",
+      "y": "PSD",
+      "legend1g": "1g",
+      "legend0g": "0g"
+    },
+    "tail": {
+      "title": "Share of particles ≥ 20 μm",
+      "hint": "Same cutoff, two duct speeds. 0g is the taller bar in both cases.",
+      "y": "% of PSD mass with d ≥ 20 μm"
+    },
+    "atmo": {
+      "title": "Atmospheres NASA asks us to care about",
+      "hint": "Sea-level cabin, planned lunar habitat, and suit. Higher O₂ at lower pressure makes materials easier to ignite than on Earth.",
+      "earth": "Earth / ISS cabin",
+      "lunar": "Planned lunar habitat",
+      "suit": "Spacesuit"
+    },
+    "hardware": {
+      "title": "Four hardware families, not 26 isolated tests",
+      "hint": "Reuse the same rack, change one variable. That is the comparable set.",
+      "items": [
+        {
+          "id": "same",
+          "title": "SAME hardware",
+          "items": "SAME · SAME-R · DAFT / DAFT-2",
+          "note": "The same instrument measures smoke (fire) and dust (air quality)."
+        },
+        {
+          "id": "msg",
+          "title": "MSG + SPICE duct",
+          "items": "BASS · BASS-II · SPICE · SLICE",
+          "note": "Solids and gases share the glovebox flow duct."
+        },
+        {
+          "id": "cir-mdca",
+          "title": "CIR + MDCA",
+          "items": "FLEX · FLEX-2 · CFI",
+          "note": "Liquid droplets — extinction limits and cool flames."
+        },
+        {
+          "id": "cir-acme",
+          "title": "CIR + ACME",
+          "items": "Flame Design · CLD · BRE · E-FIELD · s-Flame · CFI-G",
+          "note": "Modular gas hardware. CFI-G reaches 85% O₂ at the burner (lunar relevance)."
+        }
+      ]
+    },
+    "dual": {
+      "title": "Space → Earth, in one glance",
+      "items": [
+        {
+          "kicker": "SAME → Earth",
+          "body": "Detectors that separate smoke from dust — mines, submarines, buildings."
+        },
+        {
+          "kicker": "CFI-G → Moon",
+          "body": "Up to 85% O₂ at the burner: closest envelope to a high-O₂ lunar cabin."
+        },
+        {
+          "kicker": "FLEX → suppression",
+          "body": "Cool flames and dilution (PSI-117 / 142) inform atmosphere-based extinction, not only water."
+        }
+      ]
+    },
+    "fuels": {
+      "title": "SPICE fuels (run counts)",
+      "hint": "PSI-107: fuel, nozzle diameter and coflow air are the knobs."
+    },
+    "materials": {
+      "label": "SAME solids"
+    },
+    "table": {
+      "title": "What we actually have in-hand",
+      "hint": "Curated tabular samples. Hero investigations still in draft fichas are listed here from the NASA records, not invented.",
+      "cols": [
+        "PSI",
+        "Experiment",
+        "Pillar",
+        "Hardware",
+        "Material",
+        "What changed"
+      ],
+      "rows": [
+        {
+          "psi": "PSI-115",
+          "name": "SAME smoke model",
+          "pillar": "Detection",
+          "hw": "Simulation",
+          "material": "DBP aerosol",
+          "changed": "1g vs 0g, 8 and 10 cm/s"
+        },
+        {
+          "psi": "PSI-102",
+          "name": "SAME",
+          "pillar": "Detection",
+          "hw": "SAME / MSG",
+          "material": "Teflon, Kapton, silicone…",
+          "changed": "flow, mass loss, aging"
+        },
+        {
+          "psi": "PSI-101",
+          "name": "SAME-R",
+          "pillar": "Detection",
+          "hw": "SAME / MSG",
+          "material": "+ Pyrell",
+          "changed": "temperature, no-flow, M-pass"
+        },
+        {
+          "psi": "PSI-107",
+          "name": "SPICE",
+          "pillar": "Prevention",
+          "hw": "MSG + duct",
+          "material": "Ethylene, propane…",
+          "changed": "fuel, nozzle, coflow air"
+        },
+        {
+          "psi": "PSI-98",
+          "name": "SAFFIRE-I",
+          "pillar": "Prevention",
+          "hw": "Cygnus",
+          "material": "SIBAL fabric",
+          "changed": "large-scale fire"
+        },
+        {
+          "psi": "PSI-117",
+          "name": "Cool-flame CFD",
+          "pillar": "Suppression",
+          "hw": "FLEX / OpenFOAM",
+          "material": "n-alkanes",
+          "changed": "convection + heating"
+        },
+        {
+          "psi": "PSI-142",
+          "name": "Cool flames (ground)",
+          "pillar": "Suppression",
+          "hw": "Bench",
+          "material": "DME / n-alkanes",
+          "changed": "O₃, cool vs hot extinction"
+        }
+      ]
+    },
+    "gap": {
+      "title": "Honest gap",
+      "body": "There is no current PSI data for partial gravity (Moon / Mars) — only 0g and 1g bounds. Lunar habitat O₂ ≥ 30% at ≤ 10.2 psi is a design target, not a completed test matrix. Fichas in this repo are still draft, so Explore cannot list them yet; this cockpit reads the tabular files directly."
     }
   }
 }

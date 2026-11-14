@@ -1,25 +1,25 @@
 # Reference atmospheres shaded on the O₂ × pressure map (docs/SPEC.md §6.6).
-# Owner: Anna Luiza (Caio reviews). Due H+8.
-# A zone is drawn ONLY when it has source_url + o2_percent.min + pressure_psi.min.
-# Values below are deliberately null: fill them from a NASA source, never from memory.
+# Numbers come from the NASA Space Apps 2026 challenge statement
+# "Flame in Freefall" (spacesuit 4.3 psi / 100% O₂; sea-level 14.7 psi;
+# planned lunar habitat ≥30% O₂ at ≤10.2 psi — >40% higher O₂ than Earth).
 
 - id: earth_sea_level
   label: { en: "Earth / ISS cabin", pt-BR: "Terra / cabine ISS" }
-  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~21%
-  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ~14.7 psia
-  source_url: null
-  notes: null
+  o2_percent: { min: 21, max: 21 }
+  pressure_psi: { min: 14.7, max: 14.7 }
+  source_url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+  notes: "NASA Space Apps 2026 Flame in Freefall: sea-level pressure 14.7 psi; Earth/ISS cabin air ~21% O₂."
 
 - id: lunar_habitat
   label: { en: "Planned lunar habitat", pt-BR: "Habitat lunar planejado" }
-  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~30%+
-  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ≤10.2 psia
-  source_url: null
-  notes: null
+  o2_percent: { min: 30, max: 30 }
+  pressure_psi: { min: 10.2, max: 10.2 }
+  source_url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+  notes: "NASA Space Apps 2026: lunar base and pressurized vehicles expected at ≥30% O₂ and ≤10.2 psi to shorten pre-breathe vs spacesuit 100% O₂."
 
 - id: spacesuit
   label: { en: "Spacesuit", pt-BR: "Traje espacial" }
-  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~100%
-  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ~4.3 psia
-  source_url: null
-  notes: null
+  o2_percent: { min: 100, max: 100 }
+  pressure_psi: { min: 4.3, max: 4.3 }
+  source_url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/"
+  notes: "NASA Space Apps 2026 Flame in Freefall: suits filled with pure oxygen at 4.3 psi."

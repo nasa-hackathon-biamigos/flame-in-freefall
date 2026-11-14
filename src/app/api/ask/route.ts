@@ -3,7 +3,7 @@ import { z } from "zod";
 import catalogMeta from "@/generated/catalog-meta.json";
 import ragIndex from "@/generated/rag-index.json";
 import { CitationTracker, sourceKey } from "@/lib/rag/citations";
-import { Anthropic, claudeModel, streamAnswer, userTurn } from "@/lib/rag/claude";
+import { Anthropic, claudeModel, streamAnswer, userTurn, viaOpenRouter } from "@/lib/rag/claude";
 import { encodeEvent, MAX_TURNS, type AskErrorCode, type AskEvent } from "@/lib/rag/events";
 import { NO_EVIDENCE_MESSAGE, PROMPT_VERSION } from "@/lib/rag/prompt";
 import { retrieve } from "@/lib/rag/retrieve";
@@ -208,21 +208,23 @@ export async function POST(request: Request) {
           send(e);
           replay.push(e);
         };
-        const textBlocks = new Set<number>();
-        const answer = streamAnswer([...historyFrom(turns), newTurn]);
+        const textBlocks = new Map<number, string>(); // block index → text so far
+        const answer = streamAnswer([...historyFrom(turns, { textOnly: viaOpenRouter() }), newTurn]);
         for await (const event of answer) {
           if (event.type === "content_block_start" && event.content_block.type === "text")
-            textBlocks.add(event.index);
+            textBlocks.set(event.index, "");
           else if (event.type === "content_block_delta" && textBlocks.has(event.index)) {
-            if (event.delta.type === "text_delta") emit({ type: "text", text: event.delta.text });
-            else if (
+            if (event.delta.type === "text_delta") {
+              textBlocks.set(event.index, textBlocks.get(event.index) + event.delta.text);
+              emit({ type: "text", text: event.delta.text });
+            } else if (
               event.delta.type === "citations_delta" &&
               event.delta.citation.type === "search_result_location"
             ) {
               tracker.cite(event.index, event.delta.citation).forEach(emit);
             }
           } else if (event.type === "content_block_stop" && textBlocks.has(event.index)) {
-            tracker.close(event.index).forEach(emit);
+            tracker.close(event.index, textBlocks.get(event.index) ?? "").forEach(emit);
           }
         }
         const final = await answer.finalMessage();

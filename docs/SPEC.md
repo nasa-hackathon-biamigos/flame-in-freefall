@@ -102,7 +102,7 @@
 | i18n | **next-intl** sem prefixo de rota (locale por cookie, `en` padrão, `pt-BR`) |
 | Dados curados | Markdown com frontmatter YAML (`gray-matter`) + Markdown no corpo (`remark`) → validado com **Zod** → `src/generated/catalog.json` |
 | Visualizações | SVG próprio com `d3-scale`/`d3-shape` (mapa O₂×pressão, timeline); TanStack Table (matriz, P1); grafo P2 com `react-force-graph-2d` |
-| LLM | **Claude API** via `@anthropic-ai/sdk`, modelo **`claude-opus-5-5`** (env `ANTHROPIC_MODEL`) |
+| LLM | **Claude** via `@anthropic-ai/sdk`, modelo **`claude-opus-5-5`** (env `ANTHROPIC_MODEL`). **Decidido em 14/11:** o time usa uma chave do **OpenRouter** (endpoint compatível com a API de Mensagens da Anthropic). Ver nota em §8.3 |
 | Embeddings | **OpenAI `text-embedding-3-small`** (1536 dims) via pacote `openai` — **só** para embeddings |
 | Vector DB + persistência | **Supabase** (Postgres + **pgvector**): chunks, rate limit, cache de respostas, logs anônimos |
 | Scraper | Node script (`fetch` + `cheerio`; se o PSI for SPA com API JSON, usar a API) |
@@ -461,6 +461,7 @@ Passa para P0 se: `MODELO-PREVISAO.md` existe, pesos não provisórios, ≥ 12 f
   - Diferencie microgravidade, 1g e "gravidade parcial (sem dados PSI)". Avise quando uma fonte é de ficha `partial`.
   - Responda no idioma da pergunta; seja conciso (≤ ~250 palavras salvo pedido); use bullets para comparações.
 - **Prompt caching:** `cache_control` no system prompt; histórico append-only para reaproveitar cache entre turnos.
+- **Via OpenRouter (decidido em 14/11, medido):** citações com `search_result`, pensamento adaptativo, esforço, cache e streaming funcionam. Diferenças tratadas no código (`src/lib/rag/claude.ts`): (1) o parâmetro `fallbacks` é rejeitado, então não há fallback de recusa (recusa → mensagem amigável); (2) a resposta vem num único bloco de texto com todas as citações, então os marcadores [n] são posicionados pela linha que mais se parece com o trecho citado; (3) reenviar blocos de pensamento no histórico faz o modelo parar de citar nos turnos seguintes, então o histórico vai só com o texto das respostas. Com uma chave da Anthropic, o caminho direto é usado sem essas adaptações.
 
 ### 8.4 Multi-turn
 - Conversa identificada por `conversation_id` (uuid em `sessionStorage`; recarregar a página = conversa nova).

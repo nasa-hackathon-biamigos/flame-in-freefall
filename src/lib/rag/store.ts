@@ -65,14 +65,25 @@ export async function createConversation(db: SupabaseClient, id: string, locale:
 }
 
 /**
- * Rebuilds the exact message history (append-only, SPEC §8.4). Turns without a model answer
+ * Rebuilds the message history (append-only, SPEC §8.4). Turns without a model answer
  * (no evidence, refusal, error) are skipped: only what the model actually saw goes back.
+ *
+ * `textOnly`: send earlier answers as plain text. Needed through OpenRouter, where replayed
+ * thinking blocks make the model stop citing on follow-up turns (measured 2026-11-14:
+ * 0 citations with thinking blocks replayed, 8 without). Direct to the Anthropic API the exact
+ * content goes back unchanged, as preserved thinking requires.
  */
-export function historyFrom(turns: StoredTurn[]): MessageParam[] {
+export function historyFrom(turns: StoredTurn[], opts: { textOnly?: boolean } = {}): MessageParam[] {
   const messages: MessageParam[] = [];
   for (const t of turns) {
     if (!t.request_messages || !t.response_content) continue;
-    messages.push(...t.request_messages, { role: "assistant", content: t.response_content });
+    const content = opts.textOnly
+      ? t.response_content.flatMap((b) =>
+          b.type === "text" ? [{ type: "text" as const, text: b.text }] : [],
+        )
+      : t.response_content;
+    if (content.length === 0) continue;
+    messages.push(...t.request_messages, { role: "assistant", content });
   }
   return messages;
 }

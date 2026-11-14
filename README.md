@@ -102,7 +102,7 @@ Answers come only from passages of the catalog: the original PSI text of every d
 | `pnpm rag:ingest` | Rebuilds the vector index in Supabase from `data/`. Only new or changed passages are embedded (a few cents at most); `--dry-run` shows what would change. Run it after merging curated fichas. |
 | `pnpm rag:warm` | Pre-warms cached answers for `data/demo_questions.yaml` against a running server (`--base <url>`, `--locale en,pt-BR`). **Each uncached question is a paid Claude call.** |
 
-Needs `ANTHROPIC_API_KEY` (an Anthropic key, `sk-ant-...`), `OPENAI_API_KEY`, and the Supabase keys. Limits: `RATE_LIMIT_PER_HOUR`, `DAILY_MESSAGE_CAP`, `RAG_MIN_SIMILARITY` (see `.env.example`).
+Needs `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, and the Supabase keys. The team uses an **OpenRouter** key (`sk-or-...`), detected automatically and routed through OpenRouter's Anthropic-compatible endpoint; an Anthropic key (`sk-ant-...`) calls Anthropic directly (see `docs/SPEC.md` §8.3). Limits: `RATE_LIMIT_PER_HOUR`, `DAILY_MESSAGE_CAP`, `RAG_MIN_SIMILARITY` (see `.env.example`).
 
 ## Data and attribution
 

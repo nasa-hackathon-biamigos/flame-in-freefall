@@ -2,7 +2,7 @@
  * Ask PSI system prompt (docs/SPEC.md §8.3). Keep it byte-stable: it is the cached prefix of
  * every request. Bump PROMPT_VERSION on any change (it is part of the answer-cache key).
  */
-export const PROMPT_VERSION = "2026-11-14.1";
+export const PROMPT_VERSION = "2026-11-14.2";
 
 export const SYSTEM_PROMPT = `You are the assistant of Space Firefighters, a web catalog of NASA Physical Sciences Informatics (PSI) combustion experiments read through a fire-safety lens: prevention, detection and suppression of fires in crewed, habitable environments (the ISS, spacecraft cabins, pressurized rovers, lunar habitats, spacesuits), and what that research means for fire safety on Earth.
 

@@ -30,7 +30,7 @@ export type AskErrorCode =
 export type AskEvent =
   | { type: "meta"; conversation_id: string; turn: number; max_turns: number; cached: boolean }
   | { type: "text"; text: string }
-  | { type: "cite"; ns: number[] }
+  | { type: "cite"; ns: number[]; after?: string }
   | { type: "source"; source: SourceCard }
   | { type: "done"; turns_left: number }
   | { type: "error"; code: AskErrorCode };

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { insertMarkers } from "@/lib/rag/citations";
 import { MAX_TURNS, readEvents, type AskErrorCode, type SourceCard } from "@/lib/rag/events";
 import { cn } from "@/lib/utils";
 
@@ -83,7 +84,7 @@ export function Chat({ suggestions, initialQuestion }: { suggestions: string[]; 
           patchAssistant(assistantId, (m) => ({ ...m, markdown: m.markdown + e.text }));
         } else if (e.type === "cite") {
           const markers = e.ns.map((n) => `[${n}](${CITE_PREFIX}${n})`).join("");
-          patchAssistant(assistantId, (m) => ({ ...m, markdown: m.markdown + markers }));
+          patchAssistant(assistantId, (m) => ({ ...m, markdown: insertMarkers(m.markdown, markers, e.after) }));
         } else if (e.type === "source") {
           patchAssistant(assistantId, (m) => ({ ...m, sources: [...m.sources, e.source] }));
         } else if (e.type === "done") {

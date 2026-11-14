@@ -1,0 +1,14 @@
+{
+  "app": {
+    "name": "Space Firefighters",
+    "tagline": "O que o fogo em microgravidade nos ensinou — para a Lua e para a Terra.",
+    "disclaimer": "Dados: NASA Physical Sciences Informatics · Não é um produto oficial da NASA"
+  },
+  "home": {
+    "title": "O fogo se comporta diferente no espaço. A NASA tem os dados. Nós os tornamos úteis.",
+    "status": "Estrutura no ar. O catálogo vem a seguir."
+  },
+  "locale": {
+    "label": "Idioma"
+  }
+}

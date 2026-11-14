@@ -1,0 +1,99 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Dark "cockpit" theme only (SPEC §10.12). Light theme is P2. */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-inter);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-flame: var(--flame);
+  --color-plasma: var(--plasma);
+  --color-earth: var(--earth);
+  --color-prevention: var(--prevention);
+  --color-detection: var(--detection);
+  --color-suppression: var(--suppression);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0a0e14;
+  --foreground: #e6edf3;
+  --card: #111821;
+  --card-foreground: #e6edf3;
+  --popover: #111821;
+  --popover-foreground: #e6edf3;
+  --primary: #ff7a1a;
+  --primary-foreground: #0a0e14;
+  --secondary: #1a2330;
+  --secondary-foreground: #e6edf3;
+  --muted: #1a2330;
+  --muted-foreground: #9aa7b4;
+  --accent: #1a2330;
+  --accent-foreground: #e6edf3;
+  --destructive: #f85149;
+  --border: #253041;
+  --input: #253041;
+  --ring: #4da3ff;
+  --radius: 0.625rem;
+
+  --flame: #ff7a1a; /* 1g flame */
+  --plasma: #4da3ff; /* spherical blue flame in 0g */
+  --earth: #2bb3a3;
+  --prevention: #ff9f43;
+  --detection: #4da3ff;
+  --suppression: #2bb3a3;
+  --ok: #3fb950;
+  --warn: #d29922;
+  --bad: #f85149;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

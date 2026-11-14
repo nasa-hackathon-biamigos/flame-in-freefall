@@ -1,0 +1,14 @@
+{
+  "app": {
+    "name": "Space Firefighters",
+    "tagline": "What microgravity fire taught us — for the Moon and for Earth.",
+    "disclaimer": "Data: NASA Physical Sciences Informatics · Not an official NASA product"
+  },
+  "home": {
+    "title": "Fire behaves differently in space. NASA has the data. We make it usable.",
+    "status": "Scaffold is live. Catalog coming next."
+  },
+  "locale": {
+    "label": "Language"
+  }
+}

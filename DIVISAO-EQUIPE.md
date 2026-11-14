@@ -20,8 +20,8 @@ flowchart TB
     CA[Caio]
   end
   subgraph eng [Engenharia — produto]
-    BE[Beatriz]
-    PL[Pedro Lukas]
+    BE[Beatriz — frontend]
+    PL[Pedro Lukas — backend/RAG]
   end
   PSI[(NASA PSI + artigos)]
   JSON[data/investigations.json]
@@ -33,9 +33,9 @@ flowchart TB
   JU --> JSON
   JSON --> CA
   CA --> PRED
-  JSON --> BE
-  PRED --> BE
+  JSON --> PL
   PRED --> PL
+  PL --> BE
   BE --> APP
   PL --> APP
 ```
@@ -44,7 +44,7 @@ flowchart TB
 |--------|---------|-------------------------|
 | **Pesquisa & curadoria** | Anna Luiza, Juliana | *Quais dados são vitais? O que difere entre investigações? O que significa para tripulação e Terra?* |
 | **Modelo & previsão** | Caio | *Dado um cenário (O₂, pressão, material, 0g), quais experimentos se aplicam e qual risco/ recomendação o PSI suporta?* |
-| **Código & produto** | Beatriz, Pedro Lukas | *Como isso vira painel, comparador, chat e scenario builder utilizável no demo?* |
+| **Código & produto** | Beatriz (UI), Pedro Lukas (API/RAG) | *Como isso vira painel, comparador, chat e scenario builder utilizável no demo?* |
 
 ---
 
@@ -108,7 +108,7 @@ flowchart TB
 
 **Responsabilidades principais**
 
-- Escrever `docs/MODELO-PREVISAO.md` (especificação que Beatriz/Pedro implementam):
+- Escrever `docs/MODELO-PREVISAO.md` (especificação que **Pedro Lukas** implementa na API e **Beatriz** na UI):
   - **Entradas:** `o2_percent`, `pressure_psi`, `gravity` (0g | 1g | partial_future), `material_class` (solid_fabric | liquid | gas | aerosol), `pillar` (prevention | detection | suppression), `environment` (ISS | lunar_habitat | rover).
   - **Saídas:** lista ranqueada de `psi_id`, `risk_band` (low | medium | high | insufficient_data), `confidence`, `rationale_bullets[]`.
   - **Regras v1:** ex. O₂ ≥ 30% e sólido → priorizar BASS, CFI-G, SAFFIRE; detecção → SAME; supressão → FLEX.
@@ -128,7 +128,29 @@ flowchart TB
 
 ---
 
-### Beatriz — Engenharia (coordenação, backend, dados, RAG)
+### Beatriz — Engenharia (frontend, UX, comparador, Earth)
+
+**Missão:** painel que **mostra** comparação e interpretação — visual forte para jurados.
+
+**Responsabilidades principais**
+
+- UI (home, explore, filtros `earth_spinoff`, mission context).
+- **Comparador** 2–3 investigações (tabela semelhanças/diferenças).
+- Página **Earth & Spinoffs** consumindo `earth_spinoffs.json`.
+- **Scenario builder** (formulário → chama API do Caio/Pedro → mostra investigações + risco + explicação).
+- Polimento visual, acessibilidade, roteiro de cliques para o vídeo.
+
+**Entregáveis**
+
+| Prazo | Entrega |
+|-------|---------|
+| H+8h | Layout + navegação + cards mock |
+| H+28h | Comparador + fichas + filtros |
+| H+48h | Earth hub + scenario UI + versão “demo mode” |
+
+---
+
+### Pedro Lukas — Engenharia (coordenação, backend, dados, RAG)
 
 **Missão:** integrar tudo no repositório, API e IA com citações; coordenar entregas e demo.
 
@@ -148,28 +170,6 @@ flowchart TB
 | H+4h | Repo + schema JSON + template de ficha vazio |
 | H+24h | Explore + detail lendo JSON; ingestão de chunks |
 | H+48h | RAG estável + scenario API + deploy |
-
----
-
-### Pedro Lukas — Engenharia (frontend, UX, comparador, Earth)
-
-**Missão:** painel que **mostra** comparação e interpretação — visual forte para jurados.
-
-**Responsabilidades principais**
-
-- UI (home, explore, filtros `earth_spinoff`, mission context).
-- **Comparador** 2–3 investigações (tabela semelhanças/diferenças).
-- Página **Earth & Spinoffs** consumindo `earth_spinoffs.json`.
-- **Scenario builder** (formulário → chama API do Caio/Beatriz → mostra investigações + risco + explicação).
-- Polimento visual, acessibilidade, roteiro de cliques para o vídeo.
-
-**Entregáveis**
-
-| Prazo | Entrega |
-|-------|---------|
-| H+8h | Layout + navegação + cards mock |
-| H+28h | Comparador + fichas + filtros |
-| H+48h | Earth hub + scenario UI + versão “demo mode” |
 
 ---
 
@@ -200,13 +200,13 @@ Tudo isso deve ir para o JSON — o modelo **não funciona** sem esses campos.
 | Ordem | Quem | Ação | Para quem |
 |-------|------|------|-----------|
 | 1 | Anna + Juliana | Pesquisam PSI e preenchem template | JSON no repo |
-| 2 | Caio | Lê JSON, define tags/pesos, cenários | Beatriz implementa |
-| 3 | Beatriz | API + RAG + ingest chunks | Pedro consome na UI |
-| 4 | Pedro | Telas comparador + scenario | Demo |
+| 2 | Caio | Lê JSON, define tags/pesos, cenários | Pedro Lukas implementa na API |
+| 3 | Pedro Lukas | API + RAG + ingest chunks | Beatriz consome na UI |
+| 4 | Beatriz | Telas comparador + scenario | Demo |
 | 5 | Caio + Anna + Juliana | Testam 10 cenários na UI | Ajuste antes do pitch |
-| 6 | Beatriz + Pedro | Vídeo e slides | Todos revisam fatos PSI |
+| 6 | Beatriz + Pedro Lukas | Vídeo e slides | Todos revisam fatos PSI |
 
-**Contrato de arquivo:** mudanças em `data/investigations.json` via PR ou aviso no grupo; Beatriz faz merge no schema.
+**Contrato de arquivo:** mudanças em `data/investigations.json` via PR ou aviso no grupo; **Pedro Lukas** faz merge no schema.
 
 **Template de ficha:** copiar de `data/investigations.schema.json` (criar no repo) — uma investigação por PR/commit lógico.
 
@@ -218,15 +218,15 @@ Horas relativas (H0 = início oficial do time).
 
 | Hora | Anna Luiza | Juliana | Caio | Beatriz | Pedro Lukas |
 |------|------------|---------|------|---------|-------------|
-| 0–6h | 3 fichas prevenção/escala | SAME, FLEX, spinoffs rascunho | Features + doc esboço | Repo + schema | UI shell |
-| 6–18h | Completar heróis + matriz BASS/SAFFIRE | Earth JSON + SAME-R/CFI | Pesos + 10 cenários | API + seed JSON | Explore + detail |
-| 18–30h | Chunks interpretação | Mission context MD | Validar cenários | RAG | Comparador |
-| 30–42h | Revisão fichas stretch | Revisão Terra | Ajuste pesos | Scenario API | Earth + scenario UI |
-| 42–48h | QA científico pitch | QA spinoffs | Demo narrativa modelo | Deploy + vídeo técnico | Polish + roteiro demo |
+| 0–6h | 3 fichas prevenção/escala | SAME, FLEX, spinoffs rascunho | Features + doc esboço | UI shell | Repo + schema |
+| 6–18h | Completar heróis + matriz BASS/SAFFIRE | Earth JSON + SAME-R/CFI | Pesos + 10 cenários | Explore + detail | API + seed JSON |
+| 18–30h | Chunks interpretação | Mission context MD | Validar cenários | Comparador | RAG |
+| 30–42h | Revisão fichas stretch | Revisão Terra | Ajuste pesos | Earth + scenario UI | Scenario API |
+| 42–48h | QA científico pitch | QA spinoffs | Demo narrativa modelo | Polish + roteiro demo | Deploy + vídeo técnico |
 
 ---
 
-## 6. Modelo de previsão — visão para o pitch (Caio + Beatriz)
+## 6. Modelo de previsão — visão para o pitch (Caio + Pedro Lukas)
 
 **O que dizemos aos jurados**
 
@@ -249,7 +249,7 @@ Horas relativas (H0 = início oficial do time).
 
 - **Sync a cada 4h (15 min):** bloqueios, fichas novas, API quebrou?
 - **Canal fixo:** “Ficha pronta” = checklist dos campos vitais (seção 3).
-- **Dono do merge:** Beatriz (schema); **donos do conteúdo:** Anna/Juliana aprovam texto científico; Caio aprova tags de previsão.
+- **Dono do merge:** Pedro Lukas (schema); **donos do conteúdo:** Anna/Juliana aprovam texto científico; Caio aprova tags de previsão.
 
 ---
 
@@ -260,8 +260,8 @@ Horas relativas (H0 = início oficial do time).
 | Problema histórico (Apollo/Mir) | Juliana |
 | Dados vitais e comparação BASS/SAFFIRE | Anna Luiza |
 | Scenario / previsão com evidência PSI | Caio |
-| Demo navegação + Earth | Pedro Lukas |
-| Fechamento impacto dual + stack NASA | Beatriz |
+| Demo navegação + Earth | Beatriz |
+| Fechamento impacto dual + stack NASA | Pedro Lukas |
 
 ---
 
@@ -278,9 +278,9 @@ Horas relativas (H0 = início oficial do time).
 
 ## 10. Ajustes flexíveis
 
-Se alguém tiver mais afinidade com código:
+Distribuição atual de engenharia (definida pelo time):
 
-- Pedro pode pegar mais backend e Beatriz mais front (ou vice-versa) — manter **um dono de RAG** e **um dono de UI**.
+- **Beatriz** — dona da UI · **Pedro Lukas** — dono de RAG/API e merge do schema.
 - Se Caio estiver atolado na validação, Anna ajuda em `prediction_tags`; Juliana valida cenários de detecção.
 
 ---

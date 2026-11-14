@@ -1,0 +1,105 @@
+{
+  "psi_id": "PSI-26",
+  "title": "Burning and Suppression of Solids",
+  "acronym": "BASS",
+  "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+  "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-26",
+  "doi": "10.60555/58h4-dy80",
+  "license": {
+    "id": "CC0-1.0",
+    "name": "Creative Commons Zero v1.0 Universal",
+    "url": "https://spdx.org/licenses/CC0-1.0.html"
+  },
+  "psi_version": 4,
+  "fetched_at": "2026-11-14T16:33:36.295Z",
+  "metadata": {
+    "research_area": "Combustion Science",
+    "subresearch_area": "Spacecraft Fire Safety",
+    "project_type": "Microgravity Investigation",
+    "flight_platform": "International Space Station (ISS)",
+    "managing_center": "Glenn Research Center (GRC)",
+    "start_date": "10-01-2009",
+    "end_date": "06-30-2013",
+    "related_psi_ids": [
+      "PSI-107",
+      "PSI-25"
+    ],
+    "keywords": [
+      "Flame Spread",
+      "Fire suppression system",
+      "Damkohler number",
+      "Boundary layer",
+      "Fire safety",
+      "Forced Flow Flame",
+      "Kinetic regime"
+    ],
+    "hardware": {
+      "name": "Microgravity Science Glovebox",
+      "link": "https://www1.grc.nasa.gov/space/iss-research/msg/"
+    }
+  },
+  "sections": {
+    "objectives": "The two main objectives for BASS are to:\n1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity. The relation between these can be investigated by observing flames burning for the longer times available in flight. Practical, realistic (thicker) fuels in typical geometries will be examined, including wake flames which have characteristics of a fire burning behind another object (for example, a fire burning in tight area which may not be easily accessible).\n2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.",
+    "hypothesis": "BASS experiments were based on the hypothesis that materials in microgravity, with adequate ventilation, burn as well if not better than the same material in normal gravity with other conditions being identical (pressure, oxygen concentration, temperature, etc.) To test this hypothesis with any but the thinnest materials requires extended microgravity time – longer than available in drop towers or parabolic aircraft.",
+    "approach": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG). Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem. A Kanthal wire (29-gage)igniter was used to initiate combustion at one end of the fabric. Airflow was controlled using a variable speed fan, with airflow speeds reaching as high as 40 cm/s. The airflow was directed along the fuel surface in either the opposed or concurrent direction.\n\nThis investigation explored two primary air flow configurations; concurrent-flow and opposed-flow. With concurrent-flow air flows in the same direction as the flame spread and in opposed-flow air flows in the opposite direction of flame spread. Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching. The samples were placed in a small flow duct (76 mm x 76 mm cross section) that allowed for airflow across the fabric. Other sample shapes were utilized as well including spheres and cylinders.",
+    "research_impacts": "Current NASA spacecraft materials selection is based on a standard test method (NASA–STD–6001 Test 1) that segregates material based on 1-g behavior without consideration of low gravity effects. A critical element of this understanding is the radiative heat emission from the flame. These results are used in first order models and predictions of heat release in spacecraft fires and as a means to extend heat release data from tests like the NASA cone calorimeter test (NASA–STD–6001 Test 2) to a performance-based material selection process. Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques.\nBASS results provide essential guidance to ground-based microgravity combustion research efforts. Detailed combustion models are validated using the simpler flow environment afforded by tests in microgravity. Once validated, they can be used to build more complex combustion models needed to capture the important details of flames burning in normal gravity. These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions."
+  },
+  "publications": [
+    {
+      "title": "The Microgravity Science Glovebox as a Platform for Exploration Research on the International Space Station",
+      "authors": "Spivey Reggie, Luz Paul",
+      "doi": "10.2514/6.2006-941"
+    },
+    {
+      "title": "Opposed-flow flame spread: A comparison of microgravity and normal gravity experiments to establish the thermal regime",
+      "authors": "Bhattacharjee Subrata, Laue Matthew, Carmignani Luca, Ferkul Paul, Olson Sandra",
+      "doi": "10.1016/j.firesaf.2015.11.011"
+    },
+    {
+      "title": "Simplified model for predicting difference between flammability limits of a thin material in normal gravity and microgravity environments",
+      "authors": "Takahashi Shuhei, Ebisawa Tomoya, Bhattacharjee Subrata, Ihara Tadayoshi",
+      "doi": "10.1016/j.proci.2014.07.017"
+    },
+    {
+      "title": "A Correlation for an Effective Flow Velocity for Capturing the Boundary Layer Effect in Opposed-Flow Flame Spread over Thin Fuels",
+      "authors": "S Bhattacharjee, R Nagarkar, Y Nakamura",
+      "doi": "10.1080/00102202.2014.900056"
+    },
+    {
+      "title": "Radiation signature in opposed-flow flame spread",
+      "authors": "Bhattacharjee Subrata, Paolini Christopher P., Miller Fletcher, Nagarkar Rohit",
+      "doi": "10.1504/PCFD.2012.048249"
+    },
+    {
+      "title": "OS24-1 The Effect of Boundary Layer on Blow-Off Extinction in Opposed-Flow Flame Spread: Results of Experiments and Simplified Analysis(invited,Scale modeling on solid combustion,OS24 Scale modeling,FLUID AND THERMODYNAMICS)",
+      "authors": "Bhattacharjee Subrata, Cartnignani Luca",
+      "doi": "10.1299/jsmeatem.2015.14.289"
+    },
+    {
+      "title": "Role of Gas Radiation in the Mechanism of Opposed-Flow Flame Spread in a Microgravity Environment",
+      "authors": "JR Villaraza, L Carmignani, S Bhattacharjee",
+      "doi": null
+    },
+    {
+      "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment",
+      "authors": "P Ferkul, SL Olson, F Takahashi, M Endo, MC Johnston, JS Tien",
+      "doi": null
+    },
+    {
+      "title": "A novel apparatus for flame spread study",
+      "authors": "S Bhattacharjee, M Bundy, C Paolini, G Patel, W Tran.",
+      "doi": "10.1016/j.proci.2012.05.076"
+    },
+    {
+      "title": "Opposed-Flow Flame Spread in a Narrow Channel Apparatus over Thin PMMA Sheets",
+      "authors": "GR Bornand, FJ Miller, JM Pepper, SL Olson, IS Wichman",
+      "doi": null
+    }
+  ],
+  "experimental_tables": [
+    {
+      "file_name": "PSI-26_Experimental table_BASS.csv",
+      "csv": "Date,GMT,As Run Test #,Test #,Sample #,Fuel Sample Material\n3/30/2012,90,1,1,4,SIBAL 2 cm\n3/30/2012,90,2,42,24,PMMA sphere 2 cm\n3/30/2012,90,3,18,19,PMMA sphere 1 cm\n4/5/2012,96,4,7,10,SIBAL 2 cm\n4/5/2012,96,5,8,11,SIBAL 2 cm\n4/9/2012,100,6,43,24,PMMA sphere 2 cm\n4/9/2012,100,7,44,24,PMMA sphere 2 cm\n4/9/2012,100,8,45,24,PMMA sphere 2 cm\n5/2/2012,123,9,19,19,PMMA sphere 1 cm\n5/2/2012,123,10,20,19,PMMA sphere 1 cm\n5/2/2012,123,11,21,19,PMMA sphere 1 cm\n5/10/2012,131,12,4,12,SIBAL 2 cm\n5/10/2012,131,13,10,2,SIBAL 1 cm\n5/10/2012,131,14,12,27,Nomex blend 2 cm\n5/11/2012,132,15,54,21,PMMA 2 cm\n5/11/2012,132,16,55,21,PMMA 2 cm\n5/11/2012,132,17,56,21,PMMA 2 cm\n5/11/2012,132,18,57,21,PMMA 2 cm\n5/11/2012,132,19,110,21,PMMA 2 cm\n6/5/2012,157,20,30,15,PMMA 1 cm\n6/5/2012,157,21,31,15,PMMA 1 cm\n6/5/2012,157,22,32,15,PMMA 1 cm\n6/5/2012,157,23,33,15,PMMA 1 cm\n6/5/2012,157,24,12-R,27,Nomex blend 2 cm\n6/5/2012,157,24,12-R2,27,Nomex blend 2 cm\n6/11/2012,163,25,46,22,2 cm sphere\n6/11/2012,163,26,47,22,2 cm sphere\n6/11/2012,163,27,48,22,2 cm sphere\n6/11/2012,163,28,49,22,2 cm sphere\n6/14/2012,166,29,22,18,1 cm sphere\n6/14/2012,166,30,23,18,1 cm sphere\n6/14/2012,166,31,24,18,1 cm sphere\n6/14/2012,166,32,25,18,1 cm sphere\n6/18/2012,170,33,58,25,2 cm sphere\n6/18/2012,170,34,59,25,2 cm sphere\n6/18/2012,170,35,60,25,2 cm sphere\n6/18/2012,170,36,61,25,2 cm sphere\n6/28/2012,180,37,5,9,SIBAL 2 cm\n6/28/2012,180,38,14,29,Nomex III Natural\n6/28/2012,180,39,66,33,PMMA slab\n6/28/2012,180,40,67,33,PMMA slab\n6/29/2012,181,41,34,16,1 cm sphere\n6/29/`12,181,42,35,16,1 cm sphere\n6/29/2012,181,43,16,31,ultem sheet\n6/29/2012,181,44,5b,9,SIBAL 2 cm   opposed flow \n7/3/2012,185,45,6,8,SIBAL 2 cm\n7/3/2012,185,46,82,35,candle\n7/3/2012,185,47,82a,35,candle\n7/3/2012,185,48,82b,35,candle\n7/3/2012,185,49,68,33,pmma slab\n7/12/2012,194,50,69,33,pmma slab\n7/12/2012,194,51,111,21,2 cm sphere   wake ign\n7/12/2012,194,52,112,21,2 cm sphere   wake ign\n7/12/2012,194,53,113,21,2 cm sphere   wake ign\n7/19/2012,201,54,2,5,SIBAL 2 cm\n7/19/2012,201,55,3,6,SIBAL 2 cm\n7/19/2012,201,56,15,30,nomex natural III\n7/19/2012,201,57,13,28,Nomex blend 2 cm\n7/19/2012,201,58,17,32,ultem sheet\n7/19/2012,201,59,114,25,pmma sphere\n7/23/2012,205,60,62,23,PMMA sphere 2 cm\n7/23/2012,205,61,63,23,PMMA sphere 2 cm\n7/23/2012,205,62,64,23,PMMA sphere 2 cm\n7/23/2012,205,63,65,23,PMMA sphere 2 cm\n7/23/2012,205,64,118,23,PMMA sphere 2 cm\n8/3/2012,216,,,,SOOT Cleaning\n8/9/2012,222,65,11,3,SIBAL 1 cm\n8/9/2012,222,66,9,7,SIBAL 2 cm\n8/9/2012,222,67,102,22,PMMA sphere 2 cm\n8/16/2012,229,68,83a,36,Japan Wax Candle   wake\n8/16/2012,229,69,83b,36,Japan Wax Candle   wake\n8/16/2012,229,70,83c,36,Japan Wax Candle   wake\n8/16/2012,229,71,84a,37,Japan Wax Candle   wake\n8/16/2012,229,72,84b,37,Japan Wax Candle   wake\n8/16/2012,229,73,86a,38,Japan Wax Candle   wake\n8/16/2012,229,74,86b,38,Japan Wax Candle   wake\n8/16/2012,229,75,86c,38,Japan Wax Candle   wake\n8/21/2012,234,76,70,34,PMMA slab\n8/21/2012,234,77,71,34,PMMA slab\n8/21/2012,234,78,74,41,paraffin wax slab\n8/21/2012,234,79,75,41,parrafin wax slab\n4/5/2013,95,80,98,24,PMMA 2 cm\n4/5/2013,95,81,99,24,PMMA 2 cm\n4/9/2013,99,82,114,25,PMMA 2 cm\n4/9/2013,99,83,115,25,pmma 2 cm\n4/9/2013,99,84,116,25,pmma 2 cm\n4/9/2013,99,85,117,25,pmma 2 cm\n4/9/2013,99,85,117a,25,pmma 2 cm\n4/12/2013,102,86,100,24,pmma 2 cm\n4/12/2013,102,87,85,43,candle    paraffin   wake\n4/12/2013,102,88,93,43,candle    paraffin   wake\n4/16/2013,106,89,26,17,pmma 1 cm\n4/16/2013,106,90,27,17,pmma 1 cm\n4/16/2013,106,91,28,17,pmma 1 cm\n4/23/2013,113,89,87,40,candle   Japan wax\n4/23/2013,113,90,103,22,2 cm sphere\n4/23/2013,113,91,104,22,2 cm sphere\n4/23/2013,113,92,105,22,2 cm sphere\n4/26/2013,113,93,38,20,1 cm sphere   wake\n4/26/2013,116,94,39,20,1 cm wake sphere\n4/26/2013,116,95,40,20,1 cm wake sphere\n4/26/2013,116,96,72,34,pmma slab opposed\n4/26/2013,116,97,73,34,pmma slab   oppsed\n4/29/2013,119,98,118,23,2 cm pmma sphere \n4/29/2013,119,99,119,23,2 cm pmma sphere \n5/2/2013,122,100,89,44,parrafin wax candle\n5/2/2013,122,101,95,44,paraffin wax candle\n5/2/2013,122,102,92,40,candle   Japan wax\n5/2/2013,122,103,78,42,paraffin wax slab\n5/15/2103,135,104,50,26,2 cm pmma sphere \n5/15/2013,135,105,51,26,2 cm sphere\n5/15/2013,135,106,52,26,2 cm sphere\n5/15/2013,135,107,53,26,2 cm sphere\n5/17/2013,137,108,106,26,2 cm sphere\n5/17/2013,137,109,107,26,2 cm sphere\n5/17/2013,137,110,108,26,2 cm sphere\n6/1/2013,137,111,109,26,2 cm sphere\n6/1/2013,150,112,79,42,flat wax slab\n6/1/2013,150,113,80,42,flat wax slab\n6/1/2013,150,114,75,41,flat wax slab\n6/1/2013,150,115,53,26,pmma sphere\n6/1/2013,150,116,53a,26,pmma sphere"
+    }
+  ]
+}

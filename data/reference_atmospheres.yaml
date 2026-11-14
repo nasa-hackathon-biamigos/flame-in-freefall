@@ -1,0 +1,25 @@
+# Reference atmospheres shaded on the O₂ × pressure map (docs/SPEC.md §6.6).
+# Owner: Anna Luiza (Caio reviews). Due H+8.
+# A zone is drawn ONLY when it has source_url + o2_percent.min + pressure_psi.min.
+# Values below are deliberately null: fill them from a NASA source, never from memory.
+
+- id: earth_sea_level
+  label: { en: "Earth / ISS cabin", pt-BR: "Terra / cabine ISS" }
+  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~21%
+  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ~14.7 psia
+  source_url: null
+  notes: null
+
+- id: lunar_habitat
+  label: { en: "Planned lunar habitat", pt-BR: "Habitat lunar planejado" }
+  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~30%+
+  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ≤10.2 psia
+  source_url: null
+  notes: null
+
+- id: spacesuit
+  label: { en: "Spacesuit", pt-BR: "Traje espacial" }
+  o2_percent: { min: null, max: null }     # TODO(data) PLANO hint: ~100%
+  pressure_psi: { min: null, max: null }   # TODO(data) PLANO hint: ~4.3 psia
+  source_url: null
+  notes: null

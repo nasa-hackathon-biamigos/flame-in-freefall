@@ -1,3 +1,4 @@
+import catalogMeta from "@/generated/catalog-meta.json";
 import { supabaseAdmin } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -11,5 +12,5 @@ export async function GET() {
   } catch (e) {
     supabase = e instanceof Error ? e.message : "unknown error";
   }
-  return Response.json({ ok: supabase === "ok", supabase });
+  return Response.json({ ok: supabase === "ok", catalog_version: catalogMeta.version, supabase });
 }

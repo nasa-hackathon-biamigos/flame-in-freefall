@@ -1,0 +1,50 @@
+{
+  "psi_id": "PSI-181",
+  "title": "Structure and Properties of Pb-Sn and Pb-free Sn-Ag-Cu Solders Produced in Terrestrial vs. Microgravity Environments under Extremes of Elevated and Cryo Temperatures",
+  "acronym": "",
+  "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-181",
+  "api_url": "https://psi.nasa.gov/geode-py/ws/repo/investigations/PSI-181",
+  "doi": "10.60555/td9e-cz97",
+  "license": {
+    "id": "CC0-1.0",
+    "name": "Creative Commons Zero v1.0 Universal",
+    "url": "https://spdx.org/licenses/CC0-1.0.html"
+  },
+  "psi_version": 1,
+  "fetched_at": "2026-11-14T16:36:22.599Z",
+  "metadata": {
+    "research_area": "Materials Science",
+    "subresearch_area": "Microstructural Characterization, Terrestrial vs Microgravity Effects, Solder Joints",
+    "project_type": "Ground Investigation",
+    "flight_platform": "International Space Station (ISS)",
+    "managing_center": "Marshall Space Flight Center (MSFC)",
+    "start_date": "01-01-2020",
+    "end_date": "12-31-2022",
+    "related_psi_ids": [
+      "PSI-77"
+    ],
+    "keywords": [
+      "solidification",
+      "Soldering",
+      "Micromechanical Testing",
+      "Extreme Temperatures",
+      "Marangoni Convection",
+      "Microstructure Characterization",
+      "Porosity"
+    ],
+    "hardware": null
+  },
+  "sections": {
+    "objectives": "This study addresses the reliability of solder joints in space by pursuing two principal objectives: (1) Characterization of solder-joint formation under microgravity conditions aboard the International Space Station, specifically examining the impact of suppressed convective flow and buoyancy on 40Pb-60Sn alloys utilized in the In-Space Soldering Investigation (ISSI). (2) Evaluation of the solder’s material and mechanical properties under extreme thermal environments, including elevated and cryogenic temperature exposures characteristic of spaceflight conditions.",
+    "hypothesis": "In microgravity environments, fluid dynamics are markedly constrained, predominantly governed by solidification-induced volumetric changes, thermally driven density gradients, and Marangoni convection. This suppression of fluid motion results in diminished mixing, causing voids and gas bubbles to remain entrapped within the solder joint during the solidification process. Such internal porosity critically impairs the solder’s thermal and electrical conductivity, while also compromising the mechanical robustness of the joint. To advance the feasibility of extended space missions, this study seeks to elucidate the fundamental mechanisms, observable phenomena, and process parameters that influence the structural and functional integrity of solder joints fabricated under terrestrial and microgravity conditions.",
+    "approach": "The study examined three distinct solder alloys: the ISSI lead-based (40Pb-60Sn) composition, an off-eutectic 50Pb-50Sn formulation, and a lead-free alloy consisting of 95.5Sn-3.8Ag-0.7Cu.\nMicrostructural characterization was performed on four solder specimens processed in microgravity from the ISSI investigation, one terrestrial ISSI solder, and a freshly fabricated terrestrial 40wt%Pb-60wt%Sn sample. These analyses elucidated the role of suppressed buoyancy and natural convection in void formation within microgravity environments. Evidence of void-induced Marangoni convection influencing microstructure development was demonstrated using wire-feed solder processed in space. The micromechanical response of solders fabricated under both terrestrial and microgravity conditions was further evaluated across a broad thermal range (–157ºC to +121ºC), simulating the conditions encountered externally on the International Space Station. Investigations under cryogenic conditions focused on the β-to-α phase transformation in Sn below 13ºC, examining associated volumetric expansion, internal stress evolution, and the ductile-to-brittle transition phenomena observed in Sn-based alloys. At ambient temperature, the influence of accelerated aging on both microstructural stability and mechanical performance was assessed.",
+    "research_impacts": "The research presented in this project offers significant contributions across multiple space exploration initiatives:\n\n(i) The project objectives are closely aligned with ongoing NASA initiatives focused on metal joining techniques in reduced gravity environments. The three solder alloys investigated—selected in collaboration with NASA partners, underscoring the relevance of the study to future space exploration efforts, (ii) The findings are expected to inform the design of future experiments responsive to forthcoming NASA proposal calls, including those associated with the Artemis program, which aims to return humans to the lunar surface, (iii) The insights gained into microgravity fluid behavior and surface tension variation can be extended to a broad range of spaceflight-enabling technologies, such as boiling, heat transfer, combustion, welding, brazing, and soldering. This research enhances the understanding of gravity-driven separation processes—such as gas bubble removal—that must be accomplished via alternative mechanisms in microgravity conditions. (iv) The gravity-level-specific protocols (GLSPs) developed for various soldering configurations serve as practical guidance for future investigations into metal joining techniques under reduced gravity. These protocols may be adopted by scientists and flight personnel for welding, brazing, and soldering applications in spaceflight environments."
+  },
+  "publications": [],
+  "experimental_tables": [
+    {
+      "file_name": "PSI-181_Experimental table_Experimental Table_PSI_181.csv",
+      "csv": "Sample ID,Composition,Sample Type,Sample Method\nTest 2 Sample 4 (T2S4),40Pb-60Sn,ISSI Microgravity,Wire Wrap Solder (Parallel Cu wire)\nTest 2 Sample 5 (T2S5),40Pb-60Sn,ISSI Microgravity,Wire Wrap Solder (Parallel Cu wire)\nTest 2 Sample 10 (T2S10),40Pb-60Sn,ISSI Microgravity,Small Loop Wire Wrap Solder (Small Loop Cu wire)\nTest 4 Sample 16 (T4S16),40Pb-60Sn,ISSI Microgravity,Wire Feed Solder (Small Loop Cu wire)\n,,,\nSample 2 (S2),40Pb-60Sn,ISSI Terrestrial,Wire Feed Solder (Small Loop Cu wire)\nSample 8 (RSS-S8),95.5Sn-3.8Ag-0.7Cu,Iowa State Terrestrial,Reflow Spreading Solder (Cu Foil)\nSample 10 (RSS-S10),40Pb-60Sn,Iowa State Terrestrial,Reflow Spreading Solder (Cu Foil)"
+    }
+  ]
+}

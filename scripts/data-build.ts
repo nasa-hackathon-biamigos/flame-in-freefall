@@ -12,6 +12,8 @@ import path from "node:path";
 import { buildCatalog } from "../src/lib/catalog/build";
 import { toExportCsv, toExportJson } from "../src/lib/catalog/export";
 import type { Problem } from "../src/lib/catalog/issues";
+import { loadDemoQuestions } from "../src/lib/rag/demo";
+import { buildRagIndex } from "../src/lib/rag/sources";
 
 const root = process.cwd();
 const production = process.argv.includes("--production") || process.env.VERCEL_ENV === "production";
@@ -29,7 +31,9 @@ function annotate(kind: "error" | "warning", p: Problem) {
 
 async function main() {
   const result = await buildCatalog(path.join(root, "data"), { includeExamples: !production });
-  const { catalog, errors, warnings, stats } = result;
+  const { catalog, warnings, stats } = result;
+  const demo = await loadDemoQuestions(path.join(root, "data"));
+  const errors = [...result.errors, ...demo.problems];
 
   for (const w of warnings) {
     if (inGithub) annotate("warning", w);
@@ -62,6 +66,9 @@ async function main() {
   await mkdir(generated, { recursive: true });
   await mkdir(downloads, { recursive: true });
   await writeFile(path.join(generated, "catalog.json"), JSON.stringify(catalog) + "\n");
+  // Ask PSI: every downloaded PSI investigation (names to match, links) + suggestion chips.
+  await writeFile(path.join(generated, "rag-index.json"), JSON.stringify(buildRagIndex(catalog, result.psi)) + "\n");
+  await writeFile(path.join(generated, "demo-questions.json"), JSON.stringify(demo.questions) + "\n");
   // Small sidecar so routes like /api/health don't bundle the whole catalog.
   await writeFile(
     path.join(generated, "catalog-meta.json"),

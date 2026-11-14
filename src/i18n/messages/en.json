@@ -8,7 +8,8 @@
   "nav": {
     "label": "Main",
     "explore": "Explore",
-    "about": "About & data"
+    "about": "About & data",
+    "ask": "Ask PSI"
   },
   "home": {
     "title": "Fire behaves differently in space. NASA has the data. We make it usable.",
@@ -121,7 +122,9 @@
       "tables": "Experimental tables",
       "rowsShown": "Showing {shown} of {total} rows.",
       "missing": "The raw PSI text for this investigation has not been downloaded yet."
-    }
+    },
+    "askAbout": "Ask about this",
+    "askAboutQuestion": "What does {name} tell us about fire safety in crewed habitats?"
   },
   "about": {
     "title": "About & data",
@@ -153,5 +156,50 @@
   "notFound": {
     "title": "Investigation not found",
     "back": "Back to Explore"
+  },
+  "ask": {
+    "title": "Ask PSI",
+    "lead": "Ask about fire safety in microgravity. Answers come only from NASA PSI records in this catalog, and every claim links to its source.",
+    "placeholder": "Ask a question about fire safety in space…",
+    "send": "Ask",
+    "newConversation": "New conversation",
+    "turns": "{used}/{max} questions",
+    "suggested": "Try one of these",
+    "thinking": "Searching PSI records…",
+    "cached": "Answered from cache",
+    "sources": "Sources",
+    "openRecord": "Open record",
+    "openPsi": "NASA PSI",
+    "disclaimer": "Answers are generated from curated NASA PSI records and may be incomplete. Always check the cited sources.",
+    "curation": {
+      "uncurated": "Original PSI text",
+      "partial": "Partial curation",
+      "complete": "Curated"
+    },
+    "limitReached": "This conversation reached {max} questions. Start a new one to keep asking.",
+    "sections": {
+      "summary": "Summary",
+      "crew_safety": "Why it matters for crew safety",
+      "earth_impact": "Earth impact",
+      "key_results": "Key results",
+      "limitations": "Limitations",
+      "conditions": "Conditions",
+      "psi_objectives": "PSI objectives",
+      "psi_hypothesis": "PSI hypothesis",
+      "psi_approach": "PSI approach",
+      "psi_research_impacts": "PSI research impacts",
+      "comparison": "Curated comparison",
+      "spinoff": "Earth spinoff"
+    },
+    "errors": {
+      "bad_request": "Please write a question between 3 and 1000 characters.",
+      "forbidden": "This request was blocked.",
+      "rate_limited": "You have asked a lot of questions in the last hour. Please try again later — suggested questions still work.",
+      "daily_cap": "The assistant reached its daily limit. Please come back tomorrow — suggested questions still work.",
+      "conversation_limit": "This conversation reached its question limit. Start a new conversation.",
+      "conversation_expired": "This conversation expired. Start a new conversation.",
+      "refusal": "The assistant declined to answer this question. Try asking about fire safety in crewed habitats.",
+      "unavailable": "The assistant is unavailable right now. Please try again in a moment."
+    }
   }
 }

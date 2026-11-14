@@ -15,9 +15,12 @@
     "setup": "npm run data:build",
     "data:build": "tsx scripts/data-build.ts",
     "data:scrape": "tsx scripts/scrape-psi.ts",
-    "data:scaffold": "tsx scripts/scaffold-ficha.ts"
+    "data:scaffold": "tsx scripts/scaffold-ficha.ts",
+    "rag:ingest": "tsx scripts/rag-ingest.ts",
+    "rag:warm": "tsx scripts/rag-warm.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
     "@base-ui/react": "^1.9.0",
     "@supabase/supabase-js": "^2.119.0",
     "class-variance-authority": "^0.7.1",
@@ -26,6 +29,7 @@
     "lucide-react": "^1.72.0",
     "next": "16.4.6",
     "next-intl": "^4.15.1",
+    "openai": "^7.56.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-markdown": "^10.1.0",

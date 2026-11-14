@@ -61,6 +61,8 @@ export type BuildResult = {
   errors: Problem[];
   warnings: Problem[];
   stats: BuildStats;
+  /** Every raw PSI record in data/raw/psi, including investigations with no published ficha (RAG). */
+  psi: PsiRaw[];
 };
 
 type Ctx = { dataDir: string; errors: Problem[]; warnings: Problem[]; hash: ReturnType<typeof createHash> };
@@ -200,11 +202,11 @@ export async function buildCatalog(
   // vocab — everything else depends on it
   const vocabFile = path.join(dataDir, "vocab.yaml");
   const vocabYaml = parseYaml(ctx, vocabFile, await readTracked(ctx, vocabFile));
-  if (!vocabYaml.ok) return { catalog: null, errors: ctx.errors, warnings: ctx.warnings, stats };
+  if (!vocabYaml.ok) return { catalog: null, errors: ctx.errors, warnings: ctx.warnings, stats, psi: [] };
   const vocabParsed = VocabSchema.safeParse(vocabYaml.data);
   if (!vocabParsed.success) {
     ctx.errors.push(...zodIssuesToProblems(rel(ctx, vocabFile), vocabParsed.error.issues, vocabYaml.data));
-    return { catalog: null, errors: ctx.errors, warnings: ctx.warnings, stats };
+    return { catalog: null, errors: ctx.errors, warnings: ctx.warnings, stats, psi: [] };
   }
   const vocab = vocabParsed.data;
   const schemas = makeSchemas(vocab);
@@ -401,5 +403,5 @@ export async function buildCatalog(
     reference_atmospheres,
     vocab,
   };
-  return { catalog, errors: ctx.errors, warnings: ctx.warnings, stats };
+  return { catalog, errors: ctx.errors, warnings: ctx.warnings, stats, psi: [...psiById.values()] };
 }

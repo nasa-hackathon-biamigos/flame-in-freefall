@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildCatalog, type Catalog, type Investigation } from "../src/lib/catalog/build";
-import { CitationTracker, sourceKey } from "../src/lib/rag/citations";
+import { bestLine, CitationTracker, insertMarkers, sourceKey } from "../src/lib/rag/citations";
 import { toSearchResult, userTurn } from "../src/lib/rag/claude";
 import { encodeEvent, readEvents, type AskEvent } from "../src/lib/rag/events";
 import type { RetrievedChunk } from "../src/lib/rag/retrieve";
@@ -158,9 +158,67 @@ describe("CitationTracker", () => {
     expect(tracker.cite(1, { source: "sf:b", cited_text: "again" })).toEqual([]); // same chunk, same number
     expect(tracker.cite(1, { source: "sf:a", cited_text: "First paragraph." })).toHaveLength(1);
     expect(tracker.cite(1, { source: "sf:unknown", cited_text: "x" })).toEqual([]);
-    expect(tracker.close(1)).toEqual([{ type: "cite", ns: [1, 2] }]);
-    expect(tracker.close(3)).toEqual([]);
+    expect(tracker.close(1, "A sentence that copies nothing")).toEqual([{ type: "cite", ns: [1, 2] }]);
+    expect(tracker.close(3, "")).toEqual([]);
     expect(tracker.citedIds()).toEqual(["PSI-102"]);
+  });
+});
+
+describe("marker placement (OpenRouter returns one text block)", () => {
+  it("puts each marker after the line that matches its cited text", () => {
+    const text = [
+      "Intro line about the catalog and what it covers here.",
+      "- **SAME (PSI-102):** the particulate collected on the thermophoretic probes was analyzed with TEM.",
+      "- **FLEX (PSI-69):** droplet flames were extinguished with helium and carbon dioxide diluents.",
+      "Closing remark.",
+    ].join("\n");
+    const tracker = new CitationTracker(
+      new Map([
+        [sourceKey("a"), chunk("a")],
+        [sourceKey("b"), chunk("b")],
+      ]),
+    );
+    tracker.cite(0, {
+      source: "sf:b",
+      cited_text: "FLEX studied droplet flames extinguished with helium and carbon dioxide diluents.",
+    });
+    tracker.cite(0, {
+      source: "sf:a",
+      cited_text: "The particulate collected on the thermophoretic probes was analyzed using TEM.",
+    });
+    tracker.cite(0, { source: "sf:a", cited_text: "Something unrelated entirely about pumps." });
+    const events = tracker.close(0, text);
+    expect(events).toEqual([
+      { type: "cite", ns: [2], after: expect.stringContaining("analyzed with TEM.") },
+      { type: "cite", ns: [1], after: expect.stringContaining("dioxide diluents.") },
+      { type: "cite", ns: [2] },
+    ]);
+    let md = text;
+    for (const e of events)
+      if (e.type === "cite") md = insertMarkers(md, e.ns.map((n) => `[${n}]`).join(""), e.after);
+    const lines = md.split("\n");
+    expect(lines[1].endsWith("with TEM.[2]")).toBe(true);
+    expect(lines[2].endsWith("diluents.[1]")).toBe(true);
+    expect(md.endsWith("Closing remark.[2]")).toBe(true);
+  });
+
+  it("matches a Portuguese answer line by names and numbers", () => {
+    const lines = [
+      "Pelos registros, a mudança principal foi no escoamento:",
+      "- **Material:** o Saffire III também usou SIBAL, tecido de algodão (75% algodão, 25% fibra de vidro).",
+      "- **Escoamento:** os experimentos foram feitos a 30 cm/s, contra 20 cm/s no Saffire I.",
+    ];
+    const cited = "Saffire III also used SIBAL as the sample material, 75% cotton, 25% fiberglass by weight.";
+    expect(bestLine(lines, cited)).toBe(1);
+    expect(bestLine(lines, "Experiments were run at 30 cm/s rather than 20 cm/s as in Saffire I.")).toBe(2);
+    // a tie between lines is ambiguous: leave the marker at the end
+    expect(
+      bestLine(["Foi o SAFFIRE com PMMA aqui.", "De novo o SAFFIRE com PMMA ali."], "SAFFIRE PMMA"),
+    ).toBe(-1);
+  });
+
+  it("ignores short lines and weak matches", () => {
+    expect(bestLine(["Yes.", "Totally different words in this line."], "smoke particle sizes")).toBe(-1);
   });
 });
 
@@ -200,13 +258,33 @@ describe("store helpers", () => {
         turn_index: 0,
         question: "a",
         request_messages: [{ role: "user", content: "a" }],
-        response_content: [],
+        response_content: [{ type: "text", text: "x" }] as unknown as StoredTurn["response_content"],
       },
       { turn_index: 1, question: "b", request_messages: null, response_content: null },
     ];
     expect(historyFrom(turns)).toEqual([
       { role: "user", content: "a" },
-      { role: "assistant", content: [] },
+      { role: "assistant", content: [{ type: "text", text: "x" }] },
     ]);
+  });
+
+  it("can replay earlier answers as plain text (OpenRouter)", () => {
+    const answer = [
+      { type: "thinking", thinking: "", signature: "sig" },
+      { type: "text", text: "SAME measured smoke.", citations: [{ type: "search_result_location" }] },
+    ] as unknown as StoredTurn["response_content"];
+    const turns: StoredTurn[] = [
+      {
+        turn_index: 0,
+        question: "a",
+        request_messages: [{ role: "user", content: "a" }],
+        response_content: answer,
+      },
+    ];
+    expect(historyFrom(turns, { textOnly: true })).toEqual([
+      { role: "user", content: "a" },
+      { role: "assistant", content: [{ type: "text", text: "SAME measured smoke." }] },
+    ]);
+    expect(historyFrom(turns)[1]).toEqual({ role: "assistant", content: answer });
   });
 });

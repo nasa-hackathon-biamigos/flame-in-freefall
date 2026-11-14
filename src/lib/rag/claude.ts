@@ -8,14 +8,39 @@ import type { RetrievedChunk } from "./retrieve";
 type BetaMessageParam = Anthropic.Beta.Messages.BetaMessageParam;
 type BetaSearchResultBlockParam = Anthropic.Beta.Messages.BetaSearchResultBlockParam;
 
+/**
+ * The team runs Claude through OpenRouter's Anthropic-compatible Messages endpoint (decided
+ * 2026-11-14). Detected from an OpenRouter key (sk-or-...) or an openrouter.ai ANTHROPIC_BASE_URL.
+ * Verified there: search_result citations, adaptive thinking, effort, prompt caching, streaming.
+ * Not available there: the server-side refusal fallback (a refusal shows the refusal message).
+ */
+export function viaOpenRouter(): boolean {
+  return (
+    (process.env.ANTHROPIC_API_KEY ?? "").startsWith("sk-or-") ||
+    (process.env.ANTHROPIC_BASE_URL ?? "").includes("openrouter.ai")
+  );
+}
+
 let client: Anthropic | null = null;
 function anthropic(): Anthropic {
-  client ??= new Anthropic(); // reads ANTHROPIC_API_KEY
+  client ??= viaOpenRouter()
+    ? new Anthropic({
+        baseURL: process.env.ANTHROPIC_BASE_URL || "https://openrouter.ai/api",
+        authToken: process.env.ANTHROPIC_API_KEY ?? null, // OpenRouter wants a Bearer token
+        apiKey: null,
+      })
+    : new Anthropic(); // reads ANTHROPIC_API_KEY
   return client;
 }
 
+/** "claude-opus-5-5" → "anthropic/claude-opus-5.5" (OpenRouter ids); ids with a "/" pass through. */
+export function toOpenRouterModel(id: string): string {
+  return id.includes("/") ? id : `anthropic/${id.replace(/-(\d+)-(\d+)$/, "-$1.$2")}`;
+}
+
 export function claudeModel(): string {
-  return process.env.ANTHROPIC_MODEL || "claude-opus-5-5";
+  const id = process.env.ANTHROPIC_MODEL || "claude-opus-5-5";
+  return viaOpenRouter() ? toOpenRouterModel(id) : id;
 }
 
 const EFFORTS = ["low", "medium", "high", "xhigh", "max"] as const;
@@ -49,7 +74,13 @@ export function userTurn(question: string, chunks: RetrievedChunk[]): BetaMessag
 }
 
 export function streamAnswer(messages: BetaMessageParam[]) {
+  // On the Anthropic API, a safety-classifier refusal is re-run on a fallback model.
+  // OpenRouter rejects the `fallbacks` parameter, so it is only sent direct.
+  const fallback = viaOpenRouter()
+    ? {}
+    : { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" as const };
   return anthropic().beta.messages.stream({
+    ...fallback,
     model: claudeModel(),
     max_tokens: 16000, // thinking counts toward this; the prompt keeps answers short
     thinking: { type: "adaptive" },
@@ -59,9 +90,6 @@ export function streamAnswer(messages: BetaMessageParam[]) {
     system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
     cache_control: { type: "ephemeral" },
     messages,
-    // If a safety classifier declines, the API re-runs the request on a fallback model.
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
   });
 }
 

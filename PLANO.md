@@ -4,6 +4,8 @@
 
 **Proposta em uma frase:** Um painel web que cataloga investigações de combustão no [PSI](https://psi.nasa.gov/physci/repo/search?q=combustion), classifica cada uma por prevenção / detecção / supressão e por ambiente (ISS, base lunar, veículo pressurizado), conecta cada descoberta a **benefícios concretos na Terra** (detecção de fumaça, extintores, equipamento de bombeiros), e usa IA (RAG + resumos) para responder perguntas do tipo: *“O que o PSI diz sobre 30% O₂ em microgravidade e tecidos?”* — e *“Qual pesquisa SAME respalda detectores que distinguem fumaça de poeira?”*
 
+**Equipe e papéis:** [DIVISAO-EQUIPE.md](./DIVISAO-EQUIPE.md) (Beatriz, Pedro Lukas, Anna Luiza, Caio, Juliana).
+
 ---
 
 ## 1. Visão da solução
@@ -141,7 +143,7 @@ Além dos campos já planejados, incluir:
 ### 4.2 Stretch (se sobrar tempo)
 
 - Visualizações: rede investigação ↔ hardware ↔ tema fire safety
-- **Scenario builder:** O₂%, pressão, microgravidade → lista investigações + trechos PSI + recomendação da IA
+- **Scenario builder:** O₂%, pressão, microgravidade → lista investigações + trechos PSI + faixa de risco + explicação (ver `MODELO-PREVISAO.md` e [DIVISAO-EQUIPE.md](./DIVISAO-EQUIPE.md) — Caio)
 - Export CSV/JSON para modelagem preditiva
 - Linha do tempo visual “PSI → Spinoff → uso hoje”
 - Comparador espaço vs Terra: mesma variável (ex. tamanho de partícula de fumaça) em SAME vs condições 1g citadas em trabalhos PSI solo

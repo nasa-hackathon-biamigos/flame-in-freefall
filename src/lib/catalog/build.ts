@@ -81,7 +81,9 @@ async function listFiles(dir: string, ext: string): Promise<string[]> {
 }
 
 async function readTracked(ctx: Ctx, file: string): Promise<string> {
-  const text = await readFile(file, "utf8");
+  // Normalize BOM + CRLF (Windows checkouts, GitHub web edits) so parsing and the version hash
+  // are identical on every OS. Without this, the last front-matter line parses as "true\r".
+  const text = (await readFile(file, "utf8")).replace(/^﻿/, "").replace(/\r\n?/g, "\n");
   ctx.hash.update(rel(ctx, file)).update("\0").update(text).update("\0");
   return text;
 }
@@ -118,6 +120,12 @@ function parseMarkdown(
 }
 
 const isBlank = (s: string | null | undefined) => !s || s.trim() === "";
+
+/** The template ships an empty earth_applications block, so "not null" is not enough. */
+function hasEarthTransfer(fm: InvestigationFrontmatter): boolean {
+  const ea = fm.earth_applications;
+  return ea !== null && (ea.sectors.length > 0 || ea.spinoff_slugs.length > 0 || ea.transfer_type !== null);
+}
 
 /** Rules that depend on curation_status (docs/SPEC.md §6.1–6.2). */
 function checkStatusRules(
@@ -258,7 +266,7 @@ export async function buildCatalog(
       stats.examples++;
       if (!opts.includeExamples) continue;
     }
-    all.push({ ...fm, sections, psi, has_earth_transfer: fm.earth_applications !== null });
+    all.push({ ...fm, sections, psi, has_earth_transfer: hasEarthTransfer(fm) });
   }
 
   // spinoffs

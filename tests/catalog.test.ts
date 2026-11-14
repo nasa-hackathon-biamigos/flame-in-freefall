@@ -108,6 +108,30 @@ describe("ficha validation", () => {
     expect(inv.sections.crew_safety).toBe("- Matters.");
   });
 
+  it("does not flag Earth transfer for the template's empty earth_applications block", async () => {
+    const empty = "{ sectors: [], spinoff_slugs: [], transfer_type: null }";
+    const dir = await dataDir({
+      "investigations/test.md": ficha({ ...COMPLETE_FIELDS, earth_applications: empty }, COMPLETE_BODY),
+      "investigations/test-2.md": ficha(
+        {
+          ...COMPLETE_FIELDS,
+          slug: "test-2",
+          psi_id: "null",
+          example: "true",
+          earth_applications: "{ sectors: [mining] }",
+        },
+        COMPLETE_BODY,
+      ),
+      "raw/psi/PSI-1.json": RAW_PSI_1,
+    });
+    const { catalog, errors } = await buildCatalog(dir, { includeExamples: true });
+    expect(errors).toEqual([]);
+    expect(catalog!.investigations.map((i) => [i.slug, i.has_earth_transfer])).toEqual([
+      ["test", false],
+      ["test-2", true],
+    ]);
+  });
+
   it("rejects min > max with a Portuguese message on the right field", async () => {
     const dir = await dataDir({
       "investigations/test.md": ficha({ atmosphere: "{ o2_percent: { min: 40, max: 21 } }" }),
@@ -192,6 +216,13 @@ describe("ficha validation", () => {
     });
     const { errors } = await buildCatalog(dir, { includeExamples: true });
     expect(errors[0]).toMatchObject({ field: "psi_id" });
+  });
+
+  it("parses files with Windows line endings and a BOM", async () => {
+    const crlf = "﻿" + ficha({ example: "true" }).replace(/\n/g, "\r\n");
+    const dir = await dataDir({ "investigations/test.md": crlf });
+    const { errors } = await buildCatalog(dir, { includeExamples: true });
+    expect(errors).toEqual([]);
   });
 
   it("warns on unknown body headings", async () => {

@@ -47,7 +47,7 @@ solid_form:
   - { id: fabric, label: { en: Fabric, pt-BR: Tecido }, icon: shirt }
   - { id: sheet, label: { en: Thin sheet, pt-BR: Folha fina }, icon: file }
   - { id: rod_cylinder, label: { en: Rod / cylinder, pt-BR: Bastão / cilindro }, icon: cylinder }
-  - { id: foam, label: { en: Foam, pt-BR: Espuma }, icon: sponge }
+  - { id: foam, label: { en: Foam, pt-BR: Espuma }, icon: circle-dot }
   - { id: wire_insulation, label: { en: Wire insulation, pt-BR: Isolamento de fio }, icon: cable }
   - { id: other, label: { en: Other, pt-BR: Outro }, icon: circle-help }
 
